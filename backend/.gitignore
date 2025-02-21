@@ -1,35 +1,80 @@
-HELP.md
+# Compiled class files
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+bin/
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Maven & Gradle files
+*.war
+*.jar
+*.ear
+.mvn/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+build/
 
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# Logs
+logs/
+*.log
+*.log.*
+
+# IDE & Editor Files
+.idea/
 *.iml
 *.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+*.iws
 .vscode/
+*.swp
+*.swo
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files (credentials, API keys)
+.env
+*.env
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Database & Generated Files
+*.h2.db
+*.mv.db
+*.db
+*.sqlite
+*.sql
+*.data
+
+# Lombok cache
+.lombok/
+
+# Ignore IntelliJ-specific files
+*.class
+*.factorypath
+*.project
+*.settings/
+
+# Spring Boot specific files
 application.properties
+application.yml
+application-dev.properties
+application-prod.properties
+
+# Node modules (if frontend is included)
+node_modules/
+
+# JWT and authentication secrets
+jwt-secret.txt
+secret.key
