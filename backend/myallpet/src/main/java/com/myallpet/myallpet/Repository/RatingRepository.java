@@ -17,4 +17,4 @@ public interface RatingRepository extends JpaRepository<Rating,Long>{
 
    // Additional custom query to retrieve recent ratings by date, if applicable
    List<Rating> findAllByOrderByCreatedAtDesc();
-}  
+}   
