@@ -64,7 +64,7 @@ public class User {
     
     private Date DateOfBirth;
 
-    private String profilePicture;
+    private String userProfilePicture;
 
     @Pattern(regexp = "Male|Female|Other", message = "Sex must be Male, Female, or Other")
     @Column(nullable = false)
@@ -80,8 +80,8 @@ public class User {
     @Column(updatable = false , nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDateTime createdAt;
 
-    // @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    // private List<PetCard> petCards;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<PetCard> petCards;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Notifications>  notifications;
