@@ -14,4 +14,4 @@ public interface VeterinarianRepository extends JpaRepository<Veterinarian, Long
     // Optionally, find veterinarians by location or specialization, if such fields are included
     List<Veterinarian> findByLocation(String location);
 }  
-    
+     
