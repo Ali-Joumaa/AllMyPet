@@ -10,5 +10,5 @@ public class RatingDTO {
     private Long rateId;
     private String description;
     private Integer numberOfStars;
-    private UserDTO user;
+    private Long userId;
 }
