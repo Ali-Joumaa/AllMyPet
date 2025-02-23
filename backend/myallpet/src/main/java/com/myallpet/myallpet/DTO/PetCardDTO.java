@@ -17,4 +17,5 @@ public class PetCardDTO {
     private String description;
     private String location;
     private String status;
+    private Long userId;
 }
