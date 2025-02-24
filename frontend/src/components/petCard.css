@@ -1,100 +1,138 @@
-.card {
-    width: 288px;
-    border-radius: 16px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e2e2e2;
-    background-color: white;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
+.pet-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  transition: transform 0.2s ease-in-out;
+}
+
+.pet-card:hover {
+  transform: scale(1.02);
+}
+
+/* Responsive Image */
+.pet-card-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Responsive Content */
+.pet-card-content {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pet-card-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.pet-card-heart-icon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.pet-card-location {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #1a7f37;
+}
+
+.pet-card-location-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
+
+/* Info Grid Adjustments */
+.pet-card-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+/* Adjust Grid Layout for Small Screens */
+@media (max-width: 480px) {
+  .pet-card-info-grid {
+    grid-template-columns: 1fr;
   }
-  
-  .card-image {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+}
+
+.pet-card-tag {
+  background-color: #EAE8F7;
+  color: #2E256F;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.pet-card-description {
+  font-size: 14px;
+  color: #555;
+}
+
+/* More Info Button */
+.pet-card-more-info {
+  padding: 10px;
+  background-color: white;
+  color: #6B46C1;
+  border: 2px solid #6B46C1;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.pet-card-more-info:hover {
+  background-color: #6B46C1;
+  color: white;
+}
+
+/* Larger Screens (Tablets & Desktops) */
+@media (min-width: 600px) {
+  .pet-card {
+    max-width: 400px;
   }
-  
-  .card-content {
-    padding: 16px;
+}
+
+/* Smaller Screens (Phones) */
+@media (max-width: 480px) {
+  .pet-card {
+    max-width: 100%;
+    padding: 12px;
   }
-  
-  .card-header-pet {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+  .pet-card-title {
+    font-size: 16px;
   }
-  
-  .card-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #3b3b3b;
+
+  .pet-card-description {
+    font-size: 13px;
   }
-  
-  .heart-icon {
-    font-size: 20px;
-    color: #888;
-    cursor: pointer;
+
+  .pet-card-more-info {
+    font-size: 13px;
+    padding: 8px;
   }
-  
-  .location {
-    font-size: 14px;
-    color: #1b6f32;
-    font-weight: bold;
-    margin: 4px 0;
-  }
-  
-  .info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    font-size: 14px;
-    color: #3b3b3b;
-  }
-  
-  .info-grid p {
-    margin: 0;
-  }
-  
-  .tag {
-    background-color: #e5e5f7;
-    padding: 3px 8px;
-    border-radius: 10px;
-    font-size: 12px;
-    color: #4a4a8b;
-    font-weight: bold;
-  }
-  
-  .description {
-    font-size: 14px;
-    color: #555;
-    margin: 8px 0;
-  }
-  
-  .more-info {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #6a5acd;
-    border-radius: 8px;
-    background-color: white;
-    color: #6a5acd;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .more-info:hover {
-    background-color: #6a5acd;
-    color: white;
-  }
-  .heart-icon {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
-    transition: filter 0.3s ease;
-  }
-  
-  .heart-icon.favorite {
-    filter: invert(30%) sepia(50%) saturate(500%) hue-rotate(270deg); /* Adjust color to purple */
-  }
-  
+}
