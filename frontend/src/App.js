@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
-import Home from "./components/home"; // Import the Home component
 
+import OurPetsSection from "./components/ourPetsSection";
 function App() {
   return (
-
-      <Home />
-      
+    <div>
+      <OurPetsSection/>
+    </div>
   );
 }
 
