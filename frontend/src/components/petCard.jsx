@@ -10,48 +10,48 @@ export default function PetCard(props) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <div className="card">
+    <div className="pet-card">
       {/* Pet Image */}
-      <img 
-        src={props.petImage ? props.petImage : pitterImage} 
-        alt="Pet" 
-        className="card-image" 
+      <img
+        className="pet-card-image"
+        src={props.petImage ? props.petImage : pitterImage}
+        alt="Pet"
       />
 
       {/* Card Content */}
-      <div className="card-content">
+      <div className="pet-card-content">
         {/* Pet Name & Favorite Icon */}
-        <div className="card-header-pet">
-          <h2 className="card-title">{props.petName ? props.petName : "No Name Assigned"}</h2>
-          <img 
-            src={isFavorite ? heartFilledIcon : heartIcon} 
-            alt="Favorite Icon" 
-            className="heart-icon" 
+        <div className="pet-card-header">
+          <h2 className="pet-card-title">{props.petName || "No Name Assigned"}</h2>
+          <img
+            src={isFavorite ? heartFilledIcon : heartIcon}
+            alt="Favorite Icon"
+            className="pet-card-heart-icon"
             onClick={() => setIsFavorite(!isFavorite)}
           />
         </div>
 
         {/* Location */}
-        <p className="location">
-          <img src={locationIcon} alt="Location Icon" className="location-icon" />
-          {props.petLocation ? props.petLocation : "Location Unknown"}
+        <p className="pet-card-location">
+          <img src={locationIcon} alt="Location Icon" className="pet-card-location-icon" />
+          {props.petLocation || "Location Unknown"}
         </p>
 
         {/* Pet Info Grid */}
-        <div className="info-grid">
-          <p><span>Gender:</span> <span className="tag">{props.petGender ? props.petGender : "Unknown"}</span></p>
-          <p><span>Breed:</span> <span className="tag">{props.petBreed ? props.petBreed : "Unknown"}</span></p>
-          <p><span>Age:</span> <span className="tag">{props.petAge ? props.petAge : "Unknown"}</span></p>
-          <p><span>Size:</span> <span className="tag">{props.petSize ? props.petSize : "Unknown"}</span></p>
+        <div className="pet-card-info-grid">
+          <p><span>Gender:</span> <span className="pet-card-tag">{props.petGender || "Unknown"}</span></p>
+          <p><span>Breed:</span> <span className="pet-card-tag">{props.petBreed || "Unknown"}</span></p>
+          <p><span>Age:</span> <span className="pet-card-tag">{props.petAge || "Unknown"}</span></p>
+          <p><span>Size:</span> <span className="pet-card-tag">{props.petSize || "Unknown"}</span></p>
         </div>
 
         {/* Description */}
-        <p className="description">
-          {props.petDescription ? props.petDescription : "No description available."}
+        <p className="pet-card-description">
+          {props.petDescription || "No description available."}
         </p>
 
         {/* More Info Button */}
-        <button className="more-info">More Info</button>
+        <button className="pet-card-more-info">More Info</button>
       </div>
     </div>
   );

@@ -1,118 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
 
 .pet-care-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 80px;
-    background-color: #ffff;
+  display: flex;
+  flex-wrap: wrap; /* Ensures elements wrap on smaller screens */
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px;
+  background-color: #ffffff;
+  box-sizing: border-box;
 }
 
 .pet-care-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 50%;
 }
 
 .pet-care-text {
-    flex: 1;
-    max-width: 50%;
+  flex: 1;
+  max-width: 50%;
+  text-align: center;
 }
 
 .pet-care-text h1 {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 40px;
-    line-height: 48.41px;
-    text-align: center;
-    width: 352.74px;
-    height: 55px;
-    display: flex;
-    flex-direction: column;
-    color: #0A453A;
-    justify-content: center;
-    align-items: center;
-    margin: 16px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 48.41px;
+  color: #0A453A;
+  margin: 16px auto;
+  max-width: 100%;
 }
 
 .care-message {
-    font-family: 'Acme', sans-serif;
-    font-weight: 400;
-    font-size: 40px;
-    margin-top: 10px;
-    text-align: center;
-    color: #675BC8;
-    display: inline-block;
+  font-family: 'Acme', sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  color: #675BC8;
 }
 
 .pet-care-text p {
-    width: 394px;
-    height: 90px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 18px;
-    margin-top: 55px;
-    line-height: 21.78px;
-    color: #0C0C0C;
+  max-width: 80%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 1.5;
+  color: #0C0C0C;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .find-vet {
-    background: #675BC8;
-    width: 172px;
-    height: 48px;
-    border-radius: 8px;
-    padding: 8px 16px;
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    transition: 0.3s ease-in-out;
-    margin-top: 30px;
+  background: #675BC8;
+  width: 180px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+  margin-top: 30px;
 }
 
 .find-vet:hover {
-    background: #5646B2;
+  background: #5646B2;
 }
 
 .pet-care-image img {
-    width: 650px;
-    height: 600px;
-    margin-left: 150px;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 @media screen and (max-width: 820px) {
-    .pet-care-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+  .pet-care-container {
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+  }
 
-    .pet-care-image {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
+  .pet-care-image {
+    width: 100%;
+  }
 
-    .pet-care-image img {
-        width: 100%;
-        height: auto;
-        /* margin-left: 0; */
-    }
+  .pet-care-text {
+    max-width: 100%;
+    padding: 20px;
+  }
 
-    .pet-care-text {
-        max-width: 100%;
-        padding: 20px;
-    }
+  .find-vet {
+    width: 90%;
+    margin: 20px auto 0 auto;
+    text-align: center;
+    
 
-    .find-vet {
-        width: 90%;
-        display: flex;
-        justify-content: center;
-        margin: 20px auto 0 auto;
-    }
+  }
 }
