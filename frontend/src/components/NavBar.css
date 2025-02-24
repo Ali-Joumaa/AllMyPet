@@ -1,0 +1,213 @@
+/* src/components/NavBar.css */
+/* NavBar container */
+.navbar {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Allows shrinking */
+}
+
+/* Logo & Paws Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+/* Logo image */
+.logo-img {
+    height: 50px;
+    transition: height 0.3s ease-in-out;
+}
+
+/* Paws container */
+.paws-container {
+    position: relative;
+    width: 80px;
+    height: 50px;
+}
+
+/* Common paw styling */
+.paw {
+    position: absolute;
+    width: 15px;
+    transform: rotate(-10deg);
+}
+
+/* Positioning paws */
+.paw1 {
+    top: 5px;
+    left: 6px;
+}
+
+.paw2 {
+    top: 5px;
+    left: 40px;
+}
+
+.paw3 {
+    bottom: 5px;
+    left: 0px;
+}
+
+.paw4 {
+    bottom: 0px;
+    top: 30px;
+    left: 30px;
+}
+
+/* Bottom purple bar */
+.navbar-bottom-bar {
+    background-color: #9990DA;
+    height: 32px;
+    width: 100%;
+    margin-bottom: 80px;
+    position: relative;
+}
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 60px;
+    transition: gap 0.3s ease-in-out;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #2E256F;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s, font-size 0.3s;
+}
+
+.nav-links a:hover {
+    color: #9990DA;
+}
+
+/* Right icons */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Buttons */
+.nav-icons button {
+    border: 1px solid #675BC8;
+    background: none;
+    padding: 8px 12px;
+    border-radius: 50px;
+    color: #5D4FC4;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s, color 0.3s, padding 0.3s;
+}
+
+.nav-icons button:hover {
+    background: #9990DA;
+    color: white;
+}
+
+.user-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ============================= */
+/* 🔹 Responsive Adjustments 🔹 */
+/* ============================= */
+
+/* Tablet screens (Below 1024px) */
+@media (max-width: 1024px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .logo-img {
+        height: 40px;
+    }
+
+    .nav-links {
+        gap: 40px; /* Reduce space between links */
+    }
+
+    .nav-links a {
+        font-size: 14px; /* Make text smaller */
+    }
+
+    .nav-icons {
+        gap: 10px;
+    }
+
+    .nav-icons button {
+        padding: 6px 10px;
+        font-size: 12px;
+        border-radius: 15px;
+    }
+}
+
+/* Mobile screens (Below 768px) */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .logo-img {
+        height: 35px;
+    }
+
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .nav-icons {
+        gap: 8px;
+    }
+
+    .nav-icons button {
+        padding: 4px 8px;
+        font-size: 10px;
+        border-radius: 10px;
+    }
+
+    .user-button {
+        gap: 5px;
+    }
+}
+
+/* Extra Small screens (Below 480px) */
+@media (max-width: 480px) {
+    .logo-img {
+        height: 30px;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .nav-icons {
+        gap: 6px;
+    }
+
+    .nav-icons button {
+        padding: 3px 6px;
+        font-size: 9px;
+        border-radius: 8px;
+    }
+}

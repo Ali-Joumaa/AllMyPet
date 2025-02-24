@@ -13,4 +13,4 @@ public interface NotificationRepository extends JpaRepository<Notifications, Lon
   // Optionally, retrieve notifications based on their read/unread status
   List<Notification> findByUserIdAndStatus(Long userId, String status);
 }
-
+ 

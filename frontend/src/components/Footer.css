@@ -1,0 +1,201 @@
+/* Footer container */
+.footer {
+    background-color: #675BC8; /* Footer background */
+    color: white;
+    padding: 5px 20px;
+
+  }
+  
+  /* The section above the footer */
+  .footer-container {
+    background-color: #F9F9F9; /* Light section above the footer */
+    padding: 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  /* Footer Sections */
+  .footer-section {
+    flex: 1;
+    min-width: 250px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #0A453A;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #41349D;
+    transition: color 0.3s;
+  }
+  
+  .footer-section ul li a:hover {
+    color: #9990DA;
+  }
+  
+  /* Contact Info */
+  .footer-section p {
+    display: flex;
+    color: #41349D;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  .footer-section .icon {
+    margin-right: 8px;
+    font-size: 16px;
+    color: #2E256F;
+  }
+  
+  /* Subscribe Section */
+  .subscribe {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .subscribe input {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+/* Subscribe Button */
+.subscribe button {
+    background: none; /* No background */
+    color: #675BC8; /* Text color */
+    border: 2px solid #675BC8; /* Border color */
+    padding: 8px 16px;
+    border-radius: 12px; /* Rounded edges */
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Hover Effect */
+  .subscribe button:hover {
+    background: #675BC8; /* Fill with color */
+    color: white; /* White text on hover */
+  }
+  
+  
+  /* Bottom Footer Bar */
+  .footer-bottom {
+    background-color: #675BC8;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  /* Little bar under the footer */
+  .footer-bottom-bar {
+    background-color: #675BC8; /* The small bar */
+    height: 10px;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  
+  /* Social Media Icons */
+  .social-icons a {
+    color: white;
+    font-size: 18px;
+    margin-left: 15px;
+    transition: color 0.3s;
+  }
+  
+  .social-icons a:hover {
+    color: #9990DA;
+  }
+  
+/* Input Field Container */
+.email-input-container {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #ccc; /* Reduced border thickness */
+    border-radius: 8px; /* Slightly rounded */
+    padding: 6px;
+    width: 100%;
+    max-width: 250px; /* Reduce width */
+    background-color: white;
+    position: relative;
+  }
+  
+  /* Envelope Icon Inside Input */
+  .email-icon {
+    position: absolute;
+    left: 10px; /* Adjust icon position */
+    font-size: 14px; /* Smaller icon */
+    color: #777;
+  }
+  
+  /* Input Field */
+  .email-input-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 6px 6px 6px 28px; /* Reduce padding */
+    font-size: 14px; /* Smaller text */
+    color: #333;
+    background: none;
+    border-radius: 8px;
+  }
+  
+  /* Placeholder Styling */
+  .email-input-container input::placeholder {
+    color: #777;
+    font-size: 14px;
+  }
+  
+  /* Subscribe Button */
+  .subscribe button {
+    background: none;
+    color: #675BC8;
+    border: 1.5px solid #675BC8; /* Reduced border thickness */
+    padding: 6px 12px; /* Smaller padding */
+    border-radius: 8px; /* Less rounded */
+    font-size: 14px; /* Smaller font */
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .social-icons a {
+      margin-left: 10px;
+    }
+  }
+  
