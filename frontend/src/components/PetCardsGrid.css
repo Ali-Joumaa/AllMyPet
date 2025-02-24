@@ -1,0 +1,23 @@
+/* Main Container */
+.cards-container {
+    display: flex;
+    justify-content: flex-start; /* Align to the left naturally */
+    gap: 20px; /* Space between the two columns */
+}
+
+/* Left & Right Columns */
+.left-column, .right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between cards inside each column */
+}
+
+/* Ensure all cards have the same width */
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .cards-container {
+        flex-direction: column; /* Stack both columns on small screens */
+        align-items: center;
+    }
+}

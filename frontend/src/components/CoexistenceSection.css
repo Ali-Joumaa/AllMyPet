@@ -1,0 +1,59 @@
+/* Main Container */
+.coexistence-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px; /* Space between the two sections */
+    padding: 10px; /* Reduce padding to decrease height */
+    
+}
+
+/* Left - Peaceful Coexistence Section */
+.coexistence-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Reduce Image Size */
+.coexistence-left img {
+    max-height: 280px; /* Reduce image height */
+    width: auto;
+}
+
+/* Right - PetCardsGrid Section */
+.coexistence-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Reduce Card Section Height */
+.coexistence-right .cards-grid {
+    max-height: 280px; /* Limit card grid height */
+    overflow: hidden; /* Prevent extra spacing */
+}
+
+/* Reduce individual card size */
+.coexistence-right .cards-grid > div {
+    transform: scale(0.9); /* Shrink the cards slightly */
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .coexistence-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* Ensure smaller images on mobile */
+    .coexistence-left img {
+        max-height: 250px;
+    }
+
+    /* Reduce card scale on smaller screens */
+    .coexistence-right .cards-grid > div {
+        transform: scale(0.85);
+    }
+}
