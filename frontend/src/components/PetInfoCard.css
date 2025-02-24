@@ -1,0 +1,51 @@
+/* Card Container */
+.pet-info-card {
+    background-color: white;
+    padding: 15px; /* Reduce padding for smaller box */
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left */
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    border: 1.5px solid #ddd;
+    position: relative;
+}
+
+/* Paw Icon */
+.paw-icon {
+    width: 30px; /* Slightly smaller to fit */
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* Title */
+.card-title {
+    color: #0A453A; /* Dark green */
+    font-size: 35px; /* Reduce size for smaller card */
+    margin-left: 40px; /* Align title next to paw */
+    margin-top: 5px; /* Reduce gap */
+}
+
+/* Description Text */
+.card-text {
+    font-size: 30px;
+    font-weight: 600; /* Make the text bolder */
+    color: #333;
+    text-align: left;
+    line-height: 1.5; /* Increase line spacing */
+    padding-top: 5px;
+    margin: 8px 0 0 5px; /* Add more spacing between lines */
+}
+
+/* Cat Icon */
+.card-image {
+    width: 20px; /* Reduce size to fit */
+    height: 20px;
+    
+    opacity: 0.7; /*  Slight transparency */
+}

@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+.review-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38.73px;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #0C0C0C;
+  width: 50%;
+  max-width: 513px;
+  height: auto;
+  margin: 30px auto;
+}
+
+.highlight-text {
+  color: #0A453A;
+}
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 5%;
+  position: relative;
+  text-align: center;
+}
+
+.reviews-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.review-card {
+  height: 100%;
+}
+
+.slider-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 90px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-arrow {
+  left: 0;
+}
+
+.right-arrow {
+  right: 0;
+}
+
+.slider-arrow:hover {
+  opacity: 0.7;
+}
+
+.write-review-btn {
+  background: #675BC8;
+  width: 172px;
+  height: 48px;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+  margin-top: 30px;
+}
+
+.write-review-btn:hover {
+  background: #5646B2;
+}
+
+@media screen and (max-width: 1024px) {
+    .reviews-container {
+      justify-content: center;
+      max-width: 700px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+  
+    .review-card {
+      width: 45%;
+      max-width: 340px;
+    }
+  
+    .slider-arrow {
+      display: block;
+      width: 35px;
+      height: 35px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .reviews-container {
+      justify-content: center;
+      max-width: 500px;
+      flex-wrap: wrap;
+    }
+  
+    .review-card {
+      width: 90%;
+      max-width: 400px;
+    }
+  
+    .write-review-btn {
+      width: 100%;
+      max-width: 250px;
+    }
+
+    .slider-arrow {
+      width: 30px;
+      height: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .reviews-container {
+      justify-content: center;
+      max-width: 400px;
+    }
+  
+    .review-card {
+      width: 100%;
+    }
+
+    .slider-arrow {
+      width: 28px;
+      height: 28px;
+    }
+}

@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+
+.top-home-container {
+    display: flex;
+    flex-wrap: wrap; /* Ensures items don't overflow */
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.top-home-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 50%;
+}
+
+.top-home-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.top-home-text h1 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 48.41px;
+    color: #0A453A;
+    margin: 16px auto;
+    max-width: 100%;
+}
+
+.loving-text {
+    font-family: 'Acme', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    letter-spacing: 0;
+    color: #675BC8;
+    display: inline-block;
+}
+
+.top-home-text p {
+    max-width: 80%;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    margin-top: 30px;
+    line-height: 1.5;
+    color: #0C0C0C;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top-home-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 400px;
+    margin: 30px auto;
+    flex-wrap: wrap;
+}
+
+.adopt-btn, .raise-btn {
+    width: 180px;
+    height: 48px;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s ease-in-out;
+}
+
+.adopt-btn {
+    background: #675BC8;
+    color: white;
+    border: none;
+}
+
+.adopt-btn:hover {
+    background: #5646B2;
+}  
+
+.raise-btn {
+    background: transparent;
+    color: #675BC8;
+    border: 1px solid #675BC8;
+}
+
+.raise-btn:hover {
+    background: #675BC8;
+    color: white;
+}
+
+.top-home-image img {
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+@media screen and (max-width: 820px) {
+    .top-home-container {
+        flex-direction: column;
+        padding: 40px;
+        text-align: center;
+    }
+
+    .top-home-image {
+        max-width: 100%;
+    }
+
+    .top-home-text {
+        max-width: 100%;
+    }
+
+    .top-home-buttons {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+    }
+
+    .adopt-btn, .raise-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
