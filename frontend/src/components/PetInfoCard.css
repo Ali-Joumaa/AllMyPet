@@ -6,7 +6,7 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left; /* Align text to the left */
     width: 200px;
-    height: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Align content to the top */
@@ -26,14 +26,14 @@
 /* Title */
 .card-title {
     color: #0A453A; /* Dark green */
-    font-size: 15px; /* Reduce size for smaller card */
+    font-size: 35px; /* Reduce size for smaller card */
     margin-left: 40px; /* Align title next to paw */
     margin-top: 5px; /* Reduce gap */
 }
 
 /* Description Text */
 .card-text {
-    font-size: 13px;
+    font-size: 30px;
     font-weight: 600; /* Make the text bolder */
     color: #333;
     text-align: left;
@@ -44,10 +44,8 @@
 
 /* Cat Icon */
 .card-image {
-    width: 35px; /* Reduce size to fit */
-    height: auto;
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    opacity: 0.7; /* Slight transparency */
+    width: 20px; /* Reduce size to fit */
+    height: 20px;
+    
+    opacity: 0.7; /*  Slight transparency */
 }

@@ -5,17 +5,7 @@ import PetCardsGrid from "./PetCardsGrid";
 
 function CoexistenceSection() {
   return (
-    <div className="coexistence-section">
-      {/* Left - Image & Title */}
-      <div className="coexistence-left">
-        <PeacefulCoexistence />
-      </div>
-
-      {/* Right - Cards Grid */}
-      <div className="coexistence-right">
-        <PetCardsGrid />
-      </div>
-    </div>
+    <PetCardsGrid/>
   );
 }
 
