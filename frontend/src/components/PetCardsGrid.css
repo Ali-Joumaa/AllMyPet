@@ -1,7 +1,7 @@
 /* Main Container */
 .cards-container {
     display: flex;
-    justify-content: flex-start; /* Align to the left naturally */
+    justify-content: left; /* Align to the left naturally */
     gap: 20px; /* Space between the two columns */
 }
 
@@ -11,7 +11,16 @@
     flex-direction: column;
     gap: 10px; /* Space between cards inside each column */
 }
+.both{
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 80px ;
+    margin-left:220px;
+    margin-right:220px;
 
+}
 /* Ensure all cards have the same width */
 
 /* Responsive Design */
