@@ -7,7 +7,7 @@ export default function OurPetsSection(props) {
     <div className="container mt-4">
       <div className="row">
         <div className="col-md-3">
-          <PetCard petName="Card 1" onClick={null} petDescription="This is card 1" />
+          <PetCard petName="Card 1"  petDescription="This is card 1" />
         </div>
         <div className="col-md-3">
           <PetCard petName="Card 2" petDescription="This is card 2" />
