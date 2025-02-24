@@ -3,6 +3,7 @@
     display: flex;
     justify-content: left; /* Align to the left naturally */
     gap: 20px; /* Space between the two columns */
+    flex-wrap: wrap; /* Allow wrapping of content to prevent overflow */
 }
 
 /* Left & Right Columns */
@@ -10,23 +11,26 @@
     display: flex;
     flex-direction: column;
     gap: 10px; /* Space between cards inside each column */
+    width: 48%; /* Ensure columns are not too wide and don't overlap */
 }
-.both{
+
+/* Centering both columns */
+.both {
     display: flex;
-    flex-direction: center;
+    justify-content: center; /* Center content horizontally */
     align-items: center;
     margin-top: 80px;
-    margin-bottom: 80px ;
-    margin-left:220px;
-    margin-right:220px;
-
+    margin-bottom: 80px;
 }
-/* Ensure all cards have the same width */
 
 /* Responsive Design */
 @media (max-width: 600px) {
     .cards-container {
         flex-direction: column; /* Stack both columns on small screens */
         align-items: center;
+    }
+
+    .left-column, .right-column {
+        width: 100%; /* Ensure columns take full width on small screens */
     }
 }

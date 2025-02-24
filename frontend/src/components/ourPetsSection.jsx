@@ -1,8 +1,8 @@
 import PetCard from "./petCard";
-
+import "./ourPetsSection";
 export default function OurPetsSection(props) {
   return (
-    <div>
+    <div className="container">
         <h1 className="text-center">Take a Look at Some of Our Pets</h1>
     <div className="container mt-4">
       <div className="row">
