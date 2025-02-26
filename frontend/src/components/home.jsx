@@ -1,7 +1,6 @@
 import React from "react";
 import NavBar from "./NavBar"; // Import the NavBar component
 import Footer from "./Footer"; // Import Footer component
-import CoexistenceSection from "./CoexistenceSection";
 import OurPetsSection from "./ourPetsSection";
 import PetCardsGrid from "./PetCardsGrid";
 

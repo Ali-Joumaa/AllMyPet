@@ -1,6 +1,5 @@
 import React from "react";
 import "./PetCardsGrid.css"; // Import CSS
-import PetInfoCard from "./PetInfoCard";
 import PetEmotionCard from "./PetEmotionCard"; // Emotional pet-related cards
 import PeacefulCoexistence from "./PeacefulCoexistence";
 function PetCardsGrid() {
