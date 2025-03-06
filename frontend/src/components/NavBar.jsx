@@ -1,8 +1,10 @@
 import React from "react";
 import { FaBell, FaUser } from "react-icons/fa";
 import "./NavBar.css"; // Import the CSS file
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+    const navigate = useNavigate();
     return (
         <>
             <nav className="navbar">
@@ -34,9 +36,14 @@ function NavBar() {
                         <FaBell />
                     </button>
 
-                    <button className="user-button">
+                    <button className="user-button" onClick={() => {
+                            navigate("/login");
+                            console.log("Navigating to SignUp");
+                        }}>
                         <FaUser className="mr-2" />
-                        <span>Login | Register</span> {/* Wrap in <span> for spacing */}
+                        <span>
+                            Login | Register
+                        </span>{/* Wrap in <span> for spacing */}
                     </button>
 
                 </div>

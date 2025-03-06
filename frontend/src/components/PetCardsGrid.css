@@ -2,7 +2,7 @@
 .cards-container {
     display: flex;
     justify-content: left; /* Align to the left naturally */
-    gap: 20px; /* Space between the two columns */
+    gap: 25px; /* Space between the two columns */
     flex-wrap: wrap; /* Allow wrapping of content to prevent overflow */
 }
 

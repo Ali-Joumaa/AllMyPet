@@ -1,0 +1,194 @@
+/* Centered full-page background */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+/* SignUp Box */
+.signup-box {
+  position: relative;
+  display: flex;
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+}
+
+
+
+/* Left Section (Image & Branding) */
+.left {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Welcome Text */
+.welcome-text {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Highlight color for "AllMyPet" */
+.highlight {
+  color: #9990DA;
+}
+
+/* Image Styling */
+.signup-image {
+  width: 100%;
+  max-width: 320px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+/* Right Section (Sign Up Form) */
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* SignUp Title */
+.signup-title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Subtitle (Login link) */
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.login-link {
+  color: #9990DA;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+/* Form Styling */
+.signup-form {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Input Group */
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #e6e6e6;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+  width: 100%;
+}
+
+/* Input Fields */
+.input-field {
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Icons in Input Fields */
+.icon {
+  margin-right: 10px;
+  color: #9990DA;
+  font-size: 18px;
+}
+
+/* Sign Up Button */
+.signup-button {
+  width: 100%;
+  padding: 12px;
+  background: #9990DA;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.signup-button:hover {
+  background: #9990DA;
+}
+
+/* 📌 RESPONSIVE DESIGN 📌 */
+/* 📌 RESPONSIVE DESIGN 📌 */
+@media (max-width: 768px) {
+  .signup-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    align-items: center;
+    position: relative;
+  }
+
+  
+
+  /* Ensure the left section stacks properly */
+  .left {
+    order: -1; /* Moves the image section to the top */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Ensure the welcome text stays above the image */
+  .welcome-text {
+    font-size: 22px; /* Reduce font size for mobile */
+    margin-bottom: 10px;
+    display: block;
+    text-align: center;
+    color: #333;
+  }
+
+  .signup-image {
+    max-width: 250px; /* Adjust image size for mobile */
+    margin-bottom: 15px; /* Space between image and form */
+  }
+
+  .right {
+    width: 100%;
+  }
+
+  .signup-form {
+    max-width: 100%;
+  }
+}
+
+
