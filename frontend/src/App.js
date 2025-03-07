@@ -1,21 +1,22 @@
 import React from "react";
 import "./App.css";
-import OurPetsSection from "./components/ourPetsSection";
-import TopHomePage from "./components/topHomePage";
-import ReviewSection from "./components/reviewSection";
+
 import NavBar from "./components/NavBar";
-import PetCardsGrid from "./components/PetCardsGrid";
 import Footer from "./components/Footer";
-import PetCare from "./components/petCare";
+import RaiseAPet from "./components/raiseAPet";
+import TopHomePage from "./components/topHomePage";
+import OurPetsSection from "./components/ourPetsSection";
+
 function App() {
   return (
-    <div>
+    <div className="App">
       <NavBar/>
       <TopHomePage/>
-      <OurPetsSection/>
-      <PetCare/>
-      <ReviewSection/>
-      <PetCardsGrid/>
+      <TopHomePage/>
+      <TopHomePage/>
+      <TopHomePage/>
+      <TopHomePage/>
+
       <Footer/>
 
       

@@ -5,7 +5,7 @@ import "./NavBar.css"; // Import the CSS file
 function NavBar() {
     return (
         <>
-            <nav className="navbar">
+            <nav id ="navbar" className="navbar" >
                 {/* Left - Logo + Paw Prints */}
                 <div className="logo-container">
                     <div className="logo">
