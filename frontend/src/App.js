@@ -9,6 +9,7 @@ import OurPetsSection from "./components/ourPetsSection";
 import ReviewSection from "./components/reviewSection";
 import PetCare from "./components/petCare";
 import PetAdoptionSteps from "./components/PetAdoptionSteps";
+import PetNewsSection from "./components/petNewsSection";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <TopHomePage/>
       <OurPetsSection/>
       <PetAdoptionSteps/>
+      <PetNewsSection/>
       <PetCare/>
       <ReviewSection/>
       <Footer/>
