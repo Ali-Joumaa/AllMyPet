@@ -2,6 +2,7 @@
     min-height: 100px; /* Ensures a minimum height */
     width: 100%; /* Full width */
     display: flex; /* If centering content is needed */
+    flex-direction: column; /* Stack children vertically */
     align-items: center; /* Align items vertically */
     justify-content: center; /* Align content horizontally */
     padding: 10px; /* Add some padding for spacing */

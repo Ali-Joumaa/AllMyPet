@@ -17,10 +17,6 @@ public class UserService {
         return userRepository.findAll();
     }
     
-    public User saveUser(User user) {
-        return userRepository.save(user);
-    }
-
     public User getUserById(Long id) {
         return userRepository.findById(id).orElse(null);
     }
@@ -31,5 +27,13 @@ public class UserService {
 
     public boolean emailExists(String email) {
         return userRepository.existsByEmail(email);
+    }
+    
+    public User save(User user) {
+        return userRepository.save(user);
+    }
+
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
     }
 }

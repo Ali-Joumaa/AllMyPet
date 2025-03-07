@@ -2,7 +2,7 @@
 .footer {
   background-color: #675BC8; /* Footer background */
   color: white;
-  padding: 5px 20px;
+  width: 100%;
 }
 
 /* The section above the footer */
@@ -111,15 +111,6 @@
   font-size: 14px;
 }
 
-/* Little bar under the footer */
-.footer-bottom-bar {
-  background-color: #675BC8;
-  height: 10px;
-  width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
 /* Social Media Icons */
 .social-icons a {
   color: white;
@@ -171,37 +162,24 @@
   font-size: 14px;
 }
 
-/* Subscribe Button */
-.subscribe button {
-  background: none;
-  color: #675BC8;
-  border: 1.5px solid #675BC8;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-container {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .footer-bottom {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
   }
 
   .social-icons a {
-      margin-left: 10px;
+    margin-left: 10px;
   }
 
   /* Adjust max-width for smaller screens */
   .footer-section {
-      max-width: 100%;
+    max-width: 100%;
   }
 }
