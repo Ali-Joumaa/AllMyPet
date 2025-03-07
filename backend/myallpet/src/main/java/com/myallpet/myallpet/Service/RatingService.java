@@ -23,11 +23,6 @@ public class RatingService {
     public List<Rating> getRatingsByUserId(Long userId) {
         return ratingRepository.findByUserId(userId);
     }
-
-    public List<Rating> getRatingsByTargetId(Long targetId) {
-        return ratingRepository.findByTargetId(targetId);
-    }
-
     public List<Rating> getRatingsByStars(int numberOfStars) {
         return ratingRepository.findByNumberOfStars(numberOfStars);
     }
