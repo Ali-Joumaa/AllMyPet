@@ -8,6 +8,7 @@ import TopHomePage from "./components/topHomePage";
 import OurPetsSection from "./components/ourPetsSection";
 import ReviewSection from "./components/reviewSection";
 import PetCare from "./components/petCare";
+import PetAdoptionSteps from "./components/PetAdoptionSteps";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <NavBar/>
       <TopHomePage/>
       <OurPetsSection/>
+      <PetAdoptionSteps/>
       <PetCare/>
       <ReviewSection/>
       <Footer/>
