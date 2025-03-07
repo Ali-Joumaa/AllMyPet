@@ -1,48 +1,136 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .raise-a-pet {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-  }
-  
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+.title-box{
+  margin-top: 20px;
+  color: #675BC8;
+
+}
+
+/* Add a container for centering specific content */
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px; /* Add padding to prevent content from touching edges */
+}
+
+.raise-a-pet {
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  text-align: center;
+}
+
+.raise-a-pet h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.raise-a-pet p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.city-section {
+  margin-top: 20px;
+}
+
+.city-section h2 {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.pet-list {
+  display: flex;
+  justify-content: center; /* Center cards horizontally */
+  flex-wrap: wrap;
+  gap: 20px; /* Increase gap for better spacing */
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  width: 200px; /* Fixed width for cards */
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease; /* Add hover effect */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge cards on hover */
+}
+
+.btn-primary {
+  background-color: #675bc8;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #9990da;
+}
+
+input.form-control {
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+input.form-control:focus {
+  border-color: #675bc8;
+  box-shadow: 0 0 5px rgba(103, 91, 200, 0.5);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
   .raise-a-pet h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 1.5rem; /* Smaller font size for smaller screens */
   }
-  
+
   .raise-a-pet p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
+    font-size: 0.9rem;
   }
-  
-  .city-section {
-    margin-top: 20px;
-  }
-  
+
   .city-section h2 {
-    font-size: 1.5rem;
-    color: #444;
-    margin-bottom: 10px;
+    font-size: 1.2rem;
   }
-  
+
+  .card {
+    width: 150px; /* Smaller cards for smaller screens */
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .raise-a-pet h1 {
+    font-size: 1.2rem;
+  }
+
+  .raise-a-pet p {
+    font-size: 0.8rem;
+  }
+
+  .city-section h2 {
+    font-size: 1rem;
+  }
+
+  .card {
+    width: 120px; /* Even smaller cards for very small screens */
+    padding: 8px;
+  }
+
   .pet-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 10px; /* Reduce gap for very small screens */
   }
+}
