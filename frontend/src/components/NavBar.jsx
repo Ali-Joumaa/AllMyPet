@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBell, FaUser } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import "./NavBar.css"; // Import the CSS file
 
 function NavBar() {
@@ -21,11 +22,11 @@ function NavBar() {
 
                 {/* Middle - Navigation Links */}
                 <div className="nav-links">
-                    <a href="#">Home</a>
+                    <Link to="/">Home</Link>
                     <a href="#">Adopt</a>
                     <a href="#">Community</a>
                     <a href="#">Raise A Pet</a>
-                    <a href="#">Veterinarians</a>
+                    <Link to = '/vets'>Veterinarians</Link>
                 </div>
 
                 {/* Right - Icons & Buttons */}

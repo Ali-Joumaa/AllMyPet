@@ -1,26 +1,17 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import OurPetsSection from "./components/ourPetsSection";
-import TopHomePage from "./components/topHomePage";
-import ReviewSection from "./components/reviewSection";
-import NavBar from "./components/NavBar";
-import PetCardsGrid from "./components/PetCardsGrid";
-import Footer from "./components/Footer";
-import PetCare from "./components/petCare";
+import Home from "./components/Home";  // Import Home.jsx
+import VetsPage from "./components/VetsPage";  // Import VetsPage
+
 function App() {
   return (
-    <div>
-      <NavBar/>
-      <TopHomePage/>
-      <OurPetsSection/>
-      <PetCare/>
-      <ReviewSection/>
-      <PetCardsGrid/>
-      <Footer/>
-
-      
-
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />  {/* Home Page */}
+        <Route path="/vets" element={<VetsPage />} />  {/* Vets Page */}
+      </Routes>
+    </Router>
   );
 }
 

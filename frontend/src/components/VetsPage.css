@@ -1,0 +1,18 @@
+  .vets-container {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #fff;
+  }
+  
+  .vets-header {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0A453A;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 3px solid #675BC8; 
+    display: inline-block;
+    padding-bottom: 10px;
+  } 
