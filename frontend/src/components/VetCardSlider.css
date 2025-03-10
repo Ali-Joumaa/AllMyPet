@@ -1,0 +1,77 @@
+.vet-slider-container {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .slider-arrow {
+    cursor: pointer;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .slider-arrow img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .left {
+    position: absolute;
+    left: -50px;
+  }
+  
+  .right {
+    position: absolute;
+    right: -50px;
+  }
+  
+  .vet-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .vet-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .vet-profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .vet-info {
+    color: #333;
+  }
+  
+  .vet-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .vet-specialty, .vet-location, .vet-contact {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  .vet-stars {
+    margin-top: 10px;
+  }
+  
+  .star-icon {
+    width: 16px;
+    height: 16px;
+  }
+  

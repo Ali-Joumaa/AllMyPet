@@ -1,20 +1,21 @@
 import React from "react";
-import NavBar from "./NavBar"; // Import the NavBar component
-import Footer from "./Footer"; // Import Footer component
+import NavBar from "./NavBar"; 
+import Footer from "./Footer"; 
 import OurPetsSection from "./ourPetsSection";
 import PetCardsGrid from "./PetCardsGrid";
-
-
+import TopHomePage from "./topHomePage";
+import ReviewSection from "./reviewSection";
+import PetCare from "./petCare";
 
 function Home() {
     return (
         <div>
-
             <NavBar />
-            <OurPetsSection/>
-            <div style={{ marginBottom: "20px" }}></div> {/* Space between components */}
+            <TopHomePage />
+            <OurPetsSection />
+            <PetCare />
+            <ReviewSection />
             <PetCardsGrid />
-
             <Footer />
         </div>
     );
