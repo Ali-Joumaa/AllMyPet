@@ -10,7 +10,7 @@ public interface RatingRepository extends JpaRepository<Rating,Long>{
    List<Rating> findByUserId(Long userId);
 
    // Find ratings by the specific target entity, assuming there's a targetId if ratings are for different types of targets
-   List<Rating> findByTargetId(Long targetId);
+   // List<Rating> findByTargetId(Long targetId);
 
    // Retrieve ratings with a specific number of stars
    List<Rating> findByNumberOfStars(int numberOfStars);

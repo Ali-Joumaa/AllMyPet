@@ -6,6 +6,8 @@ import PetCardsGrid from "./PetCardsGrid";
 import TopHomePage from "./topHomePage";
 import ReviewSection from "./reviewSection";
 import PetCare from "./petCare";
+import PetAdoptionSteps from "./PetAdoptionSteps";
+import PetNewsSection from "./petNewsSection";
 
 function Home() {
     return (
@@ -13,6 +15,8 @@ function Home() {
             <NavBar />
             <TopHomePage />
             <OurPetsSection />
+            <PetAdoptionSteps/>
+            <PetNewsSection/>
             <PetCare />
             <ReviewSection />
             <PetCardsGrid />

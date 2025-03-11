@@ -10,7 +10,6 @@ export default function PetCare() {
           Give your pet <br />
           <span className="care-message">the care they deserve</span>
         </h1>
-
         <p>
           We have a list of contracted professional vets that you can connect
           with to make sure your pet is always healthy.

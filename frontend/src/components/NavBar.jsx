@@ -6,7 +6,7 @@ import "./NavBar.css"; // Import the CSS file
 function NavBar() {
     return (
         <>
-            <nav className="navbar">
+            <nav id ="navbar" className="navbar" >
                 {/* Left - Logo + Paw Prints */}
                 <div className="logo-container">
                     <div className="logo">
@@ -25,7 +25,8 @@ function NavBar() {
                     <Link to="/">Home</Link>
                     <a href="#">Adopt</a>
                     <a href="#">Community</a>
-                    <a href="#">Raise A Pet</a>
+                    {/* <a href="#">Raise A Pet</a> */}
+                    <Link to="/raisePets">Raise A Pet</Link>
                     <Link to = '/vets'>Veterinarians</Link>
                 </div>
 
