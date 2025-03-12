@@ -1,5 +1,7 @@
 # Node modules
 node_modules/
+# Ignore cache folder
+frontend/node_modules/.cache/
 
 # Build output
 /build/
