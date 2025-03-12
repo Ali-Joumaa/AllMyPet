@@ -35,7 +35,7 @@ function App() {
       {location.pathname === "/" && <HomePage />}
 
       <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
+        <Route path="/home" element={<HomePage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />

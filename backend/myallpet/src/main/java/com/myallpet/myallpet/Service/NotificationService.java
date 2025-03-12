@@ -21,13 +21,10 @@ public class NotificationService {
         notificationRepository.save(notification);
     }
 
-    public List<Notification> getNotificationsByUserIdAndStatus(Long userId, String status) {
-        return notificationRepository.findByUserIdAndStatus(userId, status);
-    }
+    
 
-
-    public List<Notification> getNotificationsByUserId(Long userId) {
-        return notificationRepository.findByUserId(userId);
+    public List<Notifications> getNotificationsByUserId(Long userId) {
+        return notificationRepository.findByUser_UserId(userId);
     }
     
 } 

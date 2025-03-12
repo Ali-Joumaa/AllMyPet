@@ -14,8 +14,8 @@ public class UserDTO {
     private Long id;
     private String username;
     private String email;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private String phoneNumber;
     private String role; // Important for UI logic to display user-specific options based on role
     private String bio; // User bio or description, potentially useful in community features

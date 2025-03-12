@@ -17,6 +17,18 @@ public class SignUpRequestDTO {
     private String username;
     @NotBlank(message = "Password is required")
     private String password;
+    @NotBlank(message = "FirstName is required")
+    private String firstname;
+    @NotBlank(message = "LastName is required")
+    private String lastname;
+
+    public String getFirstName() {  // ✅ Ensure getter exists
+        return firstname;
+    }
+
+    public String getLastName() {  // ✅ Ensure getter exists
+        return lastname;
+    }
 }
 
 

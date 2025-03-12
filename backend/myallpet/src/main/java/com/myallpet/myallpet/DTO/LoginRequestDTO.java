@@ -11,11 +11,10 @@ import lombok.Setter;
 public class LoginRequestDTO {
 
     @NotBlank(message = "Email is required")
-    private String email;
+    private String username;
     @NotBlank(message = "Password is required")
     private String password;
     public Object getUsername() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUsername'");
+        return username;
     }
 }

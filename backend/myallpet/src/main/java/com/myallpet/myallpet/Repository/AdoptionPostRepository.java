@@ -11,10 +11,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AdoptionPostRepository extends JpaRepository<AdoptionPost, Long> {
     // You can define methods to find posts by status or type, e.g., findByStatus, findByAdoptionType
 
-    List<AdoptionPost> findByUserId(Long userId);
+    List<AdoptionPost> findByUser_UserId(Long userId);
 
     // Find all adoption posts for a specific pet
-    List<AdoptionPost> findByPetId(Long petId);
+    List<AdoptionPost> findByPetCard_PetId(Long petId);
 
     // Find adoption posts by status (e.g., Pending, Approved, Rejected)
     List<AdoptionPost> findByStatus(String status);

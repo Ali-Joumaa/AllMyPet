@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
+import jakarta.annotation.PostConstruct;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
@@ -20,23 +23,29 @@ import java.util.function.Function;
 @Service
 public class JwtUtils {
 
-    @Value("${app.jwtSecret}")
+    @Value("${jwt.secret}")
     private String jwtSecret;
-    private final SecretKey key;
 
-    public JwtUtils() {
+    @Value("${jwt.expiration-ms}")
+    private long jwtExpirationMs; // This assumes you want to use this property for token expiration
+
+    private SecretKey key;
+
+    @PostConstruct
+    public void init() {
         byte[] keyBytes = java.util.Base64.getDecoder().decode(jwtSecret.getBytes(StandardCharsets.UTF_8));
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(String username) {
         return Jwts.builder()
-                .setSubject(userDetails.getUsername())
+                .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24 * 7)) // 7 days
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
                 .signWith(key)
                 .compact();
     }
+    
 
     public boolean isValidToken(String token, UserDetails userDetails) {
         try {
@@ -60,23 +69,12 @@ public class JwtUtils {
                             .parseClaimsJws(token)
                             .getBody();
             return claimsResolver.apply(claims);
-        } catch (ExpiredJwtException e) {
-            throw new IllegalStateException("Expired JWT token", e);
-        } catch (UnsupportedJwtException e) {
-            throw new IllegalStateException("Unsupported JWT token", e);
-        } catch (MalformedJwtException e) {
-            throw new IllegalStateException("Malformed JWT token", e);
-        } catch (IllegalArgumentException e) {
-            throw new IllegalStateException("JWT token compact of handler are invalid", e);
+        } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | IllegalArgumentException e) {
+            throw new IllegalStateException("JWT token is invalid", e);
         }
     }
 
     private boolean isTokenExpired(String token) {
         return extractClaims(token, Claims::getExpiration).before(new Date());
-    }
-
-    public String generateToken(String username) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'generateToken'");
     }
 }

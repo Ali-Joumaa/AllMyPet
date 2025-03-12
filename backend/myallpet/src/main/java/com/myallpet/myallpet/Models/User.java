@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -51,19 +52,19 @@ public class User implements UserDetails {
 
     @NotBlank(message = "First Name is required")
     @Size(min = 2, max = 30, message = "First Name must be between 2 and 50 characters")
-    @Column(nullable = false)
-    private String FirstName;
+    @Column(name = "firstname", nullable = false)
+    private String firstname;
 
     @NotBlank(message = "Last Name is required")
     @Size(min = 2, max = 30, message = "Last Name must be between 2 and 50 characters")
-    @Column(nullable = false)
-    private String LastName;
+    @Column(name = "lastname", nullable = false)
+    private String lastname;
 
     @Size(max=500, message ="Bio cannpt be longer than 500 characters")
     private String bio;
 
     @Min(value =0, message = "YearsPetting must be greater than or equal to 0")
-    @Column(nullable = false)
+    // @Column(nullable = false)
     private Integer YearsPetting;
 
     
@@ -72,17 +73,18 @@ public class User implements UserDetails {
     private String userProfilePicture;
 
     @Pattern(regexp = "Male|Female|Other", message = "Sex must be Male, Female, or Other")
-    @Column(nullable = false)
+    // @Column(nullable = false)
     private String sex;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR DEFAULT 'user' ") 
+    @Column(columnDefinition = "VARCHAR DEFAULT 'user' ") 
     @Pattern(regexp = "admin|user", message = "Role must be admin or user")
     private String role;
 
     @Size(max=100, message ="Address cannot be longer than 100 characters")
     private String address;
 
-    @Column(updatable = false , nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
+    @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -96,6 +98,9 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (role == null || role.isEmpty()) {
+            role = "user";  // ✅ Default role if null or empty
+        }
         return List.of(new SimpleGrantedAuthority(role));    
     }
     public User(String username, String password, String email) {

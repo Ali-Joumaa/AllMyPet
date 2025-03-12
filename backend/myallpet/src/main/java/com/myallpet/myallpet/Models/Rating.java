@@ -1,6 +1,8 @@
 package com.myallpet.myallpet.Models;
 
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -36,9 +38,12 @@ public class Rating {
     @Min(value = 1, message = "Number of Stars must be at least 1")
     @Max(value = 5, message = "Number of Stars must be at most 5")
     @Column(nullable = false)
-    private Integer NumberOfStars;
+    private Integer numberOfStars;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column(updatable = false , nullable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    private LocalDateTime createdAt;
 }

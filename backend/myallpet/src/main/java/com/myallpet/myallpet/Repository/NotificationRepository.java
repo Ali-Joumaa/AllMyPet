@@ -8,9 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.myallpet.myallpet.Models.Notifications;
 
 public interface NotificationRepository extends JpaRepository<Notifications, Long> {
-  List<Notification> findByUserId(Long userId);
+  List<Notifications> findByUser_UserId(Long userId);
 
-  // Optionally, retrieve notifications based on their read/unread status
-  List<Notification> findByUserIdAndStatus(Long userId, String status);
+
 }
  

@@ -21,7 +21,7 @@ public class RatingService {
 
     // Retrieve ratings given by a specific user
     public List<Rating> getRatingsByUserId(Long userId) {
-        return ratingRepository.findByUserId(userId);
+        return ratingRepository.findByUser_UserId(userId);
     }
     public List<Rating> getRatingsByStars(int numberOfStars) {
         return ratingRepository.findByNumberOfStars(numberOfStars);

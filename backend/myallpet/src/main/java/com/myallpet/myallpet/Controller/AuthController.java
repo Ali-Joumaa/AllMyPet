@@ -53,11 +53,23 @@ public ResponseEntity<?> registerUser(@RequestBody SignUpRequestDTO signUpReques
             return ResponseEntity.badRequest().body("Error: Username is already taken!");
         }
 
-        User user = new User(signUpRequest.getUsername(),
-                             passwordEncoder.encode(signUpRequest.getPassword()),
-                             signUpRequest.getEmail());
+        // Create a new user instance from the provided data
+        User user = new User();
+        user.setUsername(signUpRequest.getUsername());
+        user.setEmail(signUpRequest.getEmail());
+        user.setPassword(passwordEncoder.encode(signUpRequest.getPassword()));
+        user.setFirstname(signUpRequest.getFirstName());
+        user.setLastname(signUpRequest.getLastName());
+
+        // System.out.println("DEBUG: User being saved -> Username: " + user.getUsername());
+        // System.out.println("DEBUG: Email: " + user.getEmail());
+        // System.out.println("DEBUG: Password (hashed): " + user.getPassword());
+        // System.out.println("DEBUG: First Name: " + user.getFirstname());
+        // System.out.println("DEBUG: Last Name: " + user.getLastname());
+
+        // Save the new user
         userService.save(user);
-        return ResponseEntity.ok("User registered successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     } catch (Exception e) {
         // Log the exception and return an appropriate error response
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");

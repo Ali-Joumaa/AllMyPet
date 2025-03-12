@@ -7,7 +7,7 @@ import com.myallpet.myallpet.Models.Rating;
 
 public interface RatingRepository extends JpaRepository<Rating,Long>{ 
    // Find all ratings for a specific user (either as rater or ratee)
-   List<Rating> findByUserId(Long userId);
+   List<Rating> findByUser_UserId(Long userId);
 
    // Find ratings by the specific target entity, assuming there's a targetId if ratings are for different types of targets
    // List<Rating> findByTargetId(Long targetId);

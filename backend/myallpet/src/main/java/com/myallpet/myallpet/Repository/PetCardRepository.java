@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface PetCardRepository extends JpaRepository<PetCard, Long> {
 
-    List<PetCard> findByUserId(Long userId);
+    List<PetCard> findByUser_UserId(Long userId);
 
     List<PetCard> findBySpecies(String species);
 

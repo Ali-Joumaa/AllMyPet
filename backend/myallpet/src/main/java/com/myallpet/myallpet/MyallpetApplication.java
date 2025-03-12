@@ -10,5 +10,5 @@ public class MyallpetApplication {
 		SpringApplication.run(MyallpetApplication.class, args);
 	}
 
-}
+} 
 
