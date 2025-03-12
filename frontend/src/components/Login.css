@@ -9,7 +9,7 @@
 }
 
 /* Login Box */
-.login-box {
+.login-boxx {
   display: flex;
   background: white;
   padding: 40px;
@@ -22,7 +22,7 @@
 }
 
 /* Left Section (Image & Branding) */
-.left {
+.leftt {
   flex: 1;
   text-align: center;
   padding: 20px;
@@ -55,7 +55,7 @@
 }
 
 /* Right Section (Login Form) */
-.right {
+.rightt {
   flex: 1;
   display: flex;
   flex-direction: column;

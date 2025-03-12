@@ -1,5 +1,6 @@
 import React from "react";
 import { FaBell, FaUser } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import "./NavBar.css"; // Import the CSS file
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +8,7 @@ function NavBar() {
     const navigate = useNavigate();
     return (
         <>
-            <nav className="navbar">
+            <nav id ="navbar" className="navbar" >
                 {/* Left - Logo + Paw Prints */}
                 <div className="logo-container">
                     <div className="logo">
@@ -23,12 +24,13 @@ function NavBar() {
 
                 {/* Middle - Navigation Links */}
                 <div className="nav-links">
-                    <a href="#">Home</a>
+                    <Link to="/home">Home</Link>
                     <a href="#">Adopt</a>
                     <a href="#">Community</a>
-                    <a href="#">Raise A Pet</a>
-                    <a href="#">Veterinarians</a>
-                </div>
+                    {/* <a href="#">Raise A Pet</a> */}
+                    <Link to="/raisePets">Raise A Pet</Link>
+                    <Link to = '/vets'>Veterinarians</Link>
+                </div> 
 
                 {/* Right - Icons & Buttons */}
                 <div className="nav-icons">

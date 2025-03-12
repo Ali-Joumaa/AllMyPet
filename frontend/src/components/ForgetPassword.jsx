@@ -18,7 +18,7 @@ export default function ForgetPassword() {
         </div> */}
 
         {/* Left Side - Image and Branding */}
-        <div className="left">
+        <div className="leftt">
           <h2 className="welcome-text">
             Forgot your password? <span className="highlight">No worries!</span> 🐾
           </h2>
@@ -26,7 +26,7 @@ export default function ForgetPassword() {
         </div>
 
         {/* Right Side - Forget Password Form */}
-        <div className="right">
+        <div className="rightt">
           <h2 className="forget-password-title">Reset Password 🐾</h2>
           <p className="subtitle">
             Enter your email to receive a reset link.

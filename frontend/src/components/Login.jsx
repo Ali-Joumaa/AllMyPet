@@ -38,7 +38,7 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <div className="login-box">
+      <div className="login-boxx">
 
         
         {/* <div className="Logo-container">
@@ -56,7 +56,7 @@ export default function Login() {
 
 
         {/* Left Side - Image and Branding */}
-        <div className="left">
+        <div className="leftt">
           <h2 className="welcome-text">
             Welcome to <span className="highlight">AllMyPet</span> 🐾
           </h2>
@@ -64,7 +64,7 @@ export default function Login() {
         </div>
 
         {/* Right Side - Login Form */}
-        <div className="right">
+        <div className="rightt">
           <h2 className="login-title">Get Started 🐾</h2>
           <p className="subtitle">
             Don't have an account? <Link to="/signup" className="signup-link">Sign up</Link>

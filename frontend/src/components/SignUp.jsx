@@ -41,7 +41,7 @@ export default function SignUp() {
     <div className="signup-container">
       <div className="signup-box">
         {/* Left Side - Image and Branding */}
-        <div className="left">
+        <div className="leftt">
           <h2 className="welcome-text">
             Welcome to <span className="highlight">AllMyPet</span> 🐾
           </h2>
@@ -49,7 +49,7 @@ export default function SignUp() {
         </div>
 
         {/* Right Side - Sign Up Form */}
-        <div className="right">
+        <div className="rightt">
           <h2 className="signup-title">Let’s sign up 🐾</h2>
           <p className="subtitle">
             Already have an account? <Link to="/login" className="login-link">Login</Link>

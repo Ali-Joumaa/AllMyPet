@@ -45,3 +45,8 @@ html, body {
   overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
