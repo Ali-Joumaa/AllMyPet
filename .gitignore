@@ -1,0 +1,100 @@
+# ================================
+# FRONTEND (React)
+# ================================
+
+# Node modules
+frontend/node_modules/
+frontend/node_modules/.cache/
+
+# Build output
+frontend/build/
+
+# Environment files
+frontend/.env.production
+frontend/.env.development
+frontend/.env.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Coverage directory used by tools like Jest
+frontend/coverage/
+
+# Misc
+*.log
+*.swp
+*.swo
+
+# TypeScript Build Info
+frontend/*.tsbuildinfo
+
+# VS Code
+frontend/.vscode/
+
+# ================================
+# BACKEND (Spring Boot)
+# ================================
+
+# Ignore compiled output and logs
+target/
+*.log
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Ignore IDE-specific files
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# IntelliJ IDEA
+backend/.idea/
+
+# Spring Tool Suite (STS)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings/
+.springBeans/
+.sts4-cache/
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+backend/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+backend/.vscode/
+
+# ================================
+# GLOBAL SETTINGS (For both frontend & backend)
+# ================================
+
+# General system files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
