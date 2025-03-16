@@ -1,0 +1,28 @@
+.bio-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 14px;
+  color: #333;
+  max-width: 450px; /* Adjust width as needed */
+  width: 100%; /* Ensures it is responsive */
+}
+
+.bio-location,
+.bio-years {
+  display: flex;
+  align-items: center;
+  font-style: italic;
+  color: #555;
+}
+
+.icon {
+  width: 18px; /* Adjust size as needed */
+  height: 18px;
+  margin-right: 8px; /* Adds space between the icon and text */
+}
+
+.bio-location .icon {
+  color: #9990DA; /* Blue color for location icon */
+  font-size: 18px; /* Adjust icon size */
+}
