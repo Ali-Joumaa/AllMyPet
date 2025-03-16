@@ -1,0 +1,104 @@
+.profile-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-tabs {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    gap: 10%;
+  }
+  
+  .tab-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+  }
+  
+  .tab-btn.active {
+    color: #9990DA;
+  }
+  
+  .tab-btn.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #9990DA;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+  }
+  
+  .tab-content {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+  
+
+  .add-pet-btn {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 15px; /* Space from tabs */
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  
+  .add-pet-btn:hover {
+    transform: scale(1.1); /* Slight enlargement effect */
+    opacity: 0.8;
+  }
+  
+  .pawIcon {
+    width: 25px;
+    height: 25px;
+    filter: invert(58%) sepia(14%) saturate(3483%) hue-rotate(205deg);
+  }
+  
+  
+  .plus-icon {
+    color: #9990DA; /* Same as your active tab color */
+    font-size: 18px; /* Slightly larger */
+    margin-left: 5px; /* Space between paw and plus */
+  }
+  
+  .add-pet-btn:hover .plus-icon {
+    color: #7a72c1; /* Slightly darker on hover */
+  }
+
+/* Pet Grid - Ensures 3 Cards Per Row Without Resizing */
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Keeps card size fixed */
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+/* Responsive for Tablets - 2 per row */
+@media (max-width: 1024px) {
+  .pet-grid {
+    grid-template-columns: repeat(2, minmax(250px, 1fr)); /* Forces 2 per row */
+  }
+}
+
+/* Responsive for Mobile - 1 per row */
+@media (max-width: 768px) {
+  .pet-grid {
+    grid-template-columns: repeat(1, minmax(250px, 1fr)); /* Forces 1 per row */
+  }
+}
