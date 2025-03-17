@@ -19,7 +19,9 @@ const RaiseAPet = () => {
   ];
 
   return (
-    <div>   <div className="title-box">   <h1>Raise A Pet</h1>
+    <div>   <div className="title-box">   <span className="loving-text">
+    Raise <span style={{ color: "#2E256F" }}>Pets</span>
+  </span>
     </div>
     <div className="center-container">
       <div className="raise-a-pet">
