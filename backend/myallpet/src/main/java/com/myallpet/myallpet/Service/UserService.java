@@ -36,4 +36,9 @@ public class UserService {
     public boolean existsByUsername(String username) {
         return userRepository.existsByUsername(username);
     }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    }
 }

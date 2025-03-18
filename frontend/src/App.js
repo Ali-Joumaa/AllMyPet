@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import ForgetPassword from "./components/ForgetPassword";
 import Adopt from "./components/Adopt";
+import Profile from "./components/profile"
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />  {/* Home Page */}
-        {/* <Route path="/profile" element={<Profile />} />  Home Page */}
+        <Route path="/profile" element={<Profile />} />  Home Page
 
         <Route path="/home" element={<Home />} />  {/* Home Page */}
         
