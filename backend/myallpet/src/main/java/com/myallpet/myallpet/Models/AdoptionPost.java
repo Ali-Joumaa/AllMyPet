@@ -16,6 +16,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AdoptionPost{
 
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
@@ -40,7 +45,7 @@ public class AdoptionPost{
 
     @NotBlank(message = "Adoption type is required")
     @Size(min = 3, max = 50, message = "Adoption type must be between 3 and 50 characters")
-    @Pattern(regexp = "Temporary|Permanant", message = "Adoption must be Temporary or Permanent")
+    @Pattern(regexp = "Temporary|Permanent", message = "Adoption must be Temporary or Permanent")
     @Column(nullable = false)
     private String adoptionType;
 
