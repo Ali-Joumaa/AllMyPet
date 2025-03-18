@@ -25,7 +25,7 @@ function NavBar() {
                 {/* Middle - Navigation Links */}
                 <div className="nav-links">
                     <Link to="/home">Home</Link>
-                    <a href="#">Adopt</a>
+                    <a href="./adopt">Adopt</a>
                     <a href="#">Community</a>
                     {/* <a href="#">Raise A Pet</a> */}
                     <Link to="/raisePets">Raise A Pet</Link>

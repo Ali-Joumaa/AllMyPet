@@ -5,9 +5,19 @@ body {
   min-height: 100vh;
 }
 .title-box{
-  margin-top: 20px;
+  margin-top: 30px;
+  text-align: center;
   color: #675BC8;
 
+}
+
+.loving-text {
+  font-family: 'Acme', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  letter-spacing: 0;
+  color: #675BC8;
+  display: inline-block;
 }
 
 /* Add a container for centering specific content */
