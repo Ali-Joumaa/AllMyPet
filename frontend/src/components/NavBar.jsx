@@ -1,14 +1,19 @@
 import React from "react";
 import { FaBell, FaUser } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./NavBar.css"; // Import the CSS file
-import { useNavigate } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ user, isGuest }) {
     const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("token"); // Remove token from storage
+        navigate("/login"); // Redirect to login page
+    };
+
     return (
         <>
-            <nav id ="navbar" className="navbar" >
+            <nav id="navbar" className="navbar">
                 {/* Left - Logo + Paw Prints */}
                 <div className="logo-container">
                     <div className="logo">
@@ -25,29 +30,45 @@ function NavBar() {
                 {/* Middle - Navigation Links */}
                 <div className="nav-links">
                     <Link to="/home">Home</Link>
-                    <a href="#">Adopt</a>
+                    <Link to="/adopt">Adopt</Link>
                     <a href="#">Community</a>
-                    {/* <a href="#">Raise A Pet</a> */}
                     <Link to="/raisePets">Raise A Pet</Link>
-                    <Link to = '/vets'>Veterinarians</Link>
+                    <Link to="/vets">Veterinarians</Link>
                 </div> 
 
-                {/* Right - Icons & Buttons */}
+                {/* Right - Icons & User Section */}
                 <div className="nav-icons">
                     <button className="notification-button">
                         <FaBell />
                     </button>
 
-                    <button className="user-button" onClick={() => {
-                            navigate("/login");
-                            console.log("Navigating to SignUp");
-                        }}>
-                        <FaUser className="mr-2" />
-                        <span>
-                            Login | Register
-                        </span>{/* Wrap in <span> for spacing */}
-                    </button>
+                    {isGuest || !user ? (
+                        // Guest View: Show Login/Register button
+                        <button className="user-button" onClick={() => navigate("/login")}>
+                            <FaUser className="mr-2" />
+                            <span>Login | Register</span>
+                        </button>
+                    ) : (
+                        // Logged-in User View
+                        <div className="user-info">
+                            {/* Profile Picture (Handles Undefined) */}
+                            <img 
+                                src={user.profilePictureURL || "/default-user.png"} 
+                                alt="User Profile" 
+                                className="user-avatar" 
+                                onClick={() => navigate("/profile")} // Navigate to profile on click
+                                style={{ cursor: "pointer" }} // Make cursor pointer for clickable effect
+                            />
+                            
+                            {/* Username (Clickable) */}
+                            <button className="username-button" onClick={() => navigate("/profile")}>
+                                Welcome, {user.username || "User"}!
+                            </button>
 
+                            {/* Logout Button */}
+                            <button className="logout-button" onClick={handleLogout}>Logout</button>
+                        </div>
+                    )}
                 </div>
             </nav>
 
