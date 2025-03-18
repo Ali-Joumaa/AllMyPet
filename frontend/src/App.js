@@ -8,7 +8,7 @@ import RaisePet from "./components/raiseAPetPage";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import ForgetPassword from "./components/ForgetPassword";
-// import Profile from "./components/profile";
+import Adopt from "./components/Adopt";
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
         
         <Route path="/raisePets" element={<RaisePet />} />  {/* Raise a pet Page */}
         <Route path="/vets" element={<VetsPage />} />  {/* Vets Page */}
+        <Route path="/adopt" element={<Adopt />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
