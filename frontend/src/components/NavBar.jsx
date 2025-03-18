@@ -15,10 +15,10 @@ function NavBar() {
                         <img src="/AllMyPetLogo.png" alt="AllMyPet Logo" className="logo-img" />
                     </div>
                     <div className="paws-container">
-                        <img src="/paw.png" alt="Paw 1" className="paw paw1" />
-                        <img src="/paw.png" alt="Paw 2" className="paw paw2" />
-                        <img src="/paw.png" alt="Paw 3" className="paw paw3" />
-                        <img src="/paw.png" alt="Paw 4" className="paw paw4" />
+                        <img src="/Paw.png" alt="Paw 1" className="paw paw1" />
+                        <img src="/Paw.png" alt="Paw 2" className="paw paw2" />
+                        <img src="/Paw.png" alt="Paw 3" className="paw paw3" />
+                        <img src="/Paw.png" alt="Paw 4" className="paw paw4" />
                     </div>
                 </div>
 
@@ -26,7 +26,7 @@ function NavBar() {
                 <div className="nav-links">
                     <Link to="/home">Home</Link>
                     <a href="./adopt">Adopt</a>
-                    <a href="#">Community</a>
+                    <a href="/#">Community</a>
                     {/* <a href="#">Raise A Pet</a> */}
                     <Link to="/raisePets">Raise A Pet</Link>
                     <Link to = '/vets'>Veterinarians</Link>
