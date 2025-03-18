@@ -18,4 +18,12 @@ public class PetCardDTO {
     private String location;
     private String status;
     private Long userId;
+    // public String getVaccines() {
+        // TODO Auto-generated method stub
+    //     throw new UnsupportedOperationException("Unimplemented method 'getVaccines'");
+    // }
+    // public String getHealthInfo() {
+    //   // TODO Auto-generated method stub
+    //   throw new UnsupportedOperationException("Unimplemented method 'getHealthInfo'");
+    // }
 }

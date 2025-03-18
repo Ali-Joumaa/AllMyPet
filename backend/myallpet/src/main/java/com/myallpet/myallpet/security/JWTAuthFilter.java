@@ -31,10 +31,11 @@ public class JWTAuthFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            System.out.println("🚨 No Token Found in Request!");
             final String jwtToken = authHeader.substring(7);
             try {
                 final String username = jwtUtils.getUsernameFromToken(jwtToken);
-
+                System.out.println("🔍 Extracted Username from Token: " + username);
                 if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                     UserDetails userDetails = this.customUserDetailsService.loadUserByUsername(username);
 

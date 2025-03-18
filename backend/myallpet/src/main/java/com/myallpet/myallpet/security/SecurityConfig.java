@@ -37,7 +37,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configure session management
             .authorizeHttpRequests(request -> request
                 .requestMatchers("/api/auth/**").permitAll() // Allow all requests to auth paths
-                .requestMatchers("/api/admin/**").hasRole("ADMIN") // Restrict admin paths to ADMIN role
+                .requestMatchers("/api/admin/**").hasRole("ADMIN") 
                 .anyRequest().authenticated()) // Secure all other requests
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT authentication filter
 

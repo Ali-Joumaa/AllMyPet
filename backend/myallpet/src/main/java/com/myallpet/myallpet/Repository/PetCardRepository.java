@@ -18,4 +18,5 @@ public interface PetCardRepository extends JpaRepository<PetCard, Long> {
     List<PetCard> findByBreed(String breed);
     
     List<PetCard> findByAgeLessThanEqual(int age);
+    
 }
