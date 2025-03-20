@@ -1,10 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaBell, FaUser } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
-import "./NavBar.css"; // Import the CSS file
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"; // ✅ To fetch user data
+import "./NavBar.css";
 
-function NavBar({ user, isGuest }) {
+function NavBar() {
     const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+    const [isGuest, setIsGuest] = useState(true);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+            setIsGuest(true);
+            return;
+        }
+
+        // ✅ Fetch logged-in user details
+        axios
+            .get("http://localhost:5555/users/me", {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then((response) => {
+                setUser(response.data);
+                setIsGuest(false);
+            })
+            .catch((error) => {
+                console.error("❌ Failed to fetch user:", error);
+                setIsGuest(true);
+            });
+    }, []);
 
     const handleLogout = () => {
         localStorage.removeItem("token"); // Remove token from storage
@@ -35,7 +61,7 @@ function NavBar({ user, isGuest }) {
                     {/* <a href="#">Raise A Pet</a> */}
                     <Link to="/raisePets">Raise A Pet</Link>
                     <Link to="/vets">Veterinarians</Link>
-                </div> 
+                </div>
 
                 {/* Right - Icons & User Section */}
                 <div className="nav-icons">
@@ -43,7 +69,7 @@ function NavBar({ user, isGuest }) {
                         <FaBell />
                     </button>
 
-                    {isGuest || !user ? (
+                    {isGuest ? (
                         // Guest View: Show Login/Register button
                         <button className="user-button" onClick={() => navigate("/login")}>
                             <FaUser className="mr-2" />
@@ -52,17 +78,17 @@ function NavBar({ user, isGuest }) {
                     ) : (
                         // Logged-in User View
                         <div className="user-info">
-                            {/* Profile Picture (Handles Undefined) */}
+                            {/* ✅ Profile Picture (Clickable) */}
                             <img 
                                 src={user.profilePictureURL || "/default-user.png"} 
                                 alt="User Profile" 
                                 className="user-avatar" 
-                                onClick={() => navigate("/profile")} // Navigate to profile on click
-                                style={{ cursor: "pointer" }} // Make cursor pointer for clickable effect
+                                onClick={() => navigate(`/profile/${user.username}`)} // ✅ Navigates to the correct profile
+                                style={{ cursor: "pointer" }} 
                             />
                             
-                            {/* Username (Clickable) */}
-                            <button className="username-button" onClick={() => navigate("/profile")}>
+                            {/* ✅ Username (Clickable) */}
+                            <button className="username-button" onClick={() => navigate(`/profile/${user.username}`)}>
                                 Welcome, {user.username || "User"}!
                             </button>
 
