@@ -46,7 +46,8 @@ const Profile = () => {
   }, [username, navigate]);
 
   const handleAddPet = () => {
-    alert("Add Pet button clicked! Implement functionality here.");
+    navigate(`/petCardForm/${username}`);
+
   };
 
   return (
