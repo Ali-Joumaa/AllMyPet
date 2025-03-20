@@ -1,81 +1,130 @@
-import React, { useState } from "react";
-import { FaPlus } from "react-icons/fa"; // Import plus icon
-import "./profile.css"; // Keep the same CSS
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { FaPlus } from "react-icons/fa";
+import NavBar from "../components/NavBar"; // ✅ Import NavBar
+import "./profile.css"; 
 import ProfileInfo from "./profileInfo";
-import PetCard from "./petCard"; // Import PetCard component
-import pitter from "../images/pitter.png";
-
-// Sample Pet Data
-const samplePets = [
-  
-  { id: 4, petName: "Milo", petImage: "/pet4.jpg", petBreed: "Beagle", petGender: "Male", petAge: "2.5 Years", petSize: "Small", petLocation: "Florida", petDescription: "Loves playing fetch." },
-  { id: 5, petName: "Bella", petImage: "/pet5.jpg", petBreed: "Poodle", petGender: "Female", petAge: "3 Years", petSize: "Small", petLocation: "Chicago", petDescription: "Smart and elegant." },
-  { id: 6, petName: "Rocky", petImage: "/pet6.jpg", petBreed: "Labrador", petGender: "Male", petAge: "4 Years", petSize: "Large", petLocation: "Seattle", petDescription: "Great with families!" },
-  { id: 7, petName: "Coco", petImage: "/pet7.jpg", petBreed: "Chihuahua", petGender: "Female", petAge: "1 Year", petSize: "Small", petLocation: "Arizona", petDescription: "Tiny but full of energy!" },
-  { id: 8, petName: "Charlie", petImage: pitter, petBreed: "Pug", petGender: "Male", petAge: "3.5 Years", petSize: "Small", petLocation: "Nevada", petDescription: "Loves sleeping and eating." },
-];
+import PetCard from "./petCard";
 
 const Profile = () => {
-  const [activeTab, setActiveTab] = useState("pets");
+  const { username } = useParams(); // ✅ Get username from URL
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState(null);
+  const [userPets, setUserPets] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("pets"); // ✅ Proper tab management
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      console.warn("❌ No token found. Redirecting to login.");
+      navigate("/login");
+      return;
+    }
+
+    // ✅ Determine API endpoint (Own Profile or Another User)
+    const endpoint = username 
+      ? `http://localhost:5555/users/profile/${username}`  // ✅ Visiting another user's profile
+      : "http://localhost:5555/users/me";                 // ✅ Viewing own profile
+
+    axios
+      .get(endpoint, {
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+      })
+      .then((response) => {
+        console.log("✅ User Data Received:", response.data);
+        setUserData(response.data);
+        setUserPets(response.data.pets || []);
+      })
+      .catch((error) => {
+        console.error("❌ Error fetching user data:", error);
+        alert("Failed to load profile.");
+      })
+      .finally(() => setLoading(false));
+  }, [username, navigate]);
 
   const handleAddPet = () => {
-    alert("Add Pet button clicked! Implement functionality here.");
+    navigate(`/petCardForm/${username}`);
+
   };
 
   return (
-    <div className="profile-page">
-      <ProfileInfo 
-        profilePic="" // Leave empty to test the default profile pic
-        username="username123"
-        bio="Loving pet owner and animal enthusiast!"
-      />
+    <>
+      {/* ✅ NavBar remains visible on the profile page */}
+      <NavBar user={userData} isGuest={!userData} />
 
-      {/* Tabs Section with Add Pet Button */}
-      <div className="profile-tabs">
-        <button 
-          className={`tab-btn ${activeTab === "pets" ? "active" : ""}`} 
-          onClick={() => setActiveTab("pets")}
-        >
-          Your Pets
-        </button>
-        <button 
-          className={`tab-btn ${activeTab === "favorite" ? "active" : ""}`} 
-          onClick={() => setActiveTab("favorite")}
-        >
-          Favorite
-        </button>
+      <div className="profile-page">
+        {loading ? (
+          <p>Loading profile...</p>
+        ) : userData ? (
+          <>
+            {/* ✅ Display User Info Dynamically */}
+            <ProfileInfo
+              profilePic={userData.profilePictureURL || "/default-profile.png"}
+              username={userData.username || "User"}
+              bio={userData.bio || "No bio available"}
+            />
 
-        {/* Add Pet Button (Paw with Plus) */}
-        <button className="add-pet-btn" onClick={handleAddPet}>
-          <img src="/Paw.png" alt="Paw Icon" className="pawIcon" />
-          <FaPlus className="plus-icon" />
-        </button>
-      </div>
+            {/* ✅ Tabs Section with Add Pet Button */}
+            <div className="profile-tabs">
+              <button 
+                className={`tab-btn ${activeTab === "pets" ? "active" : ""}`} 
+                onClick={() => setActiveTab("pets")}
+              >
+                Your Pets
+              </button>
+              <button 
+                className={`tab-btn ${activeTab === "favorite" ? "active" : ""}`} 
+                onClick={() => setActiveTab("favorite")}
+              >
+                Favorite
+              </button>
 
-      {/* Tab Content */}
-      <div className="tab-content">
-        {activeTab === "pets" ? (
-          <div className="pet-grid">
-            {samplePets.map((pet) => (
-              <PetCard 
-                petName={pet.petName} 
-                petImage={pet.petImage} 
-                petBreed={pet.petBreed} 
-                petGender={pet.petGender} 
-                petAge={pet.petAge} 
-                petSize={pet.petSize} 
-                petLocation={pet.petLocation} 
-                petDescription={pet.petDescription} 
-              />
-            ))}
-          </div>
+              {/* ✅ Add Pet Button (Only for Own Profile) */}
+              {username && (
+                <button className="add-pet-btn" onClick={handleAddPet}>
+                  <img src="/Paw.png" alt="Paw Icon" className="pawIcon" />
+                  <FaPlus className="plus-icon" />
+                </button>
+              )}
+            </div>
+
+            {/* ✅ Dynamic Tab Content */}
+            <div className="tab-content">
+              {activeTab === "pets" ? (
+                <div className="pet-grid">
+                  {userPets.length > 0 ? (
+                    userPets.map((pet) => (
+                      <PetCard
+                        key={pet.id}
+                        petName={pet.name}
+                        petImage={pet.image}
+                        petBreed={pet.breed}
+                        petGender={pet.gender}
+                        petAge={pet.age}
+                        petSize={pet.size}
+                        petLocation={pet.location}
+                        petDescription={pet.description}
+                      />
+                    ))
+                  ) : (
+                    <p>No pets found.</p>
+                  )}
+                </div>
+              ) : (
+                <div className="favorite">
+                  <p>Here are your favorite pets!</p>
+                </div>
+              )}
+            </div>
+          </>
         ) : (
-          <div className="favorite">
-            <p>Here are your favorite pets!</p>
-          </div>
+          <p>Failed to load profile.</p>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

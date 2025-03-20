@@ -20,16 +20,16 @@ function Footer() {
           <h3>How Can We Help?</h3>
           <ul>
             <li>
-              <a href="#">Adopt a pet</a>
+              <a href="/#">Adopt a pet</a>
             </li>
             <li>
-              <a href="#">Rehome a pet</a>
+              <a href="/#">Rehome a pet</a>
             </li>
             <li>
-              <a href="#">Adopt FAQ's</a>
+              <a href="/#">Adopt FAQ's</a>
             </li>
             <li>
-              <a href="#">Rehome FAQ's</a>
+              <a href="/#">Rehome FAQ's</a>
             </li>
           </ul>
         </div>
@@ -38,13 +38,13 @@ function Footer() {
         <div className="footer-section">
           <h3>Contact Us</h3>
           <p>
-            <FaMapMarkerAlt className="icon" /> 123 Main Street, Anytown, USA
+            <FaMapMarkerAlt className="icon" /> American University of Beirut
           </p>
           <p>
-            <FaPhone className="icon" /> +1 (555) 123-4567
+            <FaPhone className="icon" /> (+961) 71111567
           </p>
           <p>
-            <FaEnvelope className="icon" /> FurryFriendsSupport@gmail.com
+            <FaEnvelope className="icon" /> AllMyPets@gmail.com
           </p>
         </div>
 
@@ -52,7 +52,7 @@ function Footer() {
         <div className="footer-section">
           <h3>Keep In Touch With Us</h3>
           <p>
-            Join the FurryFriends magazine and be first to hear about news
+            Join the AllMyPets newsletter and be first to hear about news
           </p>
           <div className="subscribe">
             <div className="email-input-container">
@@ -68,19 +68,19 @@ function Footer() {
       <div className="footer-bottom">
         <p>©2025 AllMyPet.com</p>
         <div className="social-icons">
-          <a href="#">
+          <a href="/#">
             <FaFacebook />
           </a>
-          <a href="#">
+          <a href="/#">
             <FaPinterest />
           </a>
-          <a href="#">
+          <a href="/#">
             <FaTumblr />
           </a>
-          <a href="#">
+          <a href="/#">
             <FaInstagram />
           </a>
-          <a href="#">
+          <a href="/#">
             <FaYoutube />
           </a>
         </div>
