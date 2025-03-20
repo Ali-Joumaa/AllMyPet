@@ -19,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />  {/* Home Page */}
         <Route path="/profile" element={<Profile />} />  Home Page
+        <Route path="/profile/:username" element={<Profile />} /> {/* ✅ View Any User */}
 
         <Route path="/home" element={<Home />} />  {/* Home Page */}
         
