@@ -31,7 +31,7 @@ function NavBar({ user, isGuest }) {
                 <div className="nav-links">
                     <Link to="/home">Home</Link>
                     <Link to="/adopt">Adopt</Link>
-                    <a href="#">Community</a>
+                    <a href="./form">Community</a>
                     <Link to="/raisePets">Raise A Pet</Link>
                     <Link to="/vets">Veterinarians</Link>
                 </div> 
