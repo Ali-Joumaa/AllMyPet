@@ -1,0 +1,1994 @@
+{
+    "Aruba": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Afghanistan": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Canaan Dog",
+            "Afghan Hound",
+            "Saluki"
+        ]
+    },
+    "Angola": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Anguilla": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "\u00c5land Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Albania": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Andorra": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "United Arab Emirates": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Afghan Hound",
+            "Azawakh",
+            "Saluki"
+        ]
+    },
+    "Argentina": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Armenia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Siberian Husky",
+            "Alaskan Malamute",
+            "Bernese Mountain Dog"
+        ]
+    },
+    "American Samoa": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Antarctica": {
+        "climate": "polar",
+        "suitable_breeds": [
+            "Canadian Eskimo Dog",
+            "Samoyed",
+            "Greenland Dog"
+        ]
+    },
+    "French Southern Territories": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Antigua and Barbuda": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Australia": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Azawakh",
+            "Afghan Hound",
+            "Saluki"
+        ]
+    },
+    "Austria": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Azerbaijan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Burundi": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Belgium": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Benin": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Bonaire, Sint Eustatius and Saba": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Burkina Faso": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Bangladesh": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Rajapalayam",
+            "Pharaoh Hound",
+            "Basenji"
+        ]
+    },
+    "Bulgaria": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Bernese Mountain Dog",
+            "Saint Bernard",
+            "Siberian Husky"
+        ]
+    },
+    "Bahrain": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Bahamas": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Bosnia and Herzegovina": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Saint Barth\u00e9lemy": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Belarus": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Siberian Husky",
+            "Saint Bernard",
+            "Bernese Mountain Dog"
+        ]
+    },
+    "Belize": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Bermuda": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Bolivia, Plurinational State of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Brazil": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Pharaoh Hound",
+            "Chihuahua",
+            "Basenji"
+        ]
+    },
+    "Barbados": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Brunei Darussalam": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Bhutan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Bouvet Island": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Botswana": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Central African Republic": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Canada": {
+        "climate": "polar",
+        "suitable_breeds": [
+            "Greenland Dog",
+            "Samoyed",
+            "Canadian Eskimo Dog"
+        ]
+    },
+    "Cocos (Keeling) Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Switzerland": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Chile": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "China": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "C\u00f4te d'Ivoire": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Cameroon": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Congo, The Democratic Republic of the": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Congo": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Cook Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Colombia": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Rajapalayam",
+            "Pharaoh Hound",
+            "Basenji"
+        ]
+    },
+    "Comoros": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Cabo Verde": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Costa Rica": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Cuba": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Cura\u00e7ao": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Christmas Island": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Cayman Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Cyprus": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Czechia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Germany": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Djibouti": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Dominica": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Denmark": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Dominican Republic": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Algeria": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Afghan Hound",
+            "Saluki",
+            "Canaan Dog"
+        ]
+    },
+    "Ecuador": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Rajapalayam",
+            "Pharaoh Hound",
+            "Chihuahua"
+        ]
+    },
+    "Egypt": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Canaan Dog",
+            "Afghan Hound",
+            "Saluki"
+        ]
+    },
+    "Eritrea": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Western Sahara": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Spain": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Estonia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Bernese Mountain Dog",
+            "Siberian Husky",
+            "Alaskan Malamute"
+        ]
+    },
+    "Ethiopia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Finland": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Bernese Mountain Dog",
+            "Alaskan Malamute",
+            "Saint Bernard"
+        ]
+    },
+    "Fiji": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Falkland Islands (Malvinas)": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "France": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Faroe Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Micronesia, Federated States of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Gabon": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "United Kingdom": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Georgia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Saint Bernard",
+            "Alaskan Malamute",
+            "Bernese Mountain Dog"
+        ]
+    },
+    "Guernsey": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Ghana": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Gibraltar": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Guinea": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Guadeloupe": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Gambia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Guinea-Bissau": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Equatorial Guinea": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Greece": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Grenada": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Greenland": {
+        "climate": "polar",
+        "suitable_breeds": [
+            "Greenland Dog",
+            "Samoyed",
+            "Canadian Eskimo Dog"
+        ]
+    },
+    "Guatemala": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "French Guiana": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Guam": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Guyana": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Hong Kong": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Heard Island and McDonald Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Honduras": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Croatia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Haiti": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Hungary": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Siberian Husky",
+            "Saint Bernard",
+            "Bernese Mountain Dog"
+        ]
+    },
+    "Indonesia": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Pharaoh Hound",
+            "Chihuahua",
+            "Basenji"
+        ]
+    },
+    "Isle of Man": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "India": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Chihuahua",
+            "Pharaoh Hound",
+            "Basenji"
+        ]
+    },
+    "British Indian Ocean Territory": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Ireland": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Iran, Islamic Republic of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Iraq": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Azawakh",
+            "Canaan Dog",
+            "Afghan Hound"
+        ]
+    },
+    "Iceland": {
+        "climate": "polar",
+        "suitable_breeds": [
+            "Greenland Dog",
+            "Samoyed",
+            "Canadian Eskimo Dog"
+        ]
+    },
+    "Israel": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Italy": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Jamaica": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Jersey": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Jordan": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Afghan Hound",
+            "Saluki",
+            "Canaan Dog"
+        ]
+    },
+    "Japan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Kazakhstan": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Afghan Hound",
+            "Azawakh",
+            "Canaan Dog"
+        ]
+    },
+    "Kenya": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Basenji",
+            "Rajapalayam",
+            "Pharaoh Hound"
+        ]
+    },
+    "Kyrgyzstan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Cambodia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Kiribati": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Saint Kitts and Nevis": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Korea, Republic of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Kuwait": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Lao People's Democratic Republic": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Lebanon": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Liberia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Libya": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Azawakh",
+            "Afghan Hound",
+            "Canaan Dog"
+        ]
+    },
+    "Saint Lucia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Liechtenstein": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Sri Lanka": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Chihuahua",
+            "Basenji",
+            "Rajapalayam"
+        ]
+    },
+    "Lesotho": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Lithuania": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Bernese Mountain Dog",
+            "Saint Bernard",
+            "Siberian Husky"
+        ]
+    },
+    "Luxembourg": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Latvia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Bernese Mountain Dog",
+            "Saint Bernard",
+            "Alaskan Malamute"
+        ]
+    },
+    "Macao": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Saint Martin (French part)": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Morocco": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Saluki",
+            "Canaan Dog",
+            "Afghan Hound"
+        ]
+    },
+    "Monaco": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Moldova, Republic of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Madagascar": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Maldives": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Mexico": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Canaan Dog",
+            "Afghan Hound",
+            "Azawakh"
+        ]
+    },
+    "Marshall Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "North Macedonia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Mali": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Saluki",
+            "Afghan Hound",
+            "Canaan Dog"
+        ]
+    },
+    "Malta": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Myanmar": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Montenegro": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Mongolia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Siberian Husky",
+            "Alaskan Malamute",
+            "Bernese Mountain Dog"
+        ]
+    },
+    "Northern Mariana Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Mozambique": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Mauritania": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Montserrat": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Martinique": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Mauritius": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Malawi": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Malaysia": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Rajapalayam",
+            "Chihuahua",
+            "Pharaoh Hound"
+        ]
+    },
+    "Mayotte": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Namibia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "New Caledonia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Niger": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Azawakh",
+            "Canaan Dog",
+            "Afghan Hound"
+        ]
+    },
+    "Norfolk Island": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Nigeria": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Pharaoh Hound",
+            "Rajapalayam",
+            "Chihuahua"
+        ]
+    },
+    "Nicaragua": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Niue": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Netherlands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Norway": {
+        "climate": "polar",
+        "suitable_breeds": [
+            "Greenland Dog",
+            "Canadian Eskimo Dog",
+            "Samoyed"
+        ]
+    },
+    "Nepal": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Nauru": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "New Zealand": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Oman": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Pakistan": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Saluki",
+            "Afghan Hound",
+            "Azawakh"
+        ]
+    },
+    "Panama": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Pitcairn": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Peru": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Chihuahua",
+            "Basenji",
+            "Pharaoh Hound"
+        ]
+    },
+    "Philippines": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Chihuahua",
+            "Basenji",
+            "Pharaoh Hound"
+        ]
+    },
+    "Palau": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Papua New Guinea": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Basenji",
+            "Pharaoh Hound",
+            "Chihuahua"
+        ]
+    },
+    "Poland": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Siberian Husky",
+            "Bernese Mountain Dog",
+            "Saint Bernard"
+        ]
+    },
+    "Puerto Rico": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Korea, Democratic People's Republic of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Portugal": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Paraguay": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Palestine, State of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "French Polynesia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Qatar": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "R\u00e9union": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Romania": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Siberian Husky",
+            "Bernese Mountain Dog",
+            "Alaskan Malamute"
+        ]
+    },
+    "Russian Federation": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Rwanda": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    },
+    "Saudi Arabia": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Canaan Dog",
+            "Afghan Hound",
+            "Azawakh"
+        ]
+    },
+    "Sudan": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Canaan Dog",
+            "Saluki",
+            "Azawakh"
+        ]
+    },
+    "Senegal": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Singapore": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "South Georgia and the South Sandwich Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Saint Helena, Ascension and Tristan da Cunha": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Svalbard and Jan Mayen": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Solomon Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Sierra Leone": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "El Salvador": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "San Marino": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Somalia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Saint Pierre and Miquelon": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Serbia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Alaskan Malamute",
+            "Bernese Mountain Dog",
+            "Siberian Husky"
+        ]
+    },
+    "South Sudan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Sao Tome and Principe": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Suriname": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Slovakia": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Bernese Mountain Dog",
+            "Siberian Husky",
+            "Alaskan Malamute"
+        ]
+    },
+    "Slovenia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Sweden": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Alaskan Malamute",
+            "Saint Bernard",
+            "Siberian Husky"
+        ]
+    },
+    "Eswatini": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Sint Maarten (Dutch part)": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Seychelles": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Syrian Arab Republic": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Turks and Caicos Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Chad": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Togo": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Golden Retriever",
+            "Beagle"
+        ]
+    },
+    "Thailand": {
+        "climate": "tropical",
+        "suitable_breeds": [
+            "Rajapalayam",
+            "Chihuahua",
+            "Basenji"
+        ]
+    },
+    "Tajikistan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Tokelau": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Turkmenistan": {
+        "climate": "arid",
+        "suitable_breeds": [
+            "Canaan Dog",
+            "Azawakh",
+            "Saluki"
+        ]
+    },
+    "Timor-Leste": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Tonga": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Trinidad and Tobago": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Tunisia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Turkey": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Tuvalu": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Taiwan, Province of China": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Tanzania, United Republic of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Golden Retriever"
+        ]
+    },
+    "Uganda": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "Ukraine": {
+        "climate": "continental",
+        "suitable_breeds": [
+            "Alaskan Malamute",
+            "Siberian Husky",
+            "Saint Bernard"
+        ]
+    },
+    "United States Minor Outlying Islands": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Uruguay": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "United States": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Uzbekistan": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Holy See (Vatican City State)": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Bulldog"
+        ]
+    },
+    "Saint Vincent and the Grenadines": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Venezuela, Bolivarian Republic of": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Beagle",
+            "Labrador Retriever"
+        ]
+    },
+    "Virgin Islands, British": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Virgin Islands, U.S.": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Beagle",
+            "Bulldog"
+        ]
+    },
+    "Viet Nam": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Bulldog",
+            "Beagle"
+        ]
+    },
+    "Vanuatu": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Golden Retriever",
+            "Labrador Retriever"
+        ]
+    },
+    "Wallis and Futuna": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Golden Retriever",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Samoa": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Bulldog"
+        ]
+    },
+    "Yemen": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Bulldog",
+            "Labrador Retriever",
+            "Beagle"
+        ]
+    },
+    "South Africa": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Labrador Retriever",
+            "Golden Retriever"
+        ]
+    },
+    "Zambia": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Beagle",
+            "Bulldog",
+            "Labrador Retriever"
+        ]
+    },
+    "Zimbabwe": {
+        "climate": "temperate",
+        "suitable_breeds": [
+            "Labrador Retriever",
+            "Beagle",
+            "Golden Retriever"
+        ]
+    }
+}

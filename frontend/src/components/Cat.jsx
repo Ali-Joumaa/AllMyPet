@@ -6,7 +6,7 @@ const Cat = ({ name, imageUrl }) => {
     <div className="card" style={{ width: "18rem", margin: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
       {/* Image on top */}
       <img
-        src={pitterImage} // Pass the image URL as a prop
+        src={imageUrl} // Pass the image URL as a prop
         className="card-img-top"
         alt={name}
         style={{ height: "200px", objectFit: "cover" }}
@@ -22,7 +22,7 @@ const Cat = ({ name, imageUrl }) => {
         </p>
 
         {/* Button (optional) */}
-        <a href="#" className="btn btn-primary" style={{ backgroundColor: "#675BC8", border: "none" }}>
+        <a href="/#" className="btn btn-primary" style={{ backgroundColor: "#675BC8", border: "none" }}>
           Learn More
         </a>
       </div>
