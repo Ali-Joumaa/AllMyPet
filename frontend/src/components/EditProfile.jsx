@@ -46,7 +46,10 @@ const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
 
     const token = localStorage.getItem("token");
     console.log("🟢 Sending Token:", token);
-
+    console.log("📢 Headers Being Sent:", {
+      Authorization: `Bearer ${token}`,
+    });
+    
     if (!token) {
       alert("No token found. Please log in again.");
       setLoading(false);
@@ -62,24 +65,33 @@ const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
     formData.append("address", profileData.address); // ✅ Fixed key name
 
     try {
+      console.log("📢 Sending Profile Data:", {
+        bio: profileData.bio,
+        yearsPetting: profileData.yearsPetting,
+        address: profileData.address,
+        profilePicture: profileData.profilePicture instanceof File ? "Image File" : profileData.profilePicture,
+      });
+      
       const response = await axios.put(
-        "http://localhost:5555/users/update-profile",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // ✅ Ensure token is included
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+  "http://localhost:5555/users/update-profile",
+  { profilePicture:profileData.profilePictureURL, bio: profileData.bio, yearsPetting: profileData.yearsPetting, address: profileData.address },
+  { headers: { Authorization: `Bearer ${token}` } }
+);
+
+      
 
       console.log("✅ Profile updated successfully:", response.data);
       updateUser(response.data); // ✅ Update profile info in parent component
       onClose(); // ✅ Close modal after success
-    } catch (error) {
-      console.error("❌ Error updating profile:", error.response?.data || error);
-      alert("❌ Failed to update profile.");
-    } finally {
+    }  catch (error) {
+      console.error("❌ Error updating profile:", error.response);
+      if (error.response) {
+          alert(`❌ Backend Error: ${error.response.status} - ${error.response.data.message || "Unknown error"}`);
+      } else {
+          alert("❌ Failed to update profile. No response from server.");
+      }
+  } finally {
+  
       setLoading(false);
     }
   };
@@ -108,7 +120,7 @@ const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
           <input type="number" name="yearsPetting" value={profileData.yearsPetting} onChange={handleInputChange} />
 
           {/* Address Input */}
-          <label>Location:</label>
+          <label>Address:</label>
           <input type="text" name="address" value={profileData.address} onChange={handleInputChange} />
 
           <button type="submit" className="edit-modal-save-btn" disabled={loading}>
