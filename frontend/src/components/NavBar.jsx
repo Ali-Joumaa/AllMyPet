@@ -78,17 +78,18 @@ function NavBar() {
                         // Logged-in User View
                         <div className="user-info">
                             {/* ✅ Profile Picture (Clickable) */}
-                            <img 
+                            
+                            
+                            {/* ✅ Username (Clickable) */}
+                            <button className="username-button" onClick={() => navigate(`/profile/${user.username}`)}>
+                                <img 
                                 src={user.profilePictureURL || "/default-user.png"} 
                                 alt="User Profile" 
                                 className="user-avatar" 
                                 onClick={() => navigate(`/profile/${user.username}`)} // ✅ Navigates to the correct profile
                                 style={{ cursor: "pointer" }} 
                             />
-                            
-                            {/* ✅ Username (Clickable) */}
-                            <button className="username-button" onClick={() => navigate(`/profile/${user.username}`)}>
-                                Welcome, {user.username || "User"}!
+                            {user.username || "User"}
                             </button>
 
                             {/* Logout Button */}

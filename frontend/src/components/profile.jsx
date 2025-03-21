@@ -65,6 +65,9 @@ const Profile = () => {
               profilePic={userData.profilePictureURL || "/default-profile.png"}
               username={userData.username || "User"}
               bio={userData.bio || "No bio available"}
+              yearsPetting={userData.yearsPetting || 0}
+              address={userData.address || "Nothing"}
+
             />
 
             {/* ✅ Tabs Section with Add Pet Button */}

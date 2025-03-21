@@ -114,11 +114,6 @@
     color: white;
 }
 
-.user-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
 /* ============================= */
 /* 🔹 Responsive Adjustments 🔹 */
@@ -220,3 +215,17 @@
     overflow: hidden;
   }
   
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 30px;  /* ✅ Smaller size */
+    margin-right: 2vh;
+    height: 30px; /* ✅ Keep it proportional */
+    border-radius: 50%; /* ✅ Fully rounded */
+    object-fit: cover; /* ✅ Ensures proper fit */
+}

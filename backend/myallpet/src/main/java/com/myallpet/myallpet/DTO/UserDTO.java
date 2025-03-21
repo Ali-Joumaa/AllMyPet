@@ -29,7 +29,7 @@ public class UserDTO {
         this.firstname = user.getFirstname();
         this.lastname = user.getLastname();
         this.role = user.getRole();
-        this.bio = user.getBio();
+        this.bio = user.getBio(); 
         this.profilePictureURL = user.getUserProfilePicture();
         this.yearsPetting = user.getYearsPetting();
         this.address = user.getAddress();
