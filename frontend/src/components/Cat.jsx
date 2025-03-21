@@ -1,7 +1,7 @@
 import React from "react";
 import pitterImage from "../images/pitter.png";
 
-const Cat = ({ name, imageUrl }) => {
+const Cat = ({ name, imageUrl, description }) => {
   return (
     <div className="card" style={{ width: "18rem", margin: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
       {/* Image on top */}
@@ -18,7 +18,7 @@ const Cat = ({ name, imageUrl }) => {
           {name}
         </h5>
         <p className="card-text" style={{ fontSize: "0.9rem", color: "#555" }}>
-          This is a {name} cat that can survive the weather in your city.
+          {description? description: "no description"}
         </p>
 
         {/* Button (optional) */}
