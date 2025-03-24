@@ -5,6 +5,7 @@ import com.myallpet.myallpet.Models.User;
 import com.myallpet.myallpet.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -51,30 +52,22 @@ public class UserController {
         return new UserDTO(user);
     }
 
-   @PutMapping("/update-profile")
-public UserDTO updateUserProfile(
-    @AuthenticationPrincipal UserDetails userDetails, 
-    @RequestBody UserDTO updatedUserData
-) {    System.out.println("✅✅✅✅✅✅✅✅");
+
+    @PutMapping("/update-profile")
+public ResponseEntity<UserDTO> updateUserProfile(
+        @AuthenticationPrincipal UserDetails userDetails, 
+        @RequestBody UserDTO updatedUserData) {
 
     if (userDetails == null) {
-        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized - No user logged in.");
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null); // 🔴 Unauthorized if user is not logged in
     }
 
-    System.out.println("🔎 Authenticated User: " + userDetails.getUsername()); // ✅ Debugging
-
-    // Fetch the logged-in user
     User user = userService.findByUsername(userDetails.getUsername());
     if (user == null) {
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found.");
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // 🔴 Return 404 if user is not found
     }
 
-    // ✅ Debug Logging Incoming Data
-    System.out.println("🔄 Incoming Bio: " + updatedUserData.getBio());
-    System.out.println("🔄 Incoming YearsPetting: " + updatedUserData.getYearsPetting());
-    System.out.println("🔄 Incoming Location: " + updatedUserData.getAddress());
-
-    // ✅ Update user details only if they are provided
+    // ✅ Update fields safely
     if (updatedUserData.getBio() != null) {
         user.setBio(updatedUserData.getBio());
     }
@@ -82,17 +75,15 @@ public UserDTO updateUserProfile(
         user.setYearsPetting(updatedUserData.getYearsPetting());
     }
     if (updatedUserData.getAddress() != null) {
-        user.setAddress(updatedUserData.getAddress()); // ✅ Fixed: `address` instead of `location`
-    }
-
-    if (updatedUserData.getProfilePictureURL() != null && !updatedUserData.getProfilePictureURL().isEmpty()) {
-        user.setUserProfilePicture(updatedUserData.getProfilePictureURL());
+        user.setAddress(updatedUserData.getAddress());
     }
 
     User updatedUser = userService.save(user);
-    
-    return new UserDTO(updatedUser);
+
+    // ✅ Ensure a valid response is returned
+    return ResponseEntity.ok(new UserDTO(updatedUser)); // ✅ This ensures the frontend gets a response
 }
+
 
 
     // ✅ Exception Handling
