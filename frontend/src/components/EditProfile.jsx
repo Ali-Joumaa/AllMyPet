@@ -76,9 +76,7 @@ const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
         alert(
           `❌ Backend Error: ${error.response.status} - ${error.response.data.message || "Unknown error"}`
         );
-      } else {
-        alert("❌ Failed to update profile. No response from server.");
-      }
+      } 
     } finally {
       setLoading(false);
     }
