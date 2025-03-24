@@ -7,14 +7,14 @@ import "./profileInfo.css";
 
 const ProfileInfo = ({ profilePic, username, bio, yearsPetting, address, updateUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [userInfo, setUserInfo] = useState({
-    profilePic: profilePic || "",
-    username: username || "",
-    bio: bio || "",
-    yearsPetting: yearsPetting !== undefined ? yearsPetting : null,
-    address: address || "Not set",
-  });
-  
+const [userInfo, setUserInfo] = useState({
+  profilePic: profilePic || "",
+  username: username || "",
+  bio: bio || "",
+  yearsPetting: yearsPetting !== undefined ? yearsPetting : null,
+  address: address || "Not set",
+});
+
 
   // ✅ Sync `userInfo` when props update (fix missing updates)
   useEffect(() => {
