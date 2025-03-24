@@ -4,7 +4,7 @@ import "./EditProfile.css";
 
 const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
   const [profileData, setProfileData] = useState({
-    profilePicture: "",
+    profilePictureURL: "",
     bio: "",
     yearsPetting: "",
     address: "",
@@ -14,12 +14,15 @@ const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log("🟢 Synced Profile Data:", userData);
+
     if (userData) {
       setProfileData({
-        profilePicture: userData.profilePictureURL || "",
+        profilePictureURL: userData.profilePictureURL || "",
         bio: userData.bio || "",
         yearsPetting: userData.yearsPetting || "",
         address: userData.address || "",
+        
       });
 
       setPreviewImage(userData.profilePictureURL || "/default-profile.png");
@@ -97,7 +100,7 @@ const EditProfile = ({ isOpen, onClose, userData, updateUser }) => {
           <input
             type="text"
             name="profilePicture"
-            value={profileData.profilePicture}
+            value={profileData.profilePictureURL}
             onChange={handleInputChange}
           />
           <img
