@@ -77,7 +77,10 @@ public ResponseEntity<UserDTO> updateUserProfile(
     if (updatedUserData.getAddress() != null) {
         user.setAddress(updatedUserData.getAddress());
     }
-
+    if (updatedUserData.getProfilePictureURL() != null) {
+        user.setUserProfilePicture(updatedUserData.getProfilePictureURL());
+    }
+    
     User updatedUser = userService.save(user);
 
     // ✅ Ensure a valid response is returned
