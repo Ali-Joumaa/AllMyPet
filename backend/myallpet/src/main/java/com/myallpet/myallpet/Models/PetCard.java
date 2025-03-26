@@ -20,7 +20,7 @@ public class PetCard {
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
   
-      private Integer petId;
+      private Long petId;
 
       @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
       @JoinColumn(name = "userId", nullable = false)
