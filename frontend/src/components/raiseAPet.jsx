@@ -73,7 +73,9 @@ const RaiseAPet = () => {
     setPets([]);
 
     try {
-      const countryName = location.trim();
+      let countryName = location.trim();
+      countryName = countryName.charAt(0).toUpperCase() + countryName.slice(1);
+
       if (!countryData[countryName]) {
         setError("No data found for this country.");
       } else {
