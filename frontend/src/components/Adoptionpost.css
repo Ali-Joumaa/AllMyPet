@@ -1,0 +1,126 @@
+.adoption-card {
+  background-color: #ffffff;
+  color: black;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto; /* Centers the card */
+}
+
+.adoption-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px; 
+}
+
+.adoption-profile {
+  display: flex;
+  align-items: center;
+}
+
+.adoption-profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.adoption-pet-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50% ;
+  border-color: #9373db;
+  margin-right: 10px;
+}
+
+.adoption-user-info h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.adoption-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.adoption-available-btn {
+  background-color: #9373db;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.adoption-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.adoption-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.adoption-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.adoption-toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 30px;
+}
+
+.toggle-label{
+  font-size: 20px;
+  color:#9373db;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.adoption-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.adoption-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px;
+  transition: 0.4s;
+  border: 1px solid #9373db;
+}
+
+.adoption-toggle input:checked + .adoption-slider {
+  background-color: #9373db;
+}
+
+.adoption-description {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.adoption-type {
+  color: #9373db;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: left;
+  font-weight: bold;
+}

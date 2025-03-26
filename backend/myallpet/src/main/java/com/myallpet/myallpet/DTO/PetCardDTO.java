@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PetCardDTO {
-    private Integer petId;
+    private Long petId;
     private String name;
     private String species;
     private String breed;
@@ -18,12 +18,5 @@ public class PetCardDTO {
     private String location;
     private String status;
     private Long userId;
-    // public String getVaccines() {
-        // TODO Auto-generated method stub
-    //     throw new UnsupportedOperationException("Unimplemented method 'getVaccines'");
-    // }
-    // public String getHealthInfo() {
-    //   // TODO Auto-generated method stub
-    //   throw new UnsupportedOperationException("Unimplemented method 'getHealthInfo'");
-    // }
+    
 }
