@@ -3,6 +3,8 @@
   flex-direction: column;
   width: 100%;
   max-width: 350px;
+  min-height: 500px;
+  max-height: 500px;
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
@@ -16,19 +18,18 @@
   transform: scale(1.02);
 }
 
-/* Responsive Image */
 .pet-card-image {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: cover;
 }
 
-/* Responsive Content */
 .pet-card-content {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .pet-card-header {
@@ -63,61 +64,70 @@
   margin-right: 4px;
 }
 
-/* Info Grid Adjustments */
 .pet-card-info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
 }
 
-/* Adjust Grid Layout for Small Screens */
-@media (max-width: 480px) {
-  .pet-card-info-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 .pet-card-tag {
-  background-color: #EAE8F7;
-  color: #2E256F;
+  background-color: #eae8f7;
+  color: #2e256f;
   padding: 4px 8px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: bold;
+
+  /* Truncate long values */
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.pet-card-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
 
 .pet-card-description {
-  font-size: 14px;
+  font-size: 12px;
   color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 12px;
 }
 
-/* More Info Button */
 .pet-card-more-info {
   padding: 10px;
   background-color: white;
-  color: #6B46C1;
-  border: 2px solid #6B46C1;
+  color: #6b46c1;
+  border: 2px solid #6b46c1;
   border-radius: 8px;
   font-size: 14px;
   font-weight: bold;
   cursor: pointer;
-  text-align: center;
   width: 100%;
 }
 
 .pet-card-more-info:hover {
-  background-color: #6B46C1;
+  background-color: #6b46c1;
   color: white;
 }
 
-/* Larger Screens (Tablets & Desktops) */
 @media (min-width: 600px) {
   .pet-card {
     max-width: 400px;
   }
 }
 
-/* Smaller Screens (Phones) */
 @media (max-width: 480px) {
   .pet-card {
     max-width: 100%;
@@ -135,5 +145,13 @@
   .pet-card-more-info {
     font-size: 13px;
     padding: 8px;
+  }
+
+  .pet-card-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-card-tag {
+    max-width: 90px;
   }
 }
