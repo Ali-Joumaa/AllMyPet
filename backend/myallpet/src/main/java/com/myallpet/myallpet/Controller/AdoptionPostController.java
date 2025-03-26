@@ -110,6 +110,7 @@ public ResponseEntity<AdoptionPostDTO> createAdoptionPost(
     // ✅ Set user object with username
     UserDTO userDTO = new UserDTO();
     userDTO.setUsername(post.getUser().getUsername());
+    userDTO.setProfilePictureURL(post.getUser().getUserProfilePicture()); 
     dto.setUser(userDTO);
 
     dto.setPetId(post.getPetCard().getPetId());

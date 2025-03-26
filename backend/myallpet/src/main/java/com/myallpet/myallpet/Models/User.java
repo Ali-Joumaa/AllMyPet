@@ -112,4 +112,8 @@ public class User implements UserDetails {
         this.password = password;
         this.email = email;
     }
+    public Object getProfileImageUrl() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getProfileImageUrl'");
+    }
 }

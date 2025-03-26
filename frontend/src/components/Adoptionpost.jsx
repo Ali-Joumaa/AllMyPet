@@ -2,12 +2,14 @@ import React from "react";
 import "./Adoptionpost.css";
 
 const AdoptionPost = ({data}) => {
+  console.log(data.user.profilePictureURL);
+  // console.log(data.imageURL);
   return (
     <div className="adoption-card">
       <div className="adoption-header">
         <div className="adoption-profile">
           <img
-            src={data.profileImage}
+            src={data.user.profilePictureURL}
             alt="Profile"
             className="adoption-profile-pic"
           />
@@ -25,7 +27,7 @@ const AdoptionPost = ({data}) => {
           <label className="adoption-toggle">
             {/* <input type="checkbox" defaultChecked={data.toggleChecked} /> */}
             <img
-            src={data.petImage}
+            src={data.imageURL}
             alt="Profile"
             className="adoption-pet-pic"
           />

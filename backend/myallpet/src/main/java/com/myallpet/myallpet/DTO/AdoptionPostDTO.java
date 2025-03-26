@@ -24,4 +24,6 @@ public class AdoptionPostDTO {
     private String petSpecies; // This can be helpful for filtering or quick views without needing additional requests
     private String petBreed;  // Including pet breed might be relevant for users looking for specific types of pets
     private String imageUrl;  // Image URL if the post includes pictures of the pet
+    private String profilePictureURL;
+
 }
