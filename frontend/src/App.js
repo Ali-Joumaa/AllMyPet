@@ -10,6 +10,7 @@ import SignUp from "./components/SignUp";
 import ForgetPassword from "./components/ForgetPassword";
 import Adopt from "./components/Adopt";
 import Profile from "./components/profile"
+import AddVetPage from "./components/AddVetPage"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
         <Route path="/raisePets" element={<RaisePet />} />  {/* Raise a pet Page */}
         <Route path="/vets" element={<VetsPage />} />  {/* Vets Page */}
         <Route path="/adopt" element={<Adopt />} />
+        <Route path="/addvet" element={<AddVetPage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />

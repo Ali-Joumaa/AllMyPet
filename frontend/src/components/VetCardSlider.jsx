@@ -19,13 +19,20 @@ export default function VetCardSlider({ vets }) {
       <Swiper
         modules={[Navigation]}
         spaceBetween={10}
-        slidesPerView={3} // Adjust for responsiveness
+        slidesPerView={3}
         navigation={{ nextEl: ".right", prevEl: ".left" }}
         loop={true}
+        centeredSlides={true}
+        breakpoints={{
+          480: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+        className="vet-slider"
       >
         {vets.map((vet, index) => (
           <SwiperSlide key={index}>
-            <VetCard vet={vet} /> {/* VetCard handles everything */}
+            <VetCard vet={vet} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -35,5 +42,6 @@ export default function VetCardSlider({ vets }) {
         <img src={rightArrow} alt="Right Arrow" />
       </div>
     </div>
+    
   );
 }

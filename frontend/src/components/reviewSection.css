@@ -5,12 +5,10 @@
   font-weight: 500;
   font-size: 32px;
   line-height: 38.73px;
-  letter-spacing: 0%;
   text-align: center;
   color: #0C0C0C;
   width: 50%;
   max-width: 513px;
-  height: auto;
   margin: 30px auto;
 }
 
@@ -28,39 +26,52 @@
   text-align: center;
 }
 
-.reviews-container {
+.swiper-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  position: relative;
   width: 100%;
   max-width: 1200px;
-  position: relative;
+}
+
+.reviews-container {
+  width: 100%;
+  max-width: 900px;
   overflow: hidden;
   min-height: 300px;
+  display: flex;
+  justify-content: center; /* Ensure items are centered */
+  align-items: center;
 }
 
 .review-card {
   height: 100%;
+  margin: 0 auto; /* Ensures the cards are always centered */
 }
 
-.slider-arrow {
-  width: 40px;
-  height: 40px;
-  border-radius: 90px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
+/* Fixing Arrows Placement */
+.custom-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
 }
 
 .left-arrow {
-  left: 0;
+  left: 10px;
 }
 
 .right-arrow {
-  right: 0;
+  right: 10px;
+}
+
+.custom-arrow img {
+  width: 100%;
+  height: auto;
 }
 
 .slider-arrow:hover {
@@ -91,61 +102,52 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .reviews-container {
-      justify-content: center;
-      max-width: 700px;
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-  
-    .review-card {
-      width: 45%;
-      max-width: 340px;
-    }
-  
-    .slider-arrow {
-      display: block;
-      width: 35px;
-      height: 35px;
-    }
+  .reviews-container {
+    max-width: 700px;
+    justify-content: center;
+  }
+  .custom-arrow {
+    width: 35px;
+    height: 35px;
+  }
+  .left-arrow {
+    left: -20px;
+  }
+  .right-arrow {
+    right: -20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .reviews-container {
-      justify-content: center;
-      max-width: 500px;
-      flex-wrap: wrap;
-    }
-  
-    .review-card {
-      width: 90%;
-      max-width: 400px;
-    }
-  
-    .write-review-btn {
-      width: 100%;
-      max-width: 250px;
-    }
-
-    .slider-arrow {
-      width: 30px;
-      height: 30px;
-    }
+  .reviews-container {
+    max-width: 500px;
+    justify-content: center;
+  }
+  .custom-arrow {
+    width: 30px;
+    height: 30px;
+  }
+  .left-arrow {
+    left: 5px;
+  }
+  .right-arrow {
+    right: 5px;
+  }
 }
 
 @media screen and (max-width: 480px) {
-    .reviews-container {
-      justify-content: center;
-      max-width: 400px;
-    }
-  
-    .review-card {
-      width: 100%;
-    }
-
-    .slider-arrow {
-      width: 28px;
-      height: 28px;
-    }
+  .reviews-container {
+    max-width: 400px;
+    justify-content: center;
+  }
+  .custom-arrow {
+    width: 25px;
+    height: 25px;
+  }
+  .left-arrow {
+    left: 0px;
+  }
+  .right-arrow {
+    right: 0px;
+  }
 }
