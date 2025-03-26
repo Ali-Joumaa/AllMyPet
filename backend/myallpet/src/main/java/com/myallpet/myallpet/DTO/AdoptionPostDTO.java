@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
+
 @Data
 @NoArgsConstructor
 public class AdoptionPostDTO {
@@ -14,8 +15,10 @@ public class AdoptionPostDTO {
     private Long userId; // Reference to the user who created the post
     private Long petId;  // Reference to the pet being adopted
     private String title;
+    private UserDTO user;
     private String description;
     private String status;  // Status might include values like 'Available', 'Pending', 'Adopted'
+    private String adoptionType;  // Type of adoption, e.g., 'Foster', 'Adopt', 'Temporary'
     private LocalDate postedDate;
     private String petName; // Optionally include some pet details directly if commonly displayed
     private String petSpecies; // This can be helpful for filtering or quick views without needing additional requests

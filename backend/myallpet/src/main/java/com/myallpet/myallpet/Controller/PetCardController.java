@@ -8,6 +8,8 @@ import com.myallpet.myallpet.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +46,13 @@ public class PetCardController {
         return ResponseEntity.ok(petCards);
     }
 
+    @GetMapping("/mine")
+    public ResponseEntity<List<PetCardDTO>> getMyPets(@AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        List<PetCardDTO> pets = petCardService.getPetCardsByUsername(username);
+        return ResponseEntity.ok(pets);
+    }   
+
     // ✅ **Get Pet Card by ID**
     @GetMapping("/{petId}")
     public ResponseEntity<?> getPetCardById(@PathVariable Long petId) {
@@ -51,6 +60,7 @@ public class PetCardController {
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
 
     // ✅ **Update Pet Card (Only Owner Can Update)**
     @PutMapping("/update/{petId}")
@@ -66,4 +76,7 @@ public class PetCardController {
         petCardService.deletePetCard(petId, username);
         return ResponseEntity.ok("Pet card deleted successfully.");
     }
+
+
+    
 }

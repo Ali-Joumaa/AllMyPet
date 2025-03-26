@@ -1,0 +1,148 @@
+/* Add Button */
+.adopt-add-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #9373db;
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Modal Background */
+.adopt-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+/* Modal Content */
+.adopt-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    position: relative;
+    z-index: 1001;
+}
+
+/* Close Button */
+.adopt-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* Form Styling */
+.adopt-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.adopt-form label {
+    margin-top: 10px;
+}
+
+.adopt-form input,
+.adopt-form textarea,
+.adopt-form select {
+    margin-top: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.adopt-form button {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #9373db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.adoption-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+    color: #555;
+    font-size: 18px;
+  }
+  
+  .adoption-placeholder.loading {
+    background-color: #fffbe6;
+    color: #a88f00;
+    font-weight: 500;
+  }
+  
+  .adoption-placeholder.empty {
+    background-color: #f0f0f0;
+    color: #777;
+  }
+  
+  .placeholder-image {
+    width: 100px;
+    height: auto;
+    margin-bottom: 15px;
+    opacity: 0.5;
+  }
+  
+  .adoption-posts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    padding: 20px;
+  }
+  
+  .adoption-card-wrapper {
+    flex: 1 1 400px;
+    max-width: 600px;
+  }
+  
+  .adoption-card {
+    width: 100%;
+    margin: 0; /* Remove previous margin */
+  }
+  .adoption-card {
+    animation: fadeIn 0.4s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main-content {
+    flex: 1; /* Fills the remaining space */
+    padding-bottom: 40px;
+  }
+    
