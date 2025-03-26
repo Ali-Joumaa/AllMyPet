@@ -1,14 +1,14 @@
 import React from "react";
-import { FaMapMarkerAlt } from "react-icons/fa"; // Import location icon
+import { FaMapMarkerAlt } from "react-icons/fa"; // Import address icon
 import "./bio.css"; // Import the CSS file
 
-const Bio = ({ bio, location, yearsPetting }) => {
+const Bio = ({ bio, address, yearsPetting }) => {
   return (
     <div className="bio-container">
-      {/* Location with React Icon */}
-      <p className="bio-location">
+      {/* address with React Icon */}
+      <p className="bio-address">
         <FaMapMarkerAlt className="icon" />
-        {location || "Location not set"}
+        {address || "address not set"}
       </p>
 
       {/* Years of Petting with Paw Image */}
