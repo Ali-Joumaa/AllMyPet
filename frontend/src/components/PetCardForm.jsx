@@ -16,42 +16,75 @@ export default function PetCardForm() {
     location: "",
     status: "Available",
   });
-
+ 
   const [previewImage, setPreviewImage] = useState("/default-pet.png");
   const [isUrlMode, setIsUrlMode] = useState(true);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
+ 
     if (name === "petPhoto") {
       setIsUrlMode(true);
       setPreviewImage(value || "/default-pet.png");
     }
   };
-
+ 
+  const [fileInput, setFileInput] = useState(null);
+ 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setPreviewImage(imageUrl);
       setIsUrlMode(false);
-      setFormData({ ...formData, petPhoto: "" }); // Clear URL input
+      setFileInput(file);
+      setFormData({ ...formData, petPhoto: "" });
     }
   };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("📤 Pet Card Submitted:", formData);
-  };
+    const token = localStorage.getItem("token");
+    try {
+      const formPayload = new FormData();
+      // Append text fields
+      Object.keys(formData).forEach((key) => {
+        if (key !== "petPhoto") formPayload.append(key, formData[key]);
+      });
+      // Append file if in file mode
+      if (!isUrlMode && fileInput) {
+        formPayload.append("petPhotoFile", fileInput);
+      } else {
+        formPayload.append("petPhoto", formData.petPhoto); // URL string
+      }
+ 
+      const response = await fetch("http://localhost:5555/api/pets/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+      
 
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error("Error creating pet card:", errorData);
+        return;
+      }
+ 
+      const createdPetCard = await response.json();
+      console.log("Pet card created successfully:", createdPetCard);
+    } catch (error) {
+      console.error("Error creating pet card:", error);
+    }
+  };
   return (
     <div className="pet-card-container">
       <div className="left-section">
         <h2 className="title">Create a <span className="highlight">Pet Card</span> 🐾</h2>
         <img src={previewImage} alt="Pet Preview" className="pet-image" />
       </div>
-
       <div className="right-section">
         <h2 className="form-title">Fill in the details 🐶</h2>
         <form className="pet-form" onSubmit={handleSubmit}>
@@ -64,7 +97,6 @@ export default function PetCardForm() {
               <FaDog className="icon" />
               <input type="text" name="species" placeholder="Species (e.g., Dog, Cat)" required onChange={handleChange} />
             </div>
-
             <div className="input-group">
               <FaInfoCircle className="icon" />
               <input type="text" name="breed" placeholder="Breed (Optional)" onChange={handleChange} />
@@ -72,7 +104,6 @@ export default function PetCardForm() {
             <div className="input-group">
               <input type="number" name="age" placeholder="Age (Years)" required onChange={handleChange} />
             </div>
-
             <div className="input-group">
               <select name="sex" onChange={handleChange}>
                 <option value="Male">Male</option>
@@ -108,7 +139,6 @@ export default function PetCardForm() {
             <div className="input-group full-width">
               <textarea name="description" placeholder="Short Description (Optional)" rows="2" onChange={handleChange}></textarea>
             </div>
-
             {/* Vaccines & Health Info are now independent! */}
             <div className="input-group">
               <textarea name="vaccines" placeholder="Vaccines (Optional)" rows="3" onChange={handleChange}></textarea>
@@ -116,7 +146,6 @@ export default function PetCardForm() {
             <div className="input-group">
               <textarea name="healthInfo" placeholder="Health Info (Optional)" rows="3" onChange={handleChange}></textarea>
             </div>
-
             <div className="input-group">
               <FaCheck className="icon" />
               <select name="status" onChange={handleChange}>
@@ -125,7 +154,7 @@ export default function PetCardForm() {
               </select>
             </div>
           </div>
-
+ 
           <button type="submit" className="submit-button">Create Pet Card</button>
         </form>
       </div>

@@ -111,4 +111,12 @@ public class PetCardService {
             pet.getUser().getUserId()
         );
     }
+    public List<PetCard> getPetEntitiesByUsername(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    
+        return petCardRepository.findByUser(user);
+    }
+    
+    
 }

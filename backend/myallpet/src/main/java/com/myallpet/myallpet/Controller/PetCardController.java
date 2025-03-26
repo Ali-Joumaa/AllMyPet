@@ -46,13 +46,6 @@ public class PetCardController {
         return ResponseEntity.ok(petCards);
     }
 
-    @GetMapping("/mine")
-    public ResponseEntity<List<PetCardDTO>> getMyPets(@AuthenticationPrincipal UserDetails userDetails) {
-        String username = userDetails.getUsername();
-        List<PetCardDTO> pets = petCardService.getPetCardsByUsername(username);
-        return ResponseEntity.ok(pets);
-    }   
-
     // ✅ **Get Pet Card by ID**
     @GetMapping("/{petId}")
     public ResponseEntity<?> getPetCardById(@PathVariable Long petId) {
@@ -76,6 +69,22 @@ public class PetCardController {
         petCardService.deletePetCard(petId, username);
         return ResponseEntity.ok("Pet card deleted successfully.");
     }
+
+    @GetMapping("/mine")
+    public ResponseEntity<List<PetCardDTO>> getMyPets(@AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        List<PetCardDTO> pets = petCardService.getPetCardsByUsername(username); // DTO
+        return ResponseEntity.ok(pets);
+    }
+    
+    @GetMapping("/myPets")
+    public ResponseEntity<List<PetCard>> getMyPetCards(Authentication authentication) {
+        String username = authentication.getName();
+        List<PetCard> myPetCards = petCardService.getPetEntitiesByUsername(username); // ENTITIES
+        return ResponseEntity.ok(myPetCards);
+    }
+    
+
 
 
     
