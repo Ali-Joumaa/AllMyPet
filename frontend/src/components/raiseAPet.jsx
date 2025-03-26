@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cat from "./Cat";
 import "./raiseAPet.css";
 import "./topHomePage.css";
-import DogAndCatImage from "../images/DogAndCat.svg";
+import DogAndCatImage from "../images/raiseAPet.png";
 
 const RaiseAPet = () => {
   const [location, setLocation] = useState("");
