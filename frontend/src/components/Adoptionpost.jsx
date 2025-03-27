@@ -7,7 +7,7 @@ const AdoptionPost = ({data}) => {
       <div className="adoption-header">
         <div className="adoption-profile">
           <img
-            src={data.profileImage}
+            src={data.user.userProfileURL}
             alt="Profile"
             className="adoption-profile-pic"
           />
@@ -25,9 +25,9 @@ const AdoptionPost = ({data}) => {
           <label className="adoption-toggle">
             {/* <input type="checkbox" defaultChecked={data.toggleChecked} /> */}
             <img
-            src={data.petImage}
+            src={data.imageUrl}
             alt="Profile"
-            className="adoption-pet-pic"
+            className="adoption-p et-pic"
           />
             {/* <span className="adoption-slider"></span> */}
           </label>
