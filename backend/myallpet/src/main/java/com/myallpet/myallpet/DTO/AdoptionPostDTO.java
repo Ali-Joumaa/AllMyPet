@@ -25,4 +25,5 @@ public class AdoptionPostDTO {
     private String petBreed;  // Including pet breed might be relevant for users looking for specific types of pets
     private String imageUrl;  // Image URL if the post includes pictures of the pet
     private String profileImage;  // Image URL if the post includes pictures of the pet
+
 }

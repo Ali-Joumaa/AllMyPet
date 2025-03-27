@@ -2,13 +2,15 @@ import React from "react";
 import "./Adoptionpost.css";
 
 const AdoptionPost = ({data}) => {
-  console.log(data.imageUrl);
+  console.log(data.user.profilePictureURL);
+  // console.log(data.imageURL);
   return (
     <div className="adoption-card">
       <div className="adoption-header">
         <div className="adoption-profile">
           <img
             src={data.user.userProfileURL}
+
             alt="Profile"
             className="adoption-profile-pic"
           />
