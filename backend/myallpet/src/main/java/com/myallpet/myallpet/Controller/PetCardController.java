@@ -26,7 +26,8 @@ public class PetCardController {
 
     // ✅ **Create a Pet Card**
     @PostMapping("/create")
-      public ResponseEntity<?> createPetCard(@RequestBody PetCardDTO petCardDTO, Authentication authentication) {
+    public ResponseEntity<?> createPetCard(@RequestBody PetCardDTO petCardDTO, Authentication authentication)
+     {
         if (authentication == null || authentication.getName() == null) {
           System.out.println("🚨 Unauthorized Request: No Authentication Provided.");
           return ResponseEntity.status(403).body("Unauthorized: No authentication provided.");
