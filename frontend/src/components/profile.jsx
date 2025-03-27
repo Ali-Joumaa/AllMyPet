@@ -121,7 +121,7 @@ const Profile = () => {
                       <PetCard
                         key={pet.id}
                         petName={pet.name}
-                        petImage={pet.image}
+                        petImage={pet.petPhoto}
                         petBreed={pet.breed}
                         petGender={pet.gender}
                         petAge={pet.age}

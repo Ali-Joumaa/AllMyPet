@@ -77,13 +77,13 @@ public class PetCardController {
         return ResponseEntity.ok(pets);
     }
     
-    @GetMapping("/myPets")
-    public ResponseEntity<List<PetCard>> getMyPetCards(Authentication authentication) {
-        String username = authentication.getName();
-        List<PetCard> myPetCards = petCardService.getPetEntitiesByUsername(username); // ENTITIES
-        return ResponseEntity.ok(myPetCards);
-    }
-    
+@GetMapping("/myPets")
+public ResponseEntity<List<PetCard>> getMyPetCards(Authentication authentication) {
+    String username = authentication.getName();
+    List<PetCard> myPetCards = petCardService.getPetEntitiesByUsername(username); // ENTITIES
+    return ResponseEntity.ok(myPetCards);
+}
+
 
 
 

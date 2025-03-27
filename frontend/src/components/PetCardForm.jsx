@@ -3,6 +3,7 @@ import "./PetCardForm.css";
 import { FaPaw, FaDog, FaInfoCircle, FaMapMarkerAlt, FaCheck, FaCamera } from "react-icons/fa";
 
 export default function PetCardForm() {
+  
   const [formData, setFormData] = useState({
     name: "",
     species: "",
@@ -16,7 +17,6 @@ export default function PetCardForm() {
     location: "",
     status: "Available",
   });
- 
   const [previewImage, setPreviewImage] = useState("/default-pet.png");
   const [isUrlMode, setIsUrlMode] = useState(true);
   const handleChange = (e) => {
@@ -38,7 +38,7 @@ export default function PetCardForm() {
       setPreviewImage(imageUrl);
       setIsUrlMode(false);
       setFileInput(file);
-      setFormData({ ...formData, petPhoto: "" });
+      setFormData({ ...formData, petPhoto: file });
     }
   };
   const handleSubmit = async (e) => {
