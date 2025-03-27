@@ -35,6 +35,8 @@ public class PetCardService {
         petCard.setBreed(petCardDTO.getBreed());
         petCard.setAge(petCardDTO.getAge());
         petCard.setSex(petCardDTO.getSex());
+        petCard.setPetPhoto(petCardDTO.getPetPhoto());
+
         // petCard.setVaccines(petCardDTO.getVaccines());
         // petCard.setHealthInfo(petCardDTO.getHealthInfo());
         petCard.setLocation(petCardDTO.getLocation());
@@ -67,6 +69,7 @@ public class PetCardService {
         petCard.setBreed(petCardDTO.getBreed());
         petCard.setAge(petCardDTO.getAge());
         petCard.setSex(petCardDTO.getSex());
+        petCard.setPetPhoto(petCardDTO.getPetPhoto());
         // petCard.setVaccines(petCardDTO.getVaccines());
         // petCard.setHealthInfo(petCardDTO.getHealthInfo());
         petCard.setLocation(petCardDTO.getLocation());
@@ -111,4 +114,12 @@ public class PetCardService {
             pet.getUser().getUserId()
         );
     }
+    public List<PetCard> getPetEntitiesByUsername(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    
+        return petCardRepository.findByUser(user);
+    }
+    
+    
 }

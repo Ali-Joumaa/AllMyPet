@@ -26,7 +26,8 @@ public class PetCardController {
 
     // ✅ **Create a Pet Card**
     @PostMapping("/create")
-      public ResponseEntity<?> createPetCard(@RequestBody PetCardDTO petCardDTO, Authentication authentication) {
+    public ResponseEntity<?> createPetCard(@RequestBody PetCardDTO petCardDTO, Authentication authentication)
+     {
         if (authentication == null || authentication.getName() == null) {
           System.out.println("🚨 Unauthorized Request: No Authentication Provided.");
           return ResponseEntity.status(403).body("Unauthorized: No authentication provided.");
@@ -45,13 +46,6 @@ public class PetCardController {
         List<PetCard> petCards = petCardService.getAllPetCards();
         return ResponseEntity.ok(petCards);
     }
-
-    @GetMapping("/mine")
-    public ResponseEntity<List<PetCardDTO>> getMyPets(@AuthenticationPrincipal UserDetails userDetails) {
-        String username = userDetails.getUsername();
-        List<PetCardDTO> pets = petCardService.getPetCardsByUsername(username);
-        return ResponseEntity.ok(pets);
-    }   
 
     // ✅ **Get Pet Card by ID**
     @GetMapping("/{petId}")
@@ -76,6 +70,22 @@ public class PetCardController {
         petCardService.deletePetCard(petId, username);
         return ResponseEntity.ok("Pet card deleted successfully.");
     }
+
+    @GetMapping("/mine")
+    public ResponseEntity<List<PetCardDTO>> getMyPets(@AuthenticationPrincipal UserDetails userDetails) {
+        String username = userDetails.getUsername();
+        List<PetCardDTO> pets = petCardService.getPetCardsByUsername(username); // DTO
+        return ResponseEntity.ok(pets);
+    }
+    
+@GetMapping("/myPets")
+public ResponseEntity<List<PetCard>> getMyPetCards(Authentication authentication) {
+    String username = authentication.getName();
+    List<PetCard> myPetCards = petCardService.getPetEntitiesByUsername(username); // ENTITIES
+    return ResponseEntity.ok(myPetCards);
+}
+
+
 
 
     
