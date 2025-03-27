@@ -1,14 +1,16 @@
 .cat {
-    background-color: #ffcc00;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 120px;
-    text-align: center;
-  }
-  
-  .cat h3 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
+  background-color: #ffcc00;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 120px;
+  height: 120px; /* Added to make all components the same height */
+  text-align: center;
+  box-sizing: border-box; /* Ensures padding doesn't increase total size */
+}
+
+.cat h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}

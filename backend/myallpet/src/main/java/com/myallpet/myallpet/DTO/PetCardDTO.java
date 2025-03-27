@@ -7,7 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PetCardDTO {
-    private Integer petId;
+    private Long petId;
     private String name;
     private String species;
     private String breed;
@@ -18,4 +18,5 @@ public class PetCardDTO {
     private String location;
     private String status;
     private Long userId;
+    
 }

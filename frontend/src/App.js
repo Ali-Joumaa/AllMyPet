@@ -9,6 +9,8 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import ForgetPassword from "./components/ForgetPassword";
 import Adopt from "./components/Adopt";
+import Profile from "./components/profile"
+import PetCardForm from "./components/PetCardForm";
 
 
 function App() {
@@ -17,10 +19,11 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />  {/* Home Page */}
-        {/* <Route path="/profile" element={<Profile />} />  Home Page */}
-
+        <Route path="/profile" element={<Profile />} />  Home Page
+        <Route path="/profile/:username" element={<Profile />} /> {/* ✅ View Any User */}
+        <Route path="/petCardForm/:username" element={<PetCardForm />} />
         <Route path="/home" element={<Home />} />  {/* Home Page */}
-        
+        <Route path="/form" element={<PetCardForm />} />
         <Route path="/raisePets" element={<RaisePet />} />  {/* Raise a pet Page */}
         <Route path="/vets" element={<VetsPage />} />  {/* Vets Page */}
         <Route path="/adopt" element={<Adopt />} />

@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "pet_cards")
 @Getter
@@ -17,7 +19,8 @@ import java.time.LocalDateTime;
 public class PetCard {
       @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
-      private Integer petId;
+  
+      private Long petId;
 
       @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
       @JoinColumn(name = "userId", nullable = false)
@@ -65,6 +68,6 @@ public class PetCard {
       @Column(nullable = false)
       private String status;
 
-      @Column(nullable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
-      private LocalDateTime createdAt;
+      @Column(nullable = false, updatable = false)
+      private LocalDateTime createdAt = LocalDateTime.now();
 }

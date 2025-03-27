@@ -10,6 +10,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Min;
@@ -48,6 +50,7 @@ public class User implements UserDetails {
     //     message = "Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character"
     // )
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 
     @NotBlank(message = "First Name is required")
@@ -88,6 +91,7 @@ public class User implements UserDetails {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<PetCard> petCards;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
@@ -107,5 +111,9 @@ public class User implements UserDetails {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+    public Object getProfileImageUrl() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getProfileImageUrl'");
     }
 }

@@ -1,8 +1,7 @@
 package com.myallpet.myallpet.DTO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-
+import com.myallpet.myallpet.Models.User;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,20 +10,28 @@ import lombok.NoArgsConstructor;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDTO {
 
-    private Long id;
+    private Long userId;
     private String username;
     private String email;
     private String firstname;
     private String lastname;
     private String phoneNumber;
-    private String role; // Important for UI logic to display user-specific options based on role
-    private String bio; // User bio or description, potentially useful in community features
+    private String role;
+    private String bio;
+    private String profilePictureURL;  // ✅ User's profile picture
+    private Integer yearsPetting;       // ✅ Years of experience in petting
+    private String address;             // ✅ User's location (renamed from `location` to `address`)
 
-    // Consider whether you might want to expose additional details, depending on privacy considerations:
-    private String profilePictureUrl; // URL to the user's profile picture, enhancing the user profile visually
-
-    // Include lists of DTOs related to the user's activity if needed
-    // These are commented out but can be included based on actual use cases in your application
-    // private List<PetCardDTO> petCards;
-    // private List<AdoptionPostDTO> adoptionPosts;
+    public UserDTO(User user) {
+        this.userId = user.getUserId();
+        this.username = user.getUsername();
+        this.email = user.getEmail();
+        this.firstname = user.getFirstname();
+        this.lastname = user.getLastname();
+        this.role = user.getRole();
+        this.bio = user.getBio(); 
+        this.profilePictureURL = user.getUserProfilePicture();
+        this.yearsPetting = user.getYearsPetting();
+        this.address = user.getAddress();
+    }
 }

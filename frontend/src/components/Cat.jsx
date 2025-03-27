@@ -1,30 +1,65 @@
 import React from "react";
-import pitterImage from "../images/pitter.png";
 
-const Cat = ({ name, imageUrl }) => {
+const Cat = ({ name, imageUrl, description }) => {
   return (
-    <div className="card" style={{ width: "18rem", margin: "10px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+    <div
+      className="card"
+      style={{
+        width: "18rem",
+        height: "400px", // fixed height
+        margin: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        display: "flex",
+        flexDirection: "column"
+      }}
+    >
       {/* Image on top */}
       <img
-        src={pitterImage} // Pass the image URL as a prop
+        src={imageUrl}
         className="card-img-top"
         alt={name}
-        style={{ height: "200px", objectFit: "cover" }}
+        style={{
+          height: "200px",
+          objectFit: "cover"
+        }}
       />
 
       {/* Card body */}
-      <div className="card-body">
-        <h5 className="card-title" style={{ fontSize: "1.25rem", fontWeight: "bold", marginBottom: "10px" }}>
-          {name}
-        </h5>
-        <p className="card-text" style={{ fontSize: "0.9rem", color: "#555" }}>
-          This is a {name} cat that can survive the weather in your city.
-        </p>
+      <div
+        className="card-body"
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between"
+        }}
+      >
+        <div>
+          <h5
+            className="card-title"
+            style={{
+              fontSize: "1.25rem",
+              fontWeight: "bold",
+              marginBottom: "10px"
+            }}
+          >
+            {name}
+          </h5>
+          <p
+            className="card-text"
+            style={{
+              fontSize: "0.9rem",
+              color: "#555"
+            }}
+          >
+            {description ? description : "no description"}
+          </p>
+        </div>
 
-        {/* Button (optional) */}
-        <a href="#" className="btn btn-primary" style={{ backgroundColor: "#675BC8", border: "none" }}>
+        {/* Optional Button */}
+        {/* <a href="/#" className="btn btn-primary" style={{ backgroundColor: "#675BC8", border: "none" }}>
           Learn More
-        </a>
+        </a> */}
       </div>
     </div>
   );

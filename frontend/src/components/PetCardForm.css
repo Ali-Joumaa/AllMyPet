@@ -1,0 +1,102 @@
+.pet-card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8fc;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: auto;
+  gap: 40px;
+}
+
+/* Left Section (Image Preview) */
+.left-section {
+  text-align: center;
+  max-width: 350px;
+}
+
+.left-section .highlight {
+  color: #8e78e0;
+  font-weight: bold;
+}
+
+.pet-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #8e78e0;
+}
+
+/* Right Section (Form) */
+.right-section {
+  width: 60%;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/* Form Layout */
+.pet-form {
+  width: 100%;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #e8e8f9;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.input-group.full-width {
+  grid-column: span 2;
+}
+
+.input-group .icon {
+  color: #8e78e0;
+}
+
+.pet-form input,
+.pet-form select,
+.pet-form textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-size: 1rem;
+  outline: none;
+}
+
+.submit-button {
+  background-color: #8e78e0;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  grid-column: span 2;
+}
+
+/* Toggle button for switching between URL & File upload */
+.toggle-button {
+  background: none;
+  border: none;
+  color: #8e78e0;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
