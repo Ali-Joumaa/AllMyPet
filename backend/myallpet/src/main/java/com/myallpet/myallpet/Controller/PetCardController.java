@@ -37,7 +37,23 @@ public class PetCardController {
       System.out.println("✅ Authenticated User: " + username);
   
       PetCard petCard = petCardService.createPetCard(petCardDTO, username);
-      return ResponseEntity.ok(petCard);
+PetCardDTO responseDTO = new PetCardDTO(
+    petCard.getPetId(),
+    petCard.getName(),
+    petCard.getSpecies(),
+    petCard.getBreed(),
+    petCard.getAge(),
+    petCard.getSex(),
+    petCard.getPetPhoto(),
+    petCard.getDescription(),
+    petCard.getLocation(),
+    petCard.getStatus(),
+    petCard.getUser().getUserId(),
+    petCard.getVaccines(),
+    petCard.getHealthInfo()
+);
+return ResponseEntity.ok(responseDTO); // ✅ safe to return
+
     }
 
     // ✅ **Get All Pet Cards**
@@ -78,13 +94,38 @@ public class PetCardController {
         return ResponseEntity.ok(pets);
     }
     
-@GetMapping("/myPets")
-public ResponseEntity<List<PetCard>> getMyPetCards(Authentication authentication) {
-    String username = authentication.getName();
-    List<PetCard> myPetCards = petCardService.getPetEntitiesByUsername(username); // ENTITIES
-    return ResponseEntity.ok(myPetCards);
-}
-
+    @GetMapping("/myPets")
+    public ResponseEntity<List<PetCardDTO>> getMyPetCards(Authentication authentication) {
+        String username = authentication.getName();
+        System.out.println("Authenticated user: " + username);
+    
+        List<PetCard> petCards = petCardService.getPetEntitiesByUsername(username);
+    
+        if (petCards == null || petCards.isEmpty()) {
+            System.out.println("⚠️ No pet cards found for user: " + username);
+        } else {
+            System.out.println("✅ Found " + petCards.size() + " pet cards:");
+        }
+    
+        List<PetCardDTO> dtoList = petCards.stream().map(pet -> new PetCardDTO(
+                pet.getPetId(),
+                pet.getName(),
+                pet.getSpecies(),
+                pet.getBreed(),
+                pet.getAge(),
+                pet.getSex(),
+                pet.getPetPhoto(),
+                pet.getDescription(),
+                pet.getLocation(),
+                pet.getStatus(),
+                pet.getUser().getUserId(),
+                pet.getVaccines(),
+                pet.getHealthInfo()
+        )).toList();
+    
+        return ResponseEntity.ok(dtoList);
+    }
+    
 
 
 
