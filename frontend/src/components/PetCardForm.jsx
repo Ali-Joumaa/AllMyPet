@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./PetCardForm.css";
+import { useNavigate } from "react-router-dom";
+
 import {
   FaPaw,
   FaDog,
@@ -23,6 +25,8 @@ export default function PetCardForm() {
     location: "",
     status: "Available",
   });
+  const navigate = useNavigate();
+
 
   const [previewImage, setPreviewImage] = useState("/default-pet.png");
 
@@ -61,13 +65,15 @@ export default function PetCardForm() {
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error("❌ Error creating pet card:", errorText);
-        alert("Error: " + errorText);
-        return;
+        throw new Error(errorText || "Unknown error");
       }
-
-      const created = await response.json();
-      console.log("✅ Pet card created:", created);
+  
+      let created = {};
+      try {
+        created = await response.json(); // only if there's a response body
+      } catch (err) {
+        console.warn("No JSON response body (probably 204 or empty)", err);
+      }
 
       // Optionally reset the form
       setFormData({
@@ -85,6 +91,8 @@ export default function PetCardForm() {
       });
       setPreviewImage("/default-pet.png");
       alert("Pet card created successfully!");
+      navigate("/profile"); // or `/profile/${created.userId}` if you want dynamic
+
     } catch (err) {
       console.error("❌ Submission error:", err);
     }

@@ -54,14 +54,13 @@ const Profile = () => {
         setUserPets(response.data);
       } catch (error) {
         console.error("❌ Error fetching pet cards:", error);
-        if (error.response && error.response.status === 403) {
-          console.warn("❌ Forbidden. Redirecting to login.");
-          localStorage.removeItem("token");
-          navigate("/login");
-        }
+        // if (error.response && error.response.status === 403) {
+        //   console.warn("❌ Forbidden. Redirecting to login.");
+        //   localStorage.removeItem("token");
+        //   navigate("/login");
+        // }
       }
     };
-
     Promise.all([fetchProfileData(), fetchUserPets()]).finally(() =>
       setLoading(false)
     );
@@ -119,13 +118,13 @@ const Profile = () => {
                   {userPets.length > 0 ? (
                     userPets.map((pet) => (
                       <PetCard
-                        key={pet.id}
+                        key={pet.petId}
                         petName={pet.name}
                         petImage={pet.petPhoto}
                         petBreed={pet.breed}
-                        petGender={pet.gender}
+                        petGender={pet.sex}
                         petAge={pet.age}
-                        petSize={pet.size}
+                        petSize={pet.species}
                         petLocation={pet.location}
                         petDescription={pet.description}
                       />

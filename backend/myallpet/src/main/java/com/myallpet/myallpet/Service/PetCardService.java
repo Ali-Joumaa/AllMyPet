@@ -37,8 +37,8 @@ public class PetCardService {
         petCard.setSex(petCardDTO.getSex());
         petCard.setPetPhoto(petCardDTO.getPetPhoto());
 
-        // petCard.setVaccines(petCardDTO.getVaccines());
-        // petCard.setHealthInfo(petCardDTO.getHealthInfo());
+        petCard.setVaccines(petCardDTO.getVaccines());
+        petCard.setHealthInfo(petCardDTO.getHealthInfo());
         petCard.setLocation(petCardDTO.getLocation());
         petCard.setStatus("Available");
 
@@ -111,7 +111,9 @@ public class PetCardService {
             pet.getDescription(),
             pet.getLocation(),
             pet.getStatus(),
-            pet.getUser().getUserId()
+            pet.getUser().getUserId(),
+            pet.getVaccines(),
+            pet.getHealthInfo()
         );
     }
     public List<PetCard> getPetEntitiesByUsername(String username) {
