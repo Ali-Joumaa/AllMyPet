@@ -87,12 +87,12 @@ public ResponseEntity<AdoptionPostDTO> createAdoptionPost(
         return ResponseEntity.ok(dtos);
     }
 
-    // Update an adoption post
     @PutMapping("/{id}")
-    public ResponseEntity<AdoptionPost> updateAdoptionPost(@PathVariable Long id, @RequestBody AdoptionPost updatedPost) {
+    public ResponseEntity<AdoptionPostDTO> updateAdoptionPost(@PathVariable Long id, @RequestBody AdoptionPost updatedPost) {
         AdoptionPost post = adoptionPostService.updateAdoptionPost(id, updatedPost);
-        return ResponseEntity.ok(post);
+        return ResponseEntity.ok(convertToDTO(post)); // ✅ This solves the problem
     }
+    
 
     // Delete an adoption post
     @DeleteMapping("/{id}")
