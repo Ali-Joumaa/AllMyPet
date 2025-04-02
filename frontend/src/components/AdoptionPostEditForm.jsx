@@ -23,47 +23,46 @@ function AdoptionPostEditForm({ postData, onPostUpdated, onCancel }) {
   }, [postData]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
-
+  
     if (!token) {
       alert("You're not logged in!");
       return;
     }
-
+  
     try {
-        const response = await fetch(`http://localhost:5555/api/adoption-posts/${postData.id}`, {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(formData),
-          });
-          console.log("Token used for update:", token);
-          
-
+      const response = await fetch(`http://localhost:5555/api/adoption-posts/${postData.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData),
+      });
+  
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(errorText || "Failed to update post");
       }
-
+  
       const updatedPost = await response.json();
-      alert("Post updated successfully!");
-      onPostUpdated(updatedPost); // triggers refresh
+      onPostUpdated(updatedPost);
+      onCancel(); // ✅ Close the edit form automatically
     } catch (error) {
       console.error("❌ Error updating post:", error);
       alert("Update failed: " + error.message);
     }
   };
+  
 
   return (
     <form className="adopt-form" onSubmit={handleSubmit}>

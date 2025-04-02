@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Adoptionpost.css";
 import AdoptionPostEditForm from "./AdoptionPostEditForm";
 
-const AdoptionPost = ({ data, currentUsername, onDelete }) => {
+const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
   const [editMode, setEditMode] = useState(false);
 
   const handleDelete = async () => {
@@ -35,7 +35,9 @@ const AdoptionPost = ({ data, currentUsername, onDelete }) => {
   const handleUpdate = (updatedPost) => {
     alert("Post updated successfully!");
     setEditMode(false);
-    window.location.reload(); // or you can use state to re-render only that post
+    if (onUpdate) {
+      onUpdate(updatedPost); // pass new data to parent
+    }
   };
 
   return (

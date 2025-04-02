@@ -88,31 +88,9 @@ public ResponseEntity<AdoptionPostDTO> createAdoptionPost(
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateAdoptionPost(
-        @PathVariable Long id,
-        @RequestBody AdoptionPost updatedPost,
-        @AuthenticationPrincipal UserDetails userDetails) {
-    
-        // 1. Find existing post
-        AdoptionPost existingPost = adoptionPostService.getAdoptionPostById(id);
-        if (existingPost == null) {
-            return ResponseEntity.status(404).body("Post not found");
-        }
-    
-        // 2. Check ownership
-        if (!existingPost.getUser().getUsername().equals(userDetails.getUsername())) {
-            return ResponseEntity.status(403).body("Unauthorized: You can only update your own post");
-        }
-    
-        // 3. Update fields
-        existingPost.setTitle(updatedPost.getTitle());
-        existingPost.setDescription(updatedPost.getDescription());
-        existingPost.setStatus(updatedPost.getStatus());
-        existingPost.setAdoptionType(updatedPost.getAdoptionType());
-    
-        // 4. Save
-        AdoptionPost saved = adoptionPostService.save(existingPost);
-        return ResponseEntity.ok(saved);
+    public ResponseEntity<AdoptionPostDTO> updateAdoptionPost(@PathVariable Long id, @RequestBody AdoptionPost updatedPost) {
+        AdoptionPost post = adoptionPostService.updateAdoptionPost(id, updatedPost);
+        return ResponseEntity.ok(convertToDTO(post)); // ✅ This solves the problem
     }
     
 
