@@ -81,14 +81,20 @@ function Adopt() {
 
       <main className="main-content">
         {/* ✅ Search Bar */}
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search by breed..."
-            value={searchBreed}
-            onChange={(e) => setSearchBreed(e.target.value)}
-          />
-        </div>
+        <div className="search-add-container">
+  <input
+    type="text"
+    className="search-input"
+    placeholder="Search by breed..."
+    value={searchBreed}
+    onChange={(e) => setSearchBreed(e.target.value)}
+  />
+
+  <button className="adopt-add-btn-inline" onClick={() => setIsFormOpen(true)}>
+    +
+  </button>
+</div>
+
 
         <div className="adoption-posts-wrapper">
           {loading ? (
@@ -118,10 +124,6 @@ function Adopt() {
           )}
         </div>
       </main>
-
-      <button className="adopt-add-btn" onClick={() => setIsFormOpen(true)}>
-        +
-      </button>
 
       {isFormOpen && (
         <div className="adopt-modal">

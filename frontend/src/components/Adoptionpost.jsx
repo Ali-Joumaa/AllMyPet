@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import "./Adoptionpost.css";
 import AdoptionPostEditForm from "./AdoptionPostEditForm";
+import pitterImage from "../images/pitter.png";
+
+// Font Awesome
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
   const [editMode, setEditMode] = useState(false);
@@ -25,7 +30,7 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
       }
 
       alert("Post deleted successfully!");
-      if (onDelete) onDelete(data.id); // Inform parent to remove the post
+      if (onDelete) onDelete(data.id);
     } catch (err) {
       console.error("❌ Delete error:", err);
       alert("Something went wrong while deleting.");
@@ -36,7 +41,7 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
     alert("Post updated successfully!");
     setEditMode(false);
     if (onUpdate) {
-      onUpdate(updatedPost); // pass new data to parent
+      onUpdate(updatedPost);
     }
   };
 
@@ -53,7 +58,7 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
           <div className="adoption-header">
             <div className="adoption-profile">
               <img
-                src={data.user.profilePictureURL || "/default-profile.png"}
+                src={data.user.profilePictureURL?data.user.profilePictureURL : pitterImage}
                 alt="Profile"
                 className="adoption-profile-pic"
               />
@@ -73,14 +78,14 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
                     onClick={() => setEditMode(true)}
                     title="Edit Post"
                   >
-                    ✏️
+                    <FontAwesomeIcon icon={faPen} />
                   </button>
                   <button
                     className="adoption-delete-btn"
                     onClick={handleDelete}
                     title="Delete Post"
                   >
-                    🗑
+                    <FontAwesomeIcon icon={faTrash} />
                   </button>
                 </>
               )}

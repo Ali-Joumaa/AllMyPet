@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Adopt.css";
+import "./AdoptionPostEditForm.css";
 
 function AdoptionPostEditForm({ postData, onPostUpdated, onCancel }) {
   const [formData, setFormData] = useState({
@@ -65,57 +65,56 @@ function AdoptionPostEditForm({ postData, onPostUpdated, onCancel }) {
   
 
   return (
-    <form className="adopt-form" onSubmit={handleSubmit}>
-      <h2>Edit Adoption Post</h2>
+    <form className="edit-form" onSubmit={handleSubmit}>
+  <h2>Edit Adoption Post</h2>
 
-      <label>Title:</label>
-      <input
-        type="text"
-        name="title"
-        value={formData.title}
-        onChange={handleChange}
-        required
-      />
+  <label>Title:</label>
+  <input
+    type="text"
+    name="title"
+    value={formData.title}
+    onChange={handleChange}
+    required
+  />
 
-      <label>Description:</label>
-      <textarea
-        name="description"
-        value={formData.description}
-        onChange={handleChange}
-        required
-      />
+  <label>Description:</label>
+  <textarea
+    name="description"
+    value={formData.description}
+    onChange={handleChange}
+    required
+  />
 
-      <label>Adoption Status:</label>
-      <select name="status" value={formData.status} onChange={handleChange}>
-        <option value="Available">Available</option>
-        <option value="Not Available">Not Available</option>
-      </select>
+  <label>Adoption Status:</label>
+  <select name="status" value={formData.status} onChange={handleChange}>
+    <option value="Available">Available</option>
+    <option value="Not Available">Not Available</option>
+  </select>
 
-      <label>Adoption Type:</label>
-      <select
-        name="adoptionType"
-        value={formData.adoptionType}
-        onChange={handleChange}
-      >
-        <option value="Temporary">Temporary</option>
-        <option value="Permanent">Permanent</option>
-      </select>
+  <label>Adoption Type:</label>
+  <select
+    name="adoptionType"
+    value={formData.adoptionType}
+    onChange={handleChange}
+  >
+    <option value="Temporary">Temporary</option>
+    <option value="Permanent">Permanent</option>
+  </select>
 
-      <label>Pet:</label>
-      <input
-        type="text"
-        value={`${postData.petName} (${postData.petSpecies})`}
-        readOnly
-        disabled
-      />
+  <label>Pet:</label>
+  <input
+    type="text"
+    value={`${postData.petName} (${postData.petSpecies})`}
+    readOnly
+    disabled
+  />
 
-      <div className="edit-form-buttons">
-        <button type="submit">Update</button>
-        <button type="button" onClick={onCancel} className="cancel-btn">
-          Cancel
-        </button>
-      </div>
-    </form>
+  <div className="edit-form-buttons">
+    <button type="submit" className="edit-form-submit">Update</button>
+    <button type="button" onClick={onCancel} className="edit-form-cancel">Cancel</button>
+  </div>
+</form>
+
   );
 }
 
