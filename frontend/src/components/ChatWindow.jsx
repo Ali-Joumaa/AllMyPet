@@ -9,9 +9,14 @@ const ChatWindow = ({ user, currentUser }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if (!token) return;
     axios.get(`${API_BASE}/api/messages/${user}`, {
       headers: { Authorization: `Bearer ${token}` },
-    }).then(res => setMessages(res.data));
+    })
+    .then(res => setMessages(res.data))
+    .catch(err => {
+      console.error("Failed to load messages:", err);
+    });
   }, [user]);
 
   const sendMessage = () => {
@@ -25,6 +30,8 @@ const ChatWindow = ({ user, currentUser }) => {
       }).then(res => {
         setMessages([...messages, res.data]);
         setInput("");
+      }).catch(err => {
+        console.error("Failed to send message:", err);
       });
     }
   };

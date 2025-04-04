@@ -1,4 +1,3 @@
-// ChatApp.jsx
 import React, { useState, useEffect } from "react";
 import SideBar from "./SideBar";
 import ChatWindow from "./ChatWindow";
@@ -15,10 +14,17 @@ const ChatApp = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You are not logged in.");
+      return;
+    }
     axios.get(`${API_BASE}/users/me`, {
       headers: { Authorization: `Bearer ${token}` },
-    }).then(res => {
-      setCurrentUser(res.data.username);
+    })
+    .then(res => setCurrentUser(res.data.username))
+    .catch(err => {
+      console.error("Failed to load profile:", err);
+      alert("Failed to load profile. Please login again.");
     });
   }, []);
 
@@ -27,8 +33,12 @@ const ChatApp = () => {
     const token = localStorage.getItem("token");
     axios.get(`${API_BASE}/users`, {
       headers: { Authorization: `Bearer ${token}` },
-    }).then(res => {
+    })
+    .then(res => {
       setUsers(res.data.filter(u => u.username !== currentUser));
+    })
+    .catch(err => {
+      console.error("Failed to load users:", err);
     });
   }, [currentUser]);
 
