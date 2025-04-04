@@ -36,9 +36,10 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults()) // Correct CORS configuration if needed, else use a CorsConfigurationSource
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configure session management
             .authorizeHttpRequests(request -> request
-                .requestMatchers("/api/auth/**").permitAll() // Allow all requests to auth paths
-                .requestMatchers("/api/admin/**").hasRole("ADMIN") 
-                .anyRequest().authenticated()) // Secure all other requests
+            .requestMatchers("/api/auth/**").permitAll()
+.requestMatchers("/users/**").authenticated() 
+            .anyRequest().authenticated()
+        )
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT authentication filter
 
         return http.build();

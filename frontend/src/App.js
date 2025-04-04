@@ -11,7 +11,7 @@ import ForgetPassword from "./components/ForgetPassword";
 import Adopt from "./components/Adopt";
 import Profile from "./components/profile"
 import PetCardForm from "./components/PetCardForm";
-
+import ChatApp from "./components/ChatApp";
 
 function App() {
 
@@ -24,6 +24,8 @@ function App() {
         <Route path="/petCardForm/:username" element={<PetCardForm />} />
         <Route path="/home" element={<Home />} />  {/* Home Page */}
         <Route path="/form" element={<PetCardForm />} />
+        <Route path="/chat" element={<ChatApp />} />
+
         <Route path="/raisePets" element={<RaisePet />} />  {/* Raise a pet Page */}
         <Route path="/vets" element={<VetsPage />} />  {/* Vets Page */}
         <Route path="/adopt" element={<Adopt />} />

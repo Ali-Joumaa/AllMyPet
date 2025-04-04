@@ -57,7 +57,7 @@ function NavBar() {
                 <div className="nav-links">
                     <Link to="/home">Home</Link>
                     <Link to="/adopt">Adopt</Link>
-                    <a href="./form">Community</a>
+                    <a href="./chat">Community</a>
                     <Link to="/raisePets">Raise A Pet</Link>
                     <Link to="/vets">Veterinarians</Link>
                 </div>
