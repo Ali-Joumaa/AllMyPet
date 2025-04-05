@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*")  // Adjust if needed, e.g. "http://localhost:3000"
+// Removed @CrossOrigin to avoid conflict with CorsConfig
 @RestController
 @RequestMapping("/vets")
 public class VeterinarianController {
@@ -19,12 +19,10 @@ public class VeterinarianController {
     @Autowired
     private VeterinarianService veterinarianService;
 
-    // GET /vets --> Returns all stored veterinarians as DTOs
     @GetMapping
     public ResponseEntity<List<VeterinarianDTO>> getAllVeterinarians() {
         List<Veterinarian> vets = veterinarianService.getAllVeterinarians();
 
-        // Map each Veterinarian to a VeterinarianDTO
         List<VeterinarianDTO> dtos = vets.stream().map(vet -> {
             VeterinarianDTO dto = new VeterinarianDTO();
             dto.setVetId(vet.getVetId());
@@ -42,15 +40,19 @@ public class VeterinarianController {
         return ResponseEntity.ok(dtos);
     }
 
-    // POST /vets/add --> Receives a VeterinarianDTO, saves as a Veterinarian
+    // Testing if Controller is receiving any requests
+    @GetMapping("/ping")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("Vet controller is alive!");
+    }
+
+    // Re-enabled DTO-based endpoint
     @PostMapping("/add")
-    public ResponseEntity<VeterinarianDTO> createVeterinarian(
-            @Valid @RequestBody VeterinarianDTO veterinarianDTO
-    ) {
-        // 1. Save veterinarian using the DTO
+    public ResponseEntity<VeterinarianDTO> createVeterinarian(@Valid @RequestBody VeterinarianDTO veterinarianDTO) {
+        System.out.println("Received DTO: " + veterinarianDTO);
+
         Veterinarian savedVet = veterinarianService.createVeterinarianFromDTO(veterinarianDTO);
 
-        // 2. Convert the saved Veterinarian back to a VeterinarianDTO for response
         VeterinarianDTO savedDto = new VeterinarianDTO();
         savedDto.setVetId(savedVet.getVetId());
         savedDto.setFirstName(savedVet.getFirstName());

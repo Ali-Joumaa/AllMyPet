@@ -3,17 +3,16 @@ import './AddVetForm.css';
 
 export default function AddVetForm() {
   const [vetData, setVetData] = useState({
-    FirstName: '',
-    LastName: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    exp_years: '',
+    expYears: '',
     sex: '',
     location: '',
     profilePicture: '',
-    PhoneNumber: ''
+    phoneNumber: ''
   });
 
-  // Handles changes to each input field.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setVetData(prevState => ({
@@ -22,22 +21,31 @@ export default function AddVetForm() {
     }));
   };
 
-  // Submits form data to the Spring Boot backend.
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch('/vets/add', {
+
+    // ✅ Log the data to the console before sending
+    console.log("Submitting vet data:", vetData);
+
+    fetch('http://localhost:5555/vets/add', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(vetData)
     })
       .then(res => {
+        console.log("Response status:", res.status);
         if (res.ok) {
-          alert('Veterinarian added successfully!');
+          alert('✅ Veterinarian added successfully!');
+          // ✅ Refresh the page to reload data
+          window.location.reload();
         } else {
-          alert('Error adding vet');
+          alert('❌ Error adding vet. Check console and backend logs.');
         }
       })
-      .catch(err => console.error('Error:', err));
+      .catch(err => {
+        console.error('Error:', err);
+        alert('❌ Network error or server is unreachable.');
+      });
   };
 
   return (
@@ -47,22 +55,22 @@ export default function AddVetForm() {
         <label>First Name</label>
         <input
           type="text"
-          name="FirstName"
+          name="firstName"
           required
           minLength="2"
           maxLength="30"
-          value={vetData.FirstName}
+          value={vetData.firstName}
           onChange={handleChange}
         />
 
         <label>Last Name</label>
         <input
           type="text"
-          name="LastName"
+          name="lastName"
           required
           minLength="2"
           maxLength="30"
-          value={vetData.LastName}
+          value={vetData.lastName}
           onChange={handleChange}
         />
 
@@ -78,10 +86,10 @@ export default function AddVetForm() {
         <label>Experience (Years)</label>
         <input
           type="number"
-          name="exp_years"
+          name="expYears"
           min="0"
           required
-          value={vetData.exp_years}
+          value={vetData.expYears}
           onChange={handleChange}
         />
 
@@ -117,9 +125,9 @@ export default function AddVetForm() {
         <label>Phone Number</label>
         <input
           type="text"
-          name="PhoneNumber"
+          name="phoneNumber"
           required
-          value={vetData.PhoneNumber}
+          value={vetData.phoneNumber}
           onChange={handleChange}
         />
 
