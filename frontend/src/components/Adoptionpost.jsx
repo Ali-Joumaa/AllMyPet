@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // 👈 Add this
 import "./Adoptionpost.css";
 import AdoptionPostEditForm from "./AdoptionPostEditForm";
 import pitterImage from "../images/pitter.png";
@@ -9,6 +10,7 @@ import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
   const [editMode, setEditMode] = useState(false);
+  const navigate = useNavigate(); // 👈 Hook to navigate
 
   const handleDelete = async () => {
     const token = localStorage.getItem("token");
@@ -45,6 +47,15 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
     }
   };
 
+  const goToProfile = () => {
+    const username = data.user.username;
+    if (username === currentUsername) {
+      navigate("/profile/me");
+    } else {
+      navigate(`/profile/${username}`);
+    }
+  };
+
   return (
     <div className="adoption-card">
       {editMode ? (
@@ -56,9 +67,9 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
       ) : (
         <>
           <div className="adoption-header">
-            <div className="adoption-profile">
+            <div className="adoption-profile" onClick={goToProfile} style={{ cursor: "pointer" }}>
               <img
-                src={data.user.profilePictureURL?data.user.profilePictureURL : pitterImage}
+                src={data.user.profilePictureURL ? data.user.profilePictureURL : pitterImage}
                 alt="Profile"
                 className="adoption-profile-pic"
               />
@@ -97,7 +108,10 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
             <div className="adoption-toggle-container">
               <label className="adoption-toggle">
                 <img
-                  src={data.imageUrl || "https://i0.wp.com/meissaprint.co.uk/wp-content/uploads/2022/06/mini-paw.png?fit=2084%2C2084&ssl=1"}
+                  src={
+                    data.imageUrl ||
+                    "https://i0.wp.com/meissaprint.co.uk/wp-content/uploads/2022/06/mini-paw.png?fit=2084%2C2084&ssl=1"
+                  }
                   alt="Pet"
                   className="adoption-pet-pic"
                 />

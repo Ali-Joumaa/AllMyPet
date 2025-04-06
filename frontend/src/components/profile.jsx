@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
 import NavBar from "../components/NavBar";
@@ -9,7 +9,6 @@ import PetDetailsModal from "../components/PetDetailsModal";
 import "./profile.css";
 
 const Profile = () => {
-  const { username } = useParams();
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [userPets, setUserPets] = useState([]);
@@ -19,6 +18,7 @@ const Profile = () => {
   const [selectedPet, setSelectedPet] = useState(null);
 
   const token = localStorage.getItem("token");
+
   const headers = {
     Authorization: `Bearer ${token}`,
     "Content-Type": "application/json",
@@ -33,11 +33,7 @@ const Profile = () => {
 
     const fetchProfileData = async () => {
       try {
-        const endpoint = username
-          ? `http://localhost:5555/users/profile/${username}`
-          : "http://localhost:5555/users/me";
-
-        const response = await axios.get(endpoint, { headers });
+        const response = await axios.get("http://localhost:5555/users/me", { headers });
         setUserData(response.data);
       } catch (error) {
         console.error("❌ Error fetching user data:", error);
@@ -47,12 +43,7 @@ const Profile = () => {
 
     const fetchUserPets = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5555/api/pets/myPets",
-          { headers: {
-            Authorization: `Bearer ${token}`
-          } }
-        );
+        const response = await axios.get("http://localhost:5555/api/pets/myPets", { headers });
         setUserPets(response.data);
       } catch (error) {
         console.error("❌ Error fetching pet cards:", error);
@@ -61,12 +52,7 @@ const Profile = () => {
 
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5555/api/favorites/my-favorites",
-          { headers: {
-            Authorization: `Bearer ${token}`
-          }}
-        );
+        const response = await axios.get("http://localhost:5555/api/favorites/my-favorites", { headers });
         setFavorites(response.data);
       } catch (error) {
         console.error("❌ Error fetching favorites:", error);
@@ -76,7 +62,7 @@ const Profile = () => {
     Promise.all([fetchProfileData(), fetchUserPets(), fetchFavorites()]).finally(() =>
       setLoading(false)
     );
-  }, [username, navigate]);
+  }, [navigate]);
 
   const handleAddPet = () => {
     navigate("/PetCardForm");
@@ -88,33 +74,28 @@ const Profile = () => {
 
   const handleToggleFavorite = async (petId) => {
     try {
-      const token = localStorage.getItem("token");
       const isAlreadyFavorite = favorites.some((f) => f.petId === petId);
-  
+
       const url = isAlreadyFavorite
         ? `http://localhost:5555/api/favorites/remove/${petId}`
         : `http://localhost:5555/api/favorites/add/${petId}`;
-  
+
       const response = await fetch(url, {
         method: isAlreadyFavorite ? "DELETE" : "POST",
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-  
+
       if (!response.ok) {
         const text = await response.text();
         throw new Error(text);
       }
-  
-      // ✅ Re-fetch the updated favorites list
+
       const updatedFavorites = await fetch(
         "http://localhost:5555/api/favorites/my-favorites",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        { headers }
       );
-  
       const data = await updatedFavorites.json();
       setFavorites(data);
     } catch (err) {
@@ -122,11 +103,9 @@ const Profile = () => {
     }
   };
 
-  const isOwnProfile = !username || username === userData?.username;
-
   return (
     <>
-      <NavBar user={userData} isGuest={!userData} />
+      <NavBar user={userData} isGuest={false} />
       <div className="profile-page">
         {loading ? (
           <p>Loading profile...</p>
@@ -138,6 +117,7 @@ const Profile = () => {
               bio={userData.bio || "No bio available"}
               yearsPetting={userData.yearsPetting || 0}
               address={userData.address || "Nothing"}
+              isOwnProfile={true}
             />
 
             <div className="profile-tabs">
@@ -154,12 +134,10 @@ const Profile = () => {
                 Favorite
               </button>
 
-              {isOwnProfile && (
-                <button className="add-pet-btn" onClick={handleAddPet}>
-                  <img src="/Paw.png" alt="Paw Icon" className="pawIcon" />
-                  <FaPlus className="plus-icon" />
-                </button>
-              )}
+              <button className="add-pet-btn" onClick={handleAddPet}>
+                <img src="/Paw.png" alt="Paw Icon" className="pawIcon" />
+                <FaPlus className="plus-icon" />
+              </button>
             </div>
 
             <div className="tab-content">
@@ -180,9 +158,8 @@ const Profile = () => {
                         petData={pet}
                         onMoreInfo={setSelectedPet}
                         onEdit={handleEditPet}
-                        // onToggleFavorite={handleToggleFavorite}
                         isFavorite={favorites.some(f => f.petId === pet.petId)}
-                        onToggleFavorite={(petId) => handleToggleFavorite(petId, favorites.some(f => f.petId === petId))}
+                        onToggleFavorite={() => handleToggleFavorite(pet.petId)}
                       />
                     ))
                   ) : (
@@ -205,11 +182,9 @@ const Profile = () => {
                         petDescription={fav.description}
                         petData={fav}
                         onMoreInfo={setSelectedPet}
-                        onToggleFavorite={() => handleToggleFavorite(fav.petId, true)}
+                        onToggleFavorite={() => handleToggleFavorite(fav.petId)}
                         isFavorite={true}
                       />
-                                              
-                     
                     ))
                   ) : (
                     <p>No favorites yet.</p>
