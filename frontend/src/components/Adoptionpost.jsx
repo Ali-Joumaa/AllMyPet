@@ -97,7 +97,7 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
             <div className="adoption-toggle-container">
               <label className="adoption-toggle">
                 <img
-                  src={data.imageUrl || "/default-pet.png"}
+                  src={data.imageUrl || "https://i0.wp.com/meissaprint.co.uk/wp-content/uploads/2022/06/mini-paw.png?fit=2084%2C2084&ssl=1"}
                   alt="Pet"
                   className="adoption-pet-pic"
                 />

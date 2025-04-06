@@ -1,0 +1,66 @@
+.clean-modal-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.clean-modal-card {
+  background-color: #f4f1fb;
+  border-radius: 24px;
+  padding: 32px;
+  width: 680px;
+  max-width: 92%;
+  box-shadow: 0 10px 30px rgba(120, 85, 180, 0.1);
+  position: relative;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.clean-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  color: #7b5fd9;
+  cursor: pointer;
+}
+
+.clean-modal-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #2b2b2b;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.clean-modal-img {
+  display: block;
+  margin: 0 auto 24px;
+  width: 280px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+  border: 3px solid #e2d9f3;
+}
+
+.clean-modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  font-size: 16px;
+  color: #4b4b4b;
+}
+
+.clean-modal-grid .field.full-width {
+  grid-column: 1 / -1;
+  margin-top: 10px;
+}
+
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0 }
+  to { transform: scale(1); opacity: 1 }
+}
