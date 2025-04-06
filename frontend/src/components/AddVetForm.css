@@ -1,0 +1,51 @@
+.vet-form-container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .vet-form-header {
+    text-align: center;
+    color: #675BC8;
+    margin-bottom: 1rem;
+  }
+  
+  .vet-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .vet-form label {
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .vet-form input,
+  .vet-form select {
+    padding: 10px;
+    border: 2px solid #675BC8;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .vet-form button {
+    background-color: #675BC8;
+    color: white;
+    padding: 10px;
+    margin-top: 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vet-form button:hover {
+    background-color: #4d3fa0;
+  }  
