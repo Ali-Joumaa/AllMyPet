@@ -8,6 +8,11 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "adoption_posts")
 @Getter
@@ -27,6 +32,8 @@ public class AdoptionPost{
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "petId", nullable = false)
+    // @OnDelete(action = OnDeleteAction.CASCADE) // this triggers DB-level cascade
+    @JsonIgnore
     private PetCard petCard;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

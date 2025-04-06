@@ -12,6 +12,11 @@
   background-color: white;
   transition: transform 0.2s ease-in-out;
   margin: 15px;
+  position: relative;
+}
+
+.image-wrapper {
+  position: relative;
 }
 
 .pet-card:hover {
@@ -22,6 +27,36 @@
   width: 100%;
   height: 200px;
   object-fit: cover;
+}
+
+.edit-icon-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: white;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0; /* 👈 hidden by default */
+}
+
+.pet-card:hover .edit-icon-button {
+  opacity: 1; /* 👈 show on hover */
+}
+
+.edit-icon-button:hover {
+  transform: scale(1.1);
+}
+
+.edit-icon-icon {
+  color: #6c63ff;
+  font-size: 16px;
 }
 
 .pet-card-content {
@@ -120,6 +155,19 @@
 .pet-card-more-info:hover {
   background-color: #6b46c1;
   color: white;
+}
+.edit-icon {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: white;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  z-index: 10;
+  color: #6c63ff;
+  font-size: 14px;
 }
 
 @media (min-width: 600px) {

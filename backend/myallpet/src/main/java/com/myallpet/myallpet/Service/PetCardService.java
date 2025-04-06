@@ -1,15 +1,20 @@
 package com.myallpet.myallpet.Service;
 
-
 import com.myallpet.myallpet.DTO.PetCardDTO;
+import com.myallpet.myallpet.Models.AdoptionPost;
 import com.myallpet.myallpet.Models.PetCard;
 import com.myallpet.myallpet.Models.User;
+import com.myallpet.myallpet.Repository.AdoptionPostRepository;
 import com.myallpet.myallpet.Repository.PetCardRepository;
 import com.myallpet.myallpet.Repository.UserRepository;
 import com.myallpet.myallpet.exception.OurException;
+
+import jakarta.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,7 +28,9 @@ public class PetCardService {
     @Autowired
     private UserRepository userRepository;
 
-    // ✅ **Create Pet Card**
+    @Autowired
+    private AdoptionPostRepository adoptionPostRepository;
+
     public PetCard createPetCard(PetCardDTO petCardDTO, String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new OurException("User not found"));
@@ -36,7 +43,7 @@ public class PetCardService {
         petCard.setAge(petCardDTO.getAge());
         petCard.setSex(petCardDTO.getSex());
         petCard.setPetPhoto(petCardDTO.getPetPhoto());
-
+        petCard.setDescription(petCardDTO.getDescription());
         petCard.setVaccines(petCardDTO.getVaccines());
         petCard.setHealthInfo(petCardDTO.getHealthInfo());
         petCard.setLocation(petCardDTO.getLocation());
@@ -45,17 +52,14 @@ public class PetCardService {
         return petCardRepository.save(petCard);
     }
 
-    // ✅ **Get All Pet Cards**
     public List<PetCard> getAllPetCards() {
         return petCardRepository.findAll();
     }
 
-    // ✅ **Get Pet Card by ID**
     public Optional<PetCard> getPetCardById(Long petId) {
         return petCardRepository.findById(petId);
     }
 
-    // ✅ **Update Pet Card (Only Owner Can Update)**
     public PetCard updatePetCard(Long petId, PetCardDTO petCardDTO, String username) {
         PetCard petCard = petCardRepository.findById(petId)
                 .orElseThrow(() -> new OurException("Pet card not found"));
@@ -70,25 +74,25 @@ public class PetCardService {
         petCard.setAge(petCardDTO.getAge());
         petCard.setSex(petCardDTO.getSex());
         petCard.setPetPhoto(petCardDTO.getPetPhoto());
-        // petCard.setVaccines(petCardDTO.getVaccines());
-        // petCard.setHealthInfo(petCardDTO.getHealthInfo());
+        petCard.setVaccines(petCardDTO.getVaccines());
+        petCard.setHealthInfo(petCardDTO.getHealthInfo());
+        petCard.setDescription(petCardDTO.getDescription());
         petCard.setLocation(petCardDTO.getLocation());
 
         return petCardRepository.save(petCard);
     }
 
-    // ✅ **Delete Pet Card (Only Owner Can Delete)**
+    @Transactional
     public void deletePetCard(Long petId, String username) {
-        PetCard petCard = petCardRepository.findById(petId)
-                .orElseThrow(() -> new OurException("Pet card not found"));
-
-        if (!petCard.getUser().getUsername().equals(username)) {
-            throw new OurException("Unauthorized: You can only delete your own pet cards.");
+        PetCard pet = petCardRepository.findById(petId)
+                .orElseThrow(() -> new RuntimeException("Pet not found"));
+    
+        if (!pet.getUser().getUsername().equals(username)) {
+            throw new RuntimeException("Unauthorized to delete this pet.");
         }
-
-        petCardRepository.delete(petCard);
+    
+        petCardRepository.delete(pet); // No need to manually delete adoption posts
     }
-
 
     public List<PetCardDTO> getPetCardsByUsername(String username) {
         User user = userRepository.findByUsername(username)
@@ -113,15 +117,15 @@ public class PetCardService {
             pet.getStatus(),
             pet.getUser().getUserId(),
             pet.getVaccines(),
-            pet.getHealthInfo()
+            pet.getHealthInfo(),
+            pet.getUser().getUsername()
         );
     }
+
     public List<PetCard> getPetEntitiesByUsername(String username) {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-    
+
         return petCardRepository.findByUser(user);
     }
-    
-    
 }

@@ -1,5 +1,6 @@
 package com.myallpet.myallpet.DTO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.myallpet.myallpet.Models.User;
 import lombok.Data;

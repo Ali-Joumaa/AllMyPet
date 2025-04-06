@@ -1,33 +1,29 @@
-/* ✅ Modal Overlay (Background Effect) */
+/* ✅ Modal Overlay */
 .edit-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* ✅ Darker overlay */
+    background: rgba(30, 25, 55, 0.6); /* 💜 Slightly purple overlay */
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1050; /* ✅ Higher than navbar */
-}
-
-/* ✅ Modal Container */
-.edit-modal-container {
-    background: white;
-    width: 420px; /* ✅ Adjusted width */
+    z-index: 1050;
+  }
+  
+  /* ✅ Modal Container - Centered */
+  .edit-modal-container {
+    background: #f8f8fc;
+    width: 420px;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    position: fixed;
-    right: 0; /* ✅ Positioned to the right */
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1051;
-}
-
-/* ✅ Close Button */
-.edit-modal-close-btn {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    position: relative; /* ⚠️ Changed from fixed to relative for centering */
+  }
+  
+  /* ✅ Close Button */
+  .edit-modal-close-btn {
     position: absolute;
     top: 12px;
     right: 18px;
@@ -35,48 +31,56 @@
     border: none;
     background: none;
     cursor: pointer;
-}
-
-/* ✅ Profile Picture */
-.edit-modal-profile-preview {
+    color: #8e78e0;
+  }
+  
+  /* ✅ Profile Picture */
+  .edit-modal-profile-preview {
     width: 100px;
     height: 100px;
     border-radius: 50%;
     object-fit: cover;
     display: block;
     margin: 10px auto;
-}
-
-/* ✅ Form Styling */
-.edit-modal-form label {
+    border: 2px solid #8e78e0;
+  }
+  
+  /* ✅ Form Styling */
+  .edit-modal-form label {
     display: block;
     margin-top: 12px;
     font-weight: bold;
-}
-
-.edit-modal-form input,
-.edit-modal-form textarea {
+    color: #333;
+  }
+  
+  .edit-modal-form input,
+  .edit-modal-form textarea {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 6px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 6px;
-}
-
-/* ✅ Save Button */
-.edit-modal-save-btn {
+    font-size: 14px;
+    background: #e8e8f9;
+    color: #333;
+  }
+  
+  /* ✅ Save Button - Purple style */
+  .edit-modal-save-btn {
     width: 100%;
     padding: 12px;
-    background: #28a745;
+    background: #8e78e0;
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     margin-top: 18px;
     font-size: 16px;
-}
-
-.edit-modal-save-btn:disabled {
-    background: #ccc;
+    font-weight: bold;
+  }
+  
+  .edit-modal-save-btn:disabled {
+    background: #b9a8f0;
     cursor: not-allowed;
-}
+  }
+  
