@@ -6,6 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class VeterinarianDTO {
     private Long vetId;
     private String firstName;
@@ -15,5 +16,5 @@ public class VeterinarianDTO {
     private String sex;
     private String location;
     private String profilePicture;
-    private String phoneNumber;
+    private String phoneNumber;    
 }

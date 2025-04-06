@@ -71,6 +71,20 @@
   text-align: center;
 }
 
+.add-a-vet-link {
+  font-weight: bold;
+  color: #675BC8;
+  text-decoration: underline;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  margin-top: 35px;
+}
+
+.add-a-vet-link:hover {
+  color: white;
+  background: #4d3fa0;
+}
+
 .find-vet:hover {
   background: #5646B2;
   transform: translateY(-2px); /* Slight lift on hover */
