@@ -5,6 +5,7 @@ import com.myallpet.myallpet.security.JWTAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -38,6 +39,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(request -> request
                 .requestMatchers("/api/auth/**").permitAll() // Allow all requests to auth paths
                 .requestMatchers("/api/admin/**").hasRole("ADMIN") 
+                .requestMatchers(HttpMethod.DELETE, "/api/pets/delete/**").authenticated()
+                .requestMatchers("/api/favorites/**").authenticated()
                 .anyRequest().authenticated()) // Secure all other requests
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT authentication filter
 

@@ -20,4 +20,5 @@ public class PetCardDTO {
     private Long userId;
     private String vaccines;
     private String healthInfo;
+    private String username; 
 }
