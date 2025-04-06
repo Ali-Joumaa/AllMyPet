@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Cat from "./Cat";
 import "./raiseAPet.css";
 import "./topHomePage.css";
-import DogAndCatImage from "../images/DogAndCat.svg";
+import DogAndCatImage from "../images/raiseAPet.png";
 
 const RaiseAPet = () => {
   const [location, setLocation] = useState("");
@@ -73,7 +73,9 @@ const RaiseAPet = () => {
     setPets([]);
 
     try {
-      const countryName = location.trim();
+      let countryName = location.trim();
+      countryName = countryName.charAt(0).toUpperCase() + countryName.slice(1);
+
       if (!countryData[countryName]) {
         setError("No data found for this country.");
       } else {

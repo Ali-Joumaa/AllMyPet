@@ -1,0 +1,132 @@
+.adoption-card {
+  background-color: #ffffff;
+  color: black;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 950px;
+  margin: 40px auto;
+  transition: all 0.3s ease;
+}
+
+.adoption-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(147, 115, 219, 0.15);
+}
+
+.adoption-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.adoption-profile {
+  display: flex;
+  align-items: center;
+}
+
+.adoption-profile-pic {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  border: 2px solid #9373db2f;
+}
+
+.adoption-user-info h2 {
+  font-size: 18px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.adoption-date {
+  font-size: 12px;
+  color: #888;
+}
+
+.adoption-available-btn {
+  background-color: #9373db;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.adoption-available-btn:hover {
+  background-color: #7d5fd3;
+}
+
+.adoption-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.adoption-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+}
+
+.adoption-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adoption-pet-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #9373db;
+}
+
+.toggle-label {
+  font-size: 20px;
+  color: #9373db;
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+.adoption-description {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.adoption-type {
+  color: #9373db;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.adoption-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adoption-edit-btn,
+.adoption-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: color 0.2s ease;
+}
+
+.adoption-edit-btn:hover,
+.adoption-delete-btn:hover {
+  color: #9373db;
+}

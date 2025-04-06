@@ -1,6 +1,8 @@
 package com.myallpet.myallpet.Repository;
 
 import com.myallpet.myallpet.Models.PetCard;
+import com.myallpet.myallpet.Models.User;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +11,7 @@ import java.util.List;
 @Repository
 public interface PetCardRepository extends JpaRepository<PetCard, Long> {
 
-    List<PetCard> findByUser_UserId(Long userId);
+    List<PetCard> findByUser(User user);
 
     List<PetCard> findBySpecies(String species);
 

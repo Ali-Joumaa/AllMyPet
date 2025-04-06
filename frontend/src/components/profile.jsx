@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { FaPlus } from "react-icons/fa";
-import NavBar from "../components/NavBar"; // ✅ Import NavBar
-import "./profile.css"; 
+import NavBar from "../components/NavBar";
+import "./profile.css";
 import ProfileInfo from "./profileInfo";
 import PetCard from "./petCard";
 
 const Profile = () => {
-  const { username } = useParams(); // ✅ Get username from URL
+  const { username } = useParams();
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [userPets, setUserPets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("pets"); // ✅ Proper tab management
+  const [activeTab, setActiveTab] = useState("pets");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -24,35 +24,56 @@ const Profile = () => {
       return;
     }
 
-    // ✅ Determine API endpoint (Own Profile or Another User)
-    const endpoint = username 
-      ? `http://localhost:5555/users/profile/${username}`  // ✅ Visiting another user's profile
-      : "http://localhost:5555/users/me";                 // ✅ Viewing own profile
+    const headers = {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    };
 
-    axios
-      .get(endpoint, {
-        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
-      })
-      .then((response) => {
-        console.log("✅ User Data Received:", response.data);
+    const fetchProfileData = async () => {
+      try {
+        const endpoint = username
+          ? `http://localhost:5555/users/profile/${username}`
+          : "http://localhost:5555/users/me";
+
+        const response = await axios.get(endpoint, { headers });
+        console.log("✅ User Data:", response.data);
         setUserData(response.data);
-        setUserPets(response.data.pets || []);
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error("❌ Error fetching user data:", error);
         alert("Failed to load profile.");
-      })
-      .finally(() => setLoading(false));
+      }
+    };
+
+    const fetchUserPets = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:5555/api/pets/myPets",
+          { headers }
+        );
+        console.log("✅ My Pet Cards:", response.data);
+        setUserPets(response.data);
+      } catch (error) {
+        console.error("❌ Error fetching pet cards:", error);
+        // if (error.response && error.response.status === 403) {
+        //   console.warn("❌ Forbidden. Redirecting to login.");
+        //   localStorage.removeItem("token");
+        //   navigate("/login");
+        // }
+      }
+    };
+    Promise.all([fetchProfileData(), fetchUserPets()]).finally(() =>
+      setLoading(false)
+    );
   }, [username, navigate]);
 
   const handleAddPet = () => {
-    navigate(`/petCardForm/${username}`);
-
+    navigate(`/petCardForm/${username || userData?.username}`);
   };
+
+  const isOwnProfile = username;
 
   return (
     <>
-      {/* ✅ NavBar remains visible on the profile page */}
       <NavBar user={userData} isGuest={!userData} />
 
       <div className="profile-page">
@@ -60,33 +81,30 @@ const Profile = () => {
           <p>Loading profile...</p>
         ) : userData ? (
           <>
-            {/* ✅ Display User Info Dynamically */}
             <ProfileInfo
               profilePic={userData.profilePictureURL || "/default-profile.png"}
               username={userData.username || "User"}
               bio={userData.bio || "No bio available"}
               yearsPetting={userData.yearsPetting || 0}
               address={userData.address || "Nothing"}
-
             />
 
-            {/* ✅ Tabs Section with Add Pet Button */}
             <div className="profile-tabs">
-              <button 
-                className={`tab-btn ${activeTab === "pets" ? "active" : ""}`} 
+              <button
+                className={`tab-btn ${activeTab === "pets" ? "active" : ""}`}
                 onClick={() => setActiveTab("pets")}
               >
                 Your Pets
               </button>
-              <button 
-                className={`tab-btn ${activeTab === "favorite" ? "active" : ""}`} 
+              <button
+                className={`tab-btn ${activeTab === "favorite" ? "active" : ""}`}
                 onClick={() => setActiveTab("favorite")}
               >
                 Favorite
               </button>
 
-              {/* ✅ Add Pet Button (Only for Own Profile) */}
-              {username && (
+              {/* Only show Add Pet button if it's your own profile */}
+              {isOwnProfile && (
                 <button className="add-pet-btn" onClick={handleAddPet}>
                   <img src="/Paw.png" alt="Paw Icon" className="pawIcon" />
                   <FaPlus className="plus-icon" />
@@ -94,20 +112,19 @@ const Profile = () => {
               )}
             </div>
 
-            {/* ✅ Dynamic Tab Content */}
             <div className="tab-content">
               {activeTab === "pets" ? (
                 <div className="pet-grid">
                   {userPets.length > 0 ? (
                     userPets.map((pet) => (
                       <PetCard
-                        key={pet.id}
+                        key={pet.petId}
                         petName={pet.name}
-                        petImage={pet.image}
+                        petImage={pet.petPhoto}
                         petBreed={pet.breed}
-                        petGender={pet.gender}
+                        petGender={pet.sex}
                         petAge={pet.age}
-                        petSize={pet.size}
+                        petSize={pet.species}
                         petLocation={pet.location}
                         petDescription={pet.description}
                       />

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PetCardService {
@@ -34,8 +35,10 @@ public class PetCardService {
         petCard.setBreed(petCardDTO.getBreed());
         petCard.setAge(petCardDTO.getAge());
         petCard.setSex(petCardDTO.getSex());
-        // petCard.setVaccines(petCardDTO.getVaccines());
-        // petCard.setHealthInfo(petCardDTO.getHealthInfo());
+        petCard.setPetPhoto(petCardDTO.getPetPhoto());
+
+        petCard.setVaccines(petCardDTO.getVaccines());
+        petCard.setHealthInfo(petCardDTO.getHealthInfo());
         petCard.setLocation(petCardDTO.getLocation());
         petCard.setStatus("Available");
 
@@ -66,6 +69,7 @@ public class PetCardService {
         petCard.setBreed(petCardDTO.getBreed());
         petCard.setAge(petCardDTO.getAge());
         petCard.setSex(petCardDTO.getSex());
+        petCard.setPetPhoto(petCardDTO.getPetPhoto());
         // petCard.setVaccines(petCardDTO.getVaccines());
         // petCard.setHealthInfo(petCardDTO.getHealthInfo());
         petCard.setLocation(petCardDTO.getLocation());
@@ -84,4 +88,40 @@ public class PetCardService {
 
         petCardRepository.delete(petCard);
     }
+
+
+    public List<PetCardDTO> getPetCardsByUsername(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        List<PetCard> petCards = petCardRepository.findByUser(user);
+
+        return petCards.stream().map(this::convertToDTO).collect(Collectors.toList());
+    }
+
+    private PetCardDTO convertToDTO(PetCard pet) {
+        return new PetCardDTO(
+            pet.getPetId(),
+            pet.getName(),
+            pet.getSpecies(),
+            pet.getBreed(),
+            pet.getAge(),
+            pet.getSex(),
+            pet.getPetPhoto(),
+            pet.getDescription(),
+            pet.getLocation(),
+            pet.getStatus(),
+            pet.getUser().getUserId(),
+            pet.getVaccines(),
+            pet.getHealthInfo()
+        );
+    }
+    public List<PetCard> getPetEntitiesByUsername(String username) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+    
+        return petCardRepository.findByUser(user);
+    }
+    
+    
 }

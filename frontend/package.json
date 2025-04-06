@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -45,9 +47,12 @@
   "devDependencies": {
     "@babel/eslint-parser": "^7.26.10",
     "@svgr/webpack": "^8.1.0",
+    "autoprefixer": "^10.4.21",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
+    "postcss": "^8.5.3",
     "postcss-loader": "^8.1.1",
-    "style-loader": "^4.0.0"
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^4.0.14"
   }
 }
