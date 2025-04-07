@@ -43,6 +43,8 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.DELETE, "/api/pets/delete/**").authenticated()
                 .requestMatchers("/api/favorites/**").authenticated()
                 .requestMatchers("/vets/**").permitAll()
+                .requestMatchers("/api/pets/userPets/**").authenticated()
+                .requestMatchers("/api/adoption-posts").authenticated()
                 .anyRequest().authenticated()) // Secure all other requests
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT authentication filter
 

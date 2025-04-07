@@ -122,7 +122,7 @@ export default function PetCardForm() {
       if (!response.ok) throw new Error(await response.text());
 
       alert(petId ? "Pet card updated!" : "Pet card created!");
-      navigate("/profile");
+      navigate("/profile/me");
     } catch (err) {
       console.error("❌ Submit error:", err);
       alert("Something went wrong.");
@@ -142,7 +142,7 @@ export default function PetCardForm() {
       );
       if (!response.ok) throw new Error(await response.text());
       alert("Pet deleted successfully!");
-      navigate("/profile");
+      navigate("/profile/me");
     } catch (err) {
       console.error("❌ Delete failed:", err);
       alert("Failed to delete pet.");

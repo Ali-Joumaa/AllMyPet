@@ -91,29 +91,29 @@ public class PetCardController {
         return ResponseEntity.ok(dto);
     }
 
+    // ✅ Update Pet Card
     @PutMapping("/update/{petId}")
     public ResponseEntity<?> updatePetCard(@PathVariable Long petId, @RequestBody PetCardDTO petCardDTO, Authentication authentication) {
         String username = authentication.getName();
         PetCard updatedPet = petCardService.updatePetCard(petId, petCardDTO, username);
-    
-        // ✅ Convert to DTO before returning
+
         PetCardDTO updatedPetDTO = new PetCardDTO(
-            updatedPet.getPetId(),
-            updatedPet.getName(),
-            updatedPet.getSpecies(),
-            updatedPet.getBreed(),
-            updatedPet.getAge(),
-            updatedPet.getSex(),
-            updatedPet.getPetPhoto(),
-            updatedPet.getDescription(),
-            updatedPet.getLocation(),
-            updatedPet.getStatus(),
-            updatedPet.getUser().getUserId(),
-            updatedPet.getVaccines(),
-            updatedPet.getHealthInfo(),
-            updatedPet.getUser().getUsername()
+                updatedPet.getPetId(),
+                updatedPet.getName(),
+                updatedPet.getSpecies(),
+                updatedPet.getBreed(),
+                updatedPet.getAge(),
+                updatedPet.getSex(),
+                updatedPet.getPetPhoto(),
+                updatedPet.getDescription(),
+                updatedPet.getLocation(),
+                updatedPet.getStatus(),
+                updatedPet.getUser().getUserId(),
+                updatedPet.getVaccines(),
+                updatedPet.getHealthInfo(),
+                updatedPet.getUser().getUsername()
         );
-    
+
         return ResponseEntity.ok(updatedPetDTO);
     }
 
@@ -145,6 +145,38 @@ public class PetCardController {
             System.out.println("⚠️ No pet cards found for user: " + username);
         } else {
             System.out.println("✅ Found " + petCards.size() + " pet cards:");
+        }
+
+        List<PetCardDTO> dtoList = petCards.stream().map(pet -> new PetCardDTO(
+                pet.getPetId(),
+                pet.getName(),
+                pet.getSpecies(),
+                pet.getBreed(),
+                pet.getAge(),
+                pet.getSex(),
+                pet.getPetPhoto(),
+                pet.getDescription(),
+                pet.getLocation(),
+                pet.getStatus(),
+                pet.getUser().getUserId(),
+                pet.getVaccines(),
+                pet.getHealthInfo(),
+                pet.getUser().getUsername()
+        )).toList();
+
+        return ResponseEntity.ok(dtoList);
+    }
+
+    // ✅ Get Pets of Any User by Username (only if authenticated)
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/userPets/{username}")
+    public ResponseEntity<List<PetCardDTO>> getUserPetsByUsername(@PathVariable String username) {
+        List<PetCard> petCards = petCardService.getPetEntitiesByUsername(username);
+
+        if (petCards == null || petCards.isEmpty()) {
+            System.out.println("⚠️ No pet cards found for user: " + username);
+        } else {
+            System.out.println("✅ Found " + petCards.size() + " pet cards for user: " + username);
         }
 
         List<PetCardDTO> dtoList = petCards.stream().map(pet -> new PetCardDTO(
