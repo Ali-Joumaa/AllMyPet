@@ -42,6 +42,21 @@
   background-color: #e3def7;
   padding: 20px;
 }
+.back-to-profile-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* ⬅️ Move to right instead of left */
+  font-size: 24px;
+  color: #9990da;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1000;
+}
+
+.back-to-profile-icon:hover {
+  transform: scale(1.2);
+}
+
 
 .form-title {
   font-size: 1.5rem;

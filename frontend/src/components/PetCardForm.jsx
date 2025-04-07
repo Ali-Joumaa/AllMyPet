@@ -10,6 +10,7 @@ import {
   FaCheck,
   FaCamera,
   FaTrash,
+  FaTimes,
 } from "react-icons/fa";
 
 export default function PetCardForm() {
@@ -29,7 +30,6 @@ export default function PetCardForm() {
     vaccines: "",
     healthInfo: "",
     location: "",
-    // status: "Available",
   };
 
   const [formData, setFormData] = useState(defaultFormData);
@@ -38,9 +38,8 @@ export default function PetCardForm() {
   useEffect(() => {
     const loadPetData = async () => {
       const token = localStorage.getItem("token");
-  
+
       if (location.state?.pet) {
-        // 🟢 Pet was passed from Profile.jsx
         const pet = location.state.pet;
         setFormData({
           name: pet.name,
@@ -57,16 +56,13 @@ export default function PetCardForm() {
         });
         setPreviewImage(pet.petPhoto || defaultImageURL);
       } else if (petId) {
-        // 🟡 Fallback for direct access to /PetCardForm/:petId
         try {
           const res = await fetch(`http://localhost:5555/api/pets/${petId}`, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
+            headers: { Authorization: `Bearer ${token}` },
           });
-  
+
           if (!res.ok) throw new Error("Failed to fetch pet");
-  
+
           const data = await res.json();
           setFormData({
             name: data.name,
@@ -88,7 +84,7 @@ export default function PetCardForm() {
         }
       }
     };
-  
+
     loadPetData();
   }, [petId, location.state]);
 
@@ -151,146 +147,136 @@ export default function PetCardForm() {
 
   return (
     <div className="pet-card-wrapper">
-    <div className="pet-card-container">
-      <div className="left-section">
-        <h2 className="title">
-          {petId ? "Update" : "Create"} <span className="highlight">Pet Card</span> 🐾
-        </h2>
-        <img src={previewImage} alt="Pet Preview" className="pet-image" />
+      <div className="back-to-profile-icon" onClick={() => navigate("/profile/me")}>
+        <FaTimes />
       </div>
 
-      <div className="right-section">
-        <h2 className="form-title">Fill in the details 🐾 </h2>
-        <form className="pet-form" onSubmit={handleSubmit}>
-          <div className="form-grid">
-            <div className="input-group">
-              <FaPaw className="icon" />
-              <input
-                type="text"
-                name="name"
-                placeholder="Pet Name"
-                required
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="input-group">
-              <FaDog className="icon" />
-              <select
-                name="species"
-                required
-                value={formData.species}
-                onChange={handleChange}
-              >
-                {/* <option value="">Select Species</option> */}
-                <option value="Dog">Dog</option>
-                <option value="Cat">Cat</option>
-              </select>
-            </div>
-            <div className="input-group">
-              <FaInfoCircle className="icon" />
-              <input
-                type="text"
-                name="breed"
-                placeholder="Breed (Optional)"
-                value={formData.breed}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="input-group">
-              <input
-                type="number"
-                name="age"
-                placeholder="Age (Years)"
-                required
-                value={formData.age}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="input-group">
-              <select name="sex" value={formData.sex} onChange={handleChange}>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div className="input-group">
-              <FaMapMarkerAlt className="icon" />
-              <input
-                type="text"
-                name="location"
-                placeholder="Location"
-                required
-                value={formData.location}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="input-group">
-              <FaCamera className="icon" />
-              <input
-                type="text"
-                name="petPhoto"
-                placeholder="Enter Image URL"
-                value={formData.petPhoto}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="input-group full-width">
-              <textarea
-                name="description"
-                placeholder="Short Description (Optional)"
-                rows="2"
-                value={formData.description}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-            <div className="input-group">
-              <textarea
-                name="vaccines"
-                placeholder="Vaccines (Optional)"
-                rows="3"
-                value={formData.vaccines}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-            <div className="input-group">
-              <textarea
-                name="healthInfo"
-                placeholder="Health Info (Optional)"
-                rows="3"
-                value={formData.healthInfo}
-                onChange={handleChange}
-              ></textarea>
-            </div>
-            <div className="input-group">
-              <FaCheck className="icon" />
-              <select
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
-              >
-                <option value="Available">Available</option>
-                <option value="Adopted">Adopted</option>
-              </select>
-            </div>
-          </div>
+      <div className="pet-card-container">
+        <div className="left-section">
+          <h2 className="title">
+            {petId ? "Update" : "Create"} <span className="highlight">Pet Card</span> 🐾
+          </h2>
+          <img src={previewImage} alt="Pet Preview" className="pet-image" />
+        </div>
 
-          <button type="submit" className="submit-button">
-            {petId ? "Update Pet Card" : "Create Pet Card"}
-          </button>
+        <div className="right-section">
+          <h2 className="form-title">Fill in the details 🐾 </h2>
+          <form className="pet-form" onSubmit={handleSubmit}>
+            <div className="form-grid">
+              <div className="input-group">
+                <FaPaw className="icon" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Pet Name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="input-group">
+                <FaDog className="icon" />
+                <select name="species" required value={formData.species} onChange={handleChange}>
+                  <option value="Dog">Dog</option>
+                  <option value="Cat">Cat</option>
+                </select>
+              </div>
+              <div className="input-group">
+                <FaInfoCircle className="icon" />
+                <input
+                  type="text"
+                  name="breed"
+                  placeholder="Breed (Optional)"
+                  value={formData.breed}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="input-group">
+                <input
+                  type="number"
+                  name="age"
+                  placeholder="Age (Years)"
+                  required
+                  value={formData.age}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="input-group">
+                <select name="sex" value={formData.sex} onChange={handleChange}>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div className="input-group">
+                <FaMapMarkerAlt className="icon" />
+                <input
+                  type="text"
+                  name="location"
+                  placeholder="Location"
+                  required
+                  value={formData.location}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="input-group">
+                <FaCamera className="icon" />
+                <input
+                  type="text"
+                  name="petPhoto"
+                  placeholder="Enter Image URL"
+                  value={formData.petPhoto}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="input-group full-width">
+                <textarea
+                  name="description"
+                  placeholder="Short Description (Optional)"
+                  rows="2"
+                  value={formData.description}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+              <div className="input-group">
+                <textarea
+                  name="vaccines"
+                  placeholder="Vaccines (Optional)"
+                  rows="3"
+                  value={formData.vaccines}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+              <div className="input-group">
+                <textarea
+                  name="healthInfo"
+                  placeholder="Health Info (Optional)"
+                  rows="3"
+                  value={formData.healthInfo}
+                  onChange={handleChange}
+                ></textarea>
+              </div>
+              <div className="input-group">
+                <FaCheck className="icon" />
+                <select name="status" value={formData.status} onChange={handleChange}>
+                  <option value="Available">Available</option>
+                  <option value="Adopted">Adopted</option>
+                </select>
+              </div>
+            </div>
 
-          {petId && (
-            <button
-              type="button"
-              className="delete-button"
-              onClick={handleDelete}
-            >
-              <FaTrash /> Delete Pet
+            <button type="submit" className="submit-button">
+              {petId ? "Update Pet Card" : "Create Pet Card"}
             </button>
-          )}
-        </form>
+
+            {petId && (
+              <button type="button" className="delete-button" onClick={handleDelete}>
+                <FaTrash /> Delete Pet
+              </button>
+            )}
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 }

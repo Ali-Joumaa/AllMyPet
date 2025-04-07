@@ -119,7 +119,7 @@ const Profile = () => {
               address={userData.address || "Nothing"}
               isOwnProfile={true}
             />
-
+  
             <div className="profile-tabs">
               <button
                 className={`tab-btn ${activeTab === "pets" ? "active" : ""}`}
@@ -133,18 +133,18 @@ const Profile = () => {
               >
                 Favorite
               </button>
-
+  
               <button className="add-pet-btn" onClick={handleAddPet}>
                 <img src="/Paw.png" alt="Paw Icon" className="pawIcon" />
                 <FaPlus className="plus-icon" />
               </button>
             </div>
-
+  
             <div className="tab-content">
               {activeTab === "pets" ? (
-                <div className="pet-grid">
-                  {userPets.length > 0 ? (
-                    userPets.map((pet) => (
+                userPets.length > 0 ? (
+                  <div className="pet-grid">
+                    {userPets.map((pet) => (
                       <PetCard
                         key={pet.petId}
                         petName={pet.name}
@@ -158,37 +158,39 @@ const Profile = () => {
                         petData={pet}
                         onMoreInfo={setSelectedPet}
                         onEdit={handleEditPet}
-                        isFavorite={favorites.some(f => f.petId === pet.petId)}
+                        isFavorite={favorites.some((f) => f.petId === pet.petId)}
                         onToggleFavorite={() => handleToggleFavorite(pet.petId)}
                       />
-                    ))
-                  ) : (
-                    <p>No pets found.</p>
-                  )}
+                    ))}
+                  </div>
+                ) : (
+                  <div className="no-favorites-wrapper">
+                    <p className="no-favorites-message">No pets found.</p>
+                  </div>
+                )
+              ) : favorites.length > 0 ? (
+                <div className="pet-grid">
+                  {favorites.map((fav) => (
+                    <PetCard
+                      key={fav.petId}
+                      petName={fav.petName}
+                      petImage={fav.imageUrl}
+                      petBreed={fav.breed}
+                      petSex={fav.sex}
+                      petAge={fav.age}
+                      petSpecies={fav.petSpecies}
+                      petLocation={fav.location}
+                      petDescription={fav.description}
+                      petData={fav}
+                      onMoreInfo={setSelectedPet}
+                      onToggleFavorite={() => handleToggleFavorite(fav.petId)}
+                      isFavorite={true}
+                    />
+                  ))}
                 </div>
               ) : (
-                <div className="pet-grid">
-                  {favorites.length > 0 ? (
-                    favorites.map((fav) => (
-                      <PetCard
-                        key={fav.petId}
-                        petName={fav.petName}
-                        petImage={fav.imageUrl}
-                        petBreed={fav.breed}
-                        petSex={fav.sex}
-                        petAge={fav.age}
-                        petSpecies={fav.petSpecies}
-                        petLocation={fav.location}
-                        petDescription={fav.description}
-                        petData={fav}
-                        onMoreInfo={setSelectedPet}
-                        onToggleFavorite={() => handleToggleFavorite(fav.petId)}
-                        isFavorite={true}
-                      />
-                    ))
-                  ) : (
-                    <p>No favorites yet.</p>
-                  )}
+                <div className="no-favorites-wrapper">
+                  <p className="no-favorites-message">No favorites yet.</p>
                 </div>
               )}
             </div>
@@ -197,15 +199,13 @@ const Profile = () => {
           <p>Failed to load profile.</p>
         )}
       </div>
-
+  
       {selectedPet && (
-        <PetDetailsModal
-          pet={selectedPet}
-          onClose={() => setSelectedPet(null)}
-        />
+        <PetDetailsModal pet={selectedPet} onClose={() => setSelectedPet(null)} />
       )}
     </>
   );
+  
 };
 
 export default Profile;
