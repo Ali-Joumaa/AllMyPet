@@ -1,77 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+.vet-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38.73px;
+  text-align: center;
+  color: #0C0C0C;
+  width: 50%;
+  max-width: 513px;
+  margin: 30px auto;
+}
+
+.highlight-text {
+  color: #0A453A;
+}
+
+.vet-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 5%;
+  position: relative;
+  text-align: center;
+}
+
 .vet-slider-container {
-    position: relative;
-    width: 90%;
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    align-items: center;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden; 
+}
+
+.vet-slider {
+  width: 100%;
+  max-width: 980px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vet-card {
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.vet-image {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  left: 10px;
+}
+
+.right-arrow {
+  right: 10px;
+}
+
+.custom-arrow img {
+  width: 100%;
+  height: auto;
+}
+
+.custom-arrow:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 1024px) {
+  .vet-slider {
+    max-width: 700px;
     justify-content: center;
   }
-  
-  .slider-arrow {
-    cursor: pointer;
-    z-index: 10;
-    width: 40px;
-    height: 40px;
+  .custom-arrow {
+    width: 35px;
+    height: 35px;
   }
-  
-  .slider-arrow img {
-    width: 100%;
-    height: auto;
+  .left-arrow {
+    left: -20px;
   }
-  
-  .left {
-    position: absolute;
-    left: -50px;
+  .right-arrow {
+    right: -20px;
   }
-  
-  .right {
-    position: absolute;
-    right: -50px;
+  .vet-image {
+    width: 120px;
+    height: 120px;
   }
-  
-  .vet-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+  .vet-slider {
+    max-width: 500px;
+    justify-content: center;
   }
-  
-  .vet-card:hover {
-    transform: scale(1.05);
+  .custom-arrow {
+    width: 30px;
+    height: 30px;
   }
-  
-  .vet-profile-pic {
+  .left-arrow {
+    left: 5px;
+  }
+  .right-arrow {
+    right: 5px;
+  }
+  .vet-image {
     width: 100px;
     height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
   }
-  
-  .vet-info {
-    color: #333;
+}
+
+@media screen and (max-width: 480px) {
+  .vet-slider {
+    max-width: 400px;
+    justify-content: center;
   }
-  
-  .vet-name {
-    font-size: 18px;
-    font-weight: bold;
+  .custom-arrow {
+    width: 25px;
+    height: 25px;
   }
-  
-  .vet-specialty, .vet-location, .vet-contact {
-    font-size: 14px;
-    color: #777;
-    margin: 5px 0;
+  .left-arrow {
+    left: 0px;
   }
-  
-  .vet-stars {
-    margin-top: 10px;
+  .right-arrow {
+    right: 0px;
   }
-  
-  .star-icon {
-    width: 16px;
-    height: 16px;
+  .vet-image {
+    width: 85px;
+    height: 85px;
   }
+}
   

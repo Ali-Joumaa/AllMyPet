@@ -13,7 +13,17 @@ public class FavoritesDTO {
     private String petName;  // Name of the pet from the PetCard entity
     private String imageUrl;  // Image URL from the PetCard entity
     private String petSpecies;  // Species from the PetCard entity
-    private String adoptionPostStatus;  // Current status of the adoption post, if applicable
+    private String adoptionPostStatus; 
+    private String breed;
+    private String sex;
+    private Integer age;
+    private String location;
+    private String description; 
+    private String vaccines;
+private String healthInfo;
+private String username;
+private String petPhoto; // To unify naming for React props
+private String status;  
 
     // You might want to include other pertinent details from the PetCard or AdoptionPost entities if needed
 }

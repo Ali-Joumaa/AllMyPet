@@ -94,9 +94,9 @@ function NavBar() {
                             
                             
                             {/* ✅ Username (Clickable) */}
-                            <button className="username-button" onClick={() => navigate(`/profile/${user.username}`)}>
+                            <button className="username-button" onClick={() => navigate("/profile/me")}>
                                 <img 
-                                src={user.profilePictureURL || "/default-user.png"} 
+                                src={user.profilePictureURL || "/default-profile.png"} 
                                 alt="User Profile" 
                                 className="user-avatar" 
                                 onClick={() => navigate(`/profile/${user.username}`)} // ✅ Navigates to the correct profile

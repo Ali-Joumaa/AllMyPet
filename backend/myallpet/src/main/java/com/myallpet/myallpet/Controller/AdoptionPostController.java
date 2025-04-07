@@ -87,12 +87,12 @@ public ResponseEntity<AdoptionPostDTO> createAdoptionPost(
         return ResponseEntity.ok(dtos);
     }
 
-    // Update an adoption post
     @PutMapping("/{id}")
-    public ResponseEntity<AdoptionPost> updateAdoptionPost(@PathVariable Long id, @RequestBody AdoptionPost updatedPost) {
+    public ResponseEntity<AdoptionPostDTO> updateAdoptionPost(@PathVariable Long id, @RequestBody AdoptionPost updatedPost) {
         AdoptionPost post = adoptionPostService.updateAdoptionPost(id, updatedPost);
-        return ResponseEntity.ok(post);
+        return ResponseEntity.ok(convertToDTO(post)); // ✅ This solves the problem
     }
+    
 
     // Delete an adoption post
     @DeleteMapping("/{id}")
@@ -103,31 +103,38 @@ public ResponseEntity<AdoptionPostDTO> createAdoptionPost(
 
     // Helper method to convert to DTO
     private AdoptionPostDTO convertToDTO(AdoptionPost post) {
-    AdoptionPostDTO dto = new AdoptionPostDTO();
-    dto.setId(post.getPostId());
-    dto.setUserId(post.getUser().getUserId());
-
-    // ✅ Set user object with username
-    UserDTO userDTO = new UserDTO();
-    userDTO.setUsername(post.getUser().getUsername()); 
-
-    userDTO.setProfilePictureURL(post.getUser().getUserProfilePicture()); 
-    dto.setUser(userDTO);
-
-    dto.setPetId(post.getPetCard().getPetId());
-    dto.setImageUrl(post.getPetCard().getPetPhoto());
-    dto.setTitle(post.getTitle());
-    dto.setDescription(post.getDescription());
-    dto.setStatus(post.getStatus());
-    dto.setAdoptionType(post.getAdoptionType());
-    dto.setPostedDate(post.getCreatedAt().toLocalDate());
-
-    dto.setPetName(post.getPetCard().getName());
-    dto.setPetSpecies(post.getPetCard().getSpecies());
-    dto.setPetBreed(post.getPetCard().getBreed());
-    dto.setImageUrl(post.getPetCard().getPetPhoto());
-
-    return dto;
-}
+        AdoptionPostDTO dto = new AdoptionPostDTO();
+        dto.setId(post.getPostId());
+        dto.setUserId(post.getUser().getUserId());
+    
+        // ✅ Set user object with username and profile picture
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(post.getUser().getUsername());
+        userDTO.setProfilePictureURL(post.getUser().getUserProfilePicture());
+        dto.setUser(userDTO);
+    
+        // ✅ Pet details
+        PetCard pet = post.getPetCard();
+        dto.setPetId(pet.getPetId());
+        dto.setImageUrl(pet.getPetPhoto());
+        dto.setPetName(pet.getName());
+        dto.setPetSpecies(pet.getSpecies());
+        dto.setPetBreed(pet.getBreed());
+        dto.setPetAge(pet.getAge());
+        dto.setPetSex(pet.getSex());
+        dto.setPetLocation(pet.getLocation());
+        dto.setVaccines(pet.getVaccines());
+        dto.setHealthInfo(pet.getHealthInfo());
+    
+        // ✅ Post details
+        dto.setTitle(post.getTitle());
+        dto.setDescription(post.getDescription());
+        dto.setStatus(post.getStatus());
+        dto.setAdoptionType(post.getAdoptionType());
+        dto.setPostedDate(post.getCreatedAt().toLocalDate());
+    
+        return dto;
+    }
+    
 
 }

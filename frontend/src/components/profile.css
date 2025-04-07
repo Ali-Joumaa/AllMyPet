@@ -82,11 +82,25 @@
 /* Pet Grid - Ensures 3 Cards Per Row Without Resizing */
 .pet-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Keeps card size fixed */
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px; /* Space between cards */
+  padding: 20px 40px; /* Top-bottom + left-right padding */
+  justify-items: center; /* Center each card in its grid cell */
 }
+.no-favorites-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* or use 100% if you want it to fill the area */
+  width: 100%;
+}
+
+.no-favorites-message {
+  font-size: 16px;
+  color: #646363;
+  text-align: center;
+}
+
 
 
 /* Responsive for Tablets - 2 per row */

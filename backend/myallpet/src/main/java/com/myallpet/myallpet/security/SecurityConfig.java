@@ -1,10 +1,10 @@
 package com.myallpet.myallpet.security;
 
 import com.myallpet.myallpet.Service.CustomUserDetailsService;
-import com.myallpet.myallpet.security.JWTAuthFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -16,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
 import org.springframework.security.config.Customizer;
 
 @Configuration
@@ -26,22 +25,36 @@ public class SecurityConfig {
 
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
+
     @Autowired
     private JWTAuthFilter jwtAuthFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Correctly disable CSRF
-            .cors(Customizer.withDefaults()) // Correct CORS configuration if needed, else use a CorsConfigurationSource
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configure session management
+            .csrf(csrf -> csrf.disable())
+            .cors(Customizer.withDefaults())
+            // .httpBasic(Customizer.withDefaults())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(request -> request
+
                 .requestMatchers("/api/auth/**").permitAll() // Allow all requests to auth paths
                 .requestMatchers("/api/admin/**").hasRole("ADMIN") 
                 .requestMatchers("/api/ratings/recent").permitAll()
                 .requestMatchers("/api/pets/all").permitAll()
+                .requestMatchers(HttpMethod.DELETE, "/api/pets/delete/**").authenticated()
+                .requestMatchers("/api/favorites/**").authenticated()
+                .requestMatchers("/vets/**").permitAll()
+                .requestMatchers("/api/pets/userPets/**").authenticated()
+                .requestMatchers("/api/adoption-posts").authenticated()
                 .anyRequest().authenticated()) // Secure all other requests
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // Add JWT authentication filter
+
+
+                // 2) Permit all requests to /vets/**
+         
+
+  
 
         return http.build();
     }
@@ -65,7 +78,8 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 }

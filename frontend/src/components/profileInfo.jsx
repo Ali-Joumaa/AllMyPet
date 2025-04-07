@@ -5,7 +5,7 @@ import Bio from "./bio";
 import EditProfile from "./EditProfile"; // ✅ Import modal
 import "./profileInfo.css"; 
 
-const ProfileInfo = ({ profilePic, username, bio, yearsPetting, address, updateUser }) => {
+const ProfileInfo = ({ profilePic, username, bio, yearsPetting, address, updateUser,isOwnProfile }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 const [userInfo, setUserInfo] = useState({
   profilePic: profilePic || "",
@@ -65,7 +65,9 @@ const [userInfo, setUserInfo] = useState({
       {console.log("🟡 Rendering ProfileInfo Component with data:", userInfo)}
 
       {/* Edit Profile Icon */}
-      <FaUserEdit className="edit-profile-icon" onClick={openModal} />
+      {isOwnProfile && (
+  <FaUserEdit className="edit-profile-icon" onClick={openModal} />
+)}
 
       <div className="profile-info">
         {/* Left Side: Profile Picture */}

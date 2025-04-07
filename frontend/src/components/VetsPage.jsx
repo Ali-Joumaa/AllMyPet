@@ -1,24 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import "./VetsPage.css";
 import VetCardSlider from "./VetCardSlider";
 
 export default function VetsPage() {
-  const vets = [
-    { name: "Dr. Sarah Thompson", specialty: "Exotic Pets", location: "New York, USA", contact: "+1 555-1234", image: "" },
-    { name: "Dr. James Carter", specialty: "Surgery & Orthopedics", location: "Los Angeles, USA", contact: "+1 555-5678", image: "" },
-    { name: "Dr. Emily Watson", specialty: "General Care", location: "Chicago, USA", contact: "+1 555-9101", image: "" },
-    { name: "Dr. Robert Brown", specialty: "Dermatology", location: "Houston, USA", contact: "+1 555-2345", image: "" },
-    { name: "Dr. Olivia Green", specialty: "Dentistry", location: "San Francisco, USA", contact: "+1 555-6789", image: "" }
-  ];
+  // State to hold fetched vets
+  const [vets, setVets] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5555/vets")
+      .then(res => res.json())
+      .then(data => {
+        console.log("Fetched vets:", data);
+        if (Array.isArray(data)) {
+          // Transform the data to match VetCard fields
+          const transformedVets = data.map((vet) => ({
+            name: vet.firstName + " " + vet.lastName,
+            // If you'd like to display experience, location, or contact:
+            expYears: vet.expYears || 0,
+            location: vet.location || "N/A",
+            contact: vet.phoneNumber || "N/A",
+            image: vet.profilePicture
+          }));
+          setVets(transformedVets);
+        } else {
+          console.error("Data is not an array:", data);
+        }
+      })
+      .catch((err) => console.error("Error fetching vets:", err));
+  }, []);
 
   return (
     <>
       <NavBar />
-      <div className="vets-container">
-      <h1 className="vets-header">Available Veterinarians</h1>
-      <VetCardSlider vets={vets} />
+      <div className="vets-page-wrapper"> {/* ✅ Add this wrapper */}
+        <div className="vets-container">
+          <h1 className="vets-header">Available Veterinarians</h1>
+          <VetCardSlider vets={vets} />
+        </div>
       </div>
       <Footer />
     </>

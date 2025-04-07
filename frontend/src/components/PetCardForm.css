@@ -34,6 +34,29 @@
 .right-section {
   width: 60%;
 }
+.pet-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #e3def7;
+  padding: 20px;
+}
+.back-to-profile-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px; /* ⬅️ Move to right instead of left */
+  font-size: 24px;
+  color: #9990da;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 1000;
+}
+
+.back-to-profile-icon:hover {
+  transform: scale(1.2);
+}
+
 
 .form-title {
   font-size: 1.5rem;
@@ -100,3 +123,24 @@
   cursor: pointer;
   font-size: 0.9rem;
 }
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-top: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+.delete-button {
+  border: 2px solid red;
+}
+
