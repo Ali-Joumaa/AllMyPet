@@ -121,7 +121,7 @@ const ViewProfile = () => {
             />
 
             <div className="profile-tabs">
-              <button className="tab-btn active">Their Pets</button>
+              <button className="tab-btn active">Pets</button>
             </div>
 
             <div className="tab-content">

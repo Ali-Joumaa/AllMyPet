@@ -9,6 +9,15 @@ function NavBar() {
     const [user, setUser] = useState(null);
     const [isGuest, setIsGuest] = useState(true);
 
+    const handleProtectedNavigation = (path) => {
+        if (isGuest) {
+          navigate("/login");
+        } else {
+          navigate(path);
+        }
+      };
+      
+
     useEffect(() => {
         const token = localStorage.getItem("token");
 
@@ -55,11 +64,15 @@ function NavBar() {
 
                 {/* Middle - Navigation Links */}
                 <div className="nav-links">
-                    <Link to="/home">Home</Link>
-                    <Link to="/adopt">Adopt</Link>
-                    <a href="./chat">Community</a>
-                    <Link to="/raisePets">Raise A Pet</Link>
-                    <Link to="/vets">Veterinarians</Link>
+                    <Link to="/home">Home</Link> 
+                    <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/adopt");}}>Adopt</Link>
+                    
+                    <a href="./form">Community</a>
+
+
+                    <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/raisePets");}}>Raise A Pet</Link>
+                    <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/vets");}}>Veterinarians</Link>
+                    
                 </div>
 
                 {/* Right - Icons & User Section */}

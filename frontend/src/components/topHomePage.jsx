@@ -1,8 +1,29 @@
 import React from "react";
 import "./topHomePage.css";
 import DogAndCatImage from "../images/DogAndCat.svg";
+import {useNavigate} from "react-router-dom";
 
 export default function TopHomePage() {
+  const navigate = useNavigate();
+
+  const handleAdoptClick = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    } else {
+      navigate("/adopt");
+    }
+  };
+  
+  const handleRaiseClick = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    } else {
+      navigate("/raisePets");
+    }
+  };
+
   return (
     <div className="top-home-container">
       <div className="top-home-text">
@@ -19,8 +40,8 @@ export default function TopHomePage() {
           your home but also saves a life.
         </p>
         <div className="top-home-buttons">
-          <button className="adopt-btn">Adopt Now</button>
-          <button className="raise-btn">Raise a Pet</button>
+          <button className="adopt-btn" onClick={handleAdoptClick}>Adopt Now</button>
+          <button className="raise-btn" onClick={handleRaiseClick}>Raise a Pet</button>
         </div>
       </div>
       <div className="top-home-image">

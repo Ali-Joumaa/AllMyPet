@@ -1,24 +1,78 @@
-.container {
-    min-height: 100px; /* Ensures a minimum height */
-    width: 100%; /* Full width */
-    display: flex; /* If centering content is needed */
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Align items vertically */
-    justify-content: center; /* Align content horizontally */
-    padding: 10px; /* Add some padding for spacing */
-}
-
-/* Adjust height for smaller screens */
-@media (max-width: 768px) {
-    .container {
-        min-height: 80px; /* Reduce height on smaller devices */
-        padding: 8px;
+.pet-news-section {
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .text-center-news {
+    font-family: 'Acme', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #675BC8;
+  }
+  
+  /* Animation transitions */
+  .news-grid-transition {
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .news-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .news-fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  
+  /* Card hover scoped only to news grid */
+  .news-grid-transition > div:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Responsive tweaks */
+  @media (max-width: 768px) {
+    .pet-news-section {
+      padding: 8px;
     }
-}
-
-@media (max-width: 480px) {
-    .container {
-        min-height: 60px; /* Further reduce height for very small screens */
-        padding: 6px;
+  }
+  
+  @media (max-width: 480px) {
+    .pet-news-section {
+      padding: 6px;
     }
-}
+  }
+  .pet-news-section {
+    position: relative;
+    padding: 20px;
+    background-color: #f9f9f9;
+    overflow: hidden;
+  }
+  
+  /* Scoped modal overlay inside section */
+  .news-modal-overlay.local {
+    position: absolute; /* key difference */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .news-modal-close{
+    font-weight: bolder;
+    color: black;
+  }
+  
+  

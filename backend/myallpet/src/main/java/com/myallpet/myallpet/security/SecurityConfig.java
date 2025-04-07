@@ -40,6 +40,8 @@ public class SecurityConfig {
 
                 .requestMatchers("/api/auth/**").permitAll() // Allow all requests to auth paths
                 .requestMatchers("/api/admin/**").hasRole("ADMIN") 
+                .requestMatchers("/api/ratings/recent").permitAll()
+                .requestMatchers("/api/pets/all").permitAll()
                 .requestMatchers(HttpMethod.DELETE, "/api/pets/delete/**").authenticated()
                 .requestMatchers("/api/favorites/**").authenticated()
                 .requestMatchers("/vets/**").permitAll()

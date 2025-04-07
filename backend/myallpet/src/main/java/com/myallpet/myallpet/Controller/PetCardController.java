@@ -56,12 +56,20 @@ public class PetCardController {
         return ResponseEntity.ok(responseDTO);
     }
 
+    // // ✅ **Get All Pet Cards**
+    // @GetMapping("/all")
+    // public ResponseEntity<List<PetCard>> getAllPetCards() {
+    //     List<PetCard> petCards = petCardService.getAllPetCards();
+    //     return ResponseEntity.ok(petCards);
+    // }
+
     // ✅ Get All Pet Cards
     @GetMapping("/all")
-    public ResponseEntity<List<PetCard>> getAllPetCards() {
-        List<PetCard> petCards = petCardService.getAllPetCards();
-        return ResponseEntity.ok(petCards);
-    }
+public ResponseEntity<List<PetCardDTO>> getAllPetCards() {
+    List<PetCardDTO> petCards = petCardService.getAllPetCardDTOs();
+    return ResponseEntity.ok(petCards);
+}
+
 
     // ✅ Get Pet Card by ID (for edit form)
     @GetMapping("/{petId}")

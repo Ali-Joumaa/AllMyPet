@@ -24,60 +24,63 @@
   padding: 50px 5%;
   position: relative;
   text-align: center;
+  backdrop-filter: none;
 }
 
-.swiper-container {
+.review-section.blurred {
+  backdrop-filter: blur(6px);
+}
+
+/* 🔁 Updated scrollable container */
+.arrow-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+  margin: 20px auto;
+  gap: 10px;
   position: relative;
-  width: 100%;
-  max-width: 1200px;
 }
 
-.reviews-container {
-  width: 100%;
-  max-width: 900px;
-  overflow: hidden;
-  min-height: 300px;
+.reviews-container.scrollable {
   display: flex;
-  justify-content: center; /* Ensure items are centered */
-  align-items: center;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+  max-width: 1200px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-.review-card {
-  height: 100%;
-  margin: 0 auto; /* Ensures the cards are always centered */
+.reviews-container.scrollable::-webkit-scrollbar {
+  display: none;
 }
 
-/* Fixing Arrows Placement */
-.custom-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+/* 🔁 Arrow styling */
+.slider-arrow {
   width: 40px;
   height: 40px;
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 10;
-}
-
-.left-arrow {
-  left: 10px;
-}
-
-.right-arrow {
-  right: 10px;
-}
-
-.custom-arrow img {
-  width: 100%;
-  height: auto;
+  transition: 0.3s;
+  flex-shrink: 0;
 }
 
 .slider-arrow:hover {
   opacity: 0.7;
 }
 
+.left-arrow {
+  margin-right: 8px;
+}
+
+.right-arrow {
+  margin-left: 8px;
+}
+
+/* 📝 Write Review Button */
 .write-review-btn {
   background: #675BC8;
   width: 172px;
@@ -101,53 +104,174 @@
   background: #5646B2;
 }
 
+/* 📱 Responsive */
 @media screen and (max-width: 1024px) {
-  .reviews-container {
+  .reviews-container.scrollable {
     max-width: 700px;
-    justify-content: center;
+    gap: 20px;
   }
-  .custom-arrow {
+
+  .slider-arrow {
     width: 35px;
     height: 35px;
-  }
-  .left-arrow {
-    left: -20px;
-  }
-  .right-arrow {
-    right: -20px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .reviews-container {
+  .reviews-container.scrollable {
     max-width: 500px;
-    justify-content: center;
   }
-  .custom-arrow {
+
+  .write-review-btn {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .slider-arrow {
     width: 30px;
     height: 30px;
-  }
-  .left-arrow {
-    left: 5px;
-  }
-  .right-arrow {
-    right: 5px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .reviews-container {
+  .reviews-container.scrollable {
     max-width: 400px;
-    justify-content: center;
   }
-  .custom-arrow {
-    width: 25px;
-    height: 25px;
+
+  .slider-arrow {
+    width: 28px;
+    height: 28px;
   }
-  .left-arrow {
-    left: 0px;
+}
+
+/* ✨ Modal styling */
+.news-modal-overlay.local {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeInBlur 0.4s ease-in-out;
+}
+
+@keyframes fadeInBlur {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
   }
-  .right-arrow {
-    right: 0px;
+  to {
+    opacity: 1;
+    backdrop-filter: blur(3px);
+  }
+}
+
+.news-modal-close {
+  font-weight: bolder;
+  color: black;
+  cursor: pointer;
+  text-align: right;
+  font-size: 18px;
+}
+
+/* 💬 Review Form */
+.review-form {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.review-form h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.review-form input,
+.review-form textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.review-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.review-form button {
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.review-form button[type="submit"] {
+  background-color: #675BC8;
+  color: white;
+}
+
+.review-form button[type="submit"]:hover {
+  background-color: #5646B2;
+}
+
+.review-form button[type="button"] {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.review-form button[type="button"]:hover {
+  background-color: #ddd;
+}
+
+/* ⭐ Star rating in modal */
+.star-rating {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.star {
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.star.filled {
+  color: #FFD700;
+}
+
+@media screen and (max-width: 480px) {
+  .star-rating {
+    font-size: 20px;
   }
 }

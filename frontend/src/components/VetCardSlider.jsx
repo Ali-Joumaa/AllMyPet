@@ -44,7 +44,7 @@ export default function VetCardSlider({ vets }) {
         loop={true}
         // centeredSlides={true}
         autoplay={{
-          delay: 2000, // 2.5 sec
+          delay: 5000, // 2.5 sec
           disableOnInteraction: false, // keeps autoplay even after user interaction
         }}
         modules={[Autoplay]}

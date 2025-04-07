@@ -47,7 +47,7 @@ function Home() {
     return (
         <div>
             <NavBar user={user} isGuest={isGuest} /> {/* Pass both user data and guest flag */}
-            <TopHomePage />
+            <TopHomePage /> 
             <OurPetsSection />
             <PetAdoptionSteps/>
             <PetNewsSection/>

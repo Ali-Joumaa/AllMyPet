@@ -1,0 +1,165 @@
+{
+    "news": [
+      {
+        "id": 1,
+        "title": "Study Shows Cats Can Recognize Their Own Names",
+        "category": "Cats",
+        "date": "2025-03-25",
+        "content": "A recent study has revealed that cats are capable of recognizing their own names, even when spoken by strangers. The study sheds new light on feline intelligence.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgnL-6fb5PhgkCkH3odiqgPmhqoWm6HeRjwQ&s"
+      },
+      {
+        "id": 2,
+        "title": "Therapy Dogs Bring Joy to Local Hospital",
+        "category": "Dogs",
+        "date": "2025-03-24",
+        "content": "Therapy dogs visited the children’s ward at Central Hospital this week, bringing smiles and comfort to young patients. The program is part of an ongoing initiative to use animal therapy in healthcare.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs-rx-zUA5yLQwhB4i-9QYaBRLV4azRSZbgQ&s"
+      },
+      {
+        "id": 3,
+        "title": "Cats May Understand Human Emotions, Says New Research",
+        "category": "Cats",
+        "date": "2025-03-22",
+        "content": "Researchers have found evidence that cats may be able to read human facial expressions and respond to emotional cues, especially from their owners.",
+        "imageUrl": "data:image/jpeg;base64,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"
+      },
+      {
+        "id": 4,
+        "title": "Dogs Detect Illness Through Scent in Groundbreaking Study",
+        "category": "Dogs",
+        "date": "2025-03-20",
+        "content": "A groundbreaking study has shown that dogs can detect certain illnesses in humans by scent alone, opening up new possibilities for early diagnosis methods.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSffl2EOTWx9D2zzAHNOzjBeI-x_bS812IgHg&s"
+      },
+      {
+        "id": 5,
+        "title": "Cat Purring May Have Healing Properties",
+        "category": "Cats",
+        "date": "2025-03-18",
+        "content": "Veterinary researchers are investigating the possibility that a cat’s purring vibrations may promote healing in both cats and humans.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQitj5z9tP-9Hqg55XcsrdPTcehnJbw7tzF-g&s"
+      },
+      {
+        "id": 6,
+        "title": "Veterans Benefit from Service Dogs in PTSD Recovery",
+        "category": "Dogs",
+        "date": "2025-03-17",
+        "content": "New data shows a significant improvement in PTSD symptoms among veterans paired with trained service dogs. The study underscores the emotional and psychological support dogs can provide.",
+        "imageUrl": "https://images.ctfassets.net/sa0sroutfts9/4z6compB4dXqJeqbT8Vbja/1c88a5f3f0aa57df7580ea6462559475/dog-and-owner-leaned-in-close-together.jpg"
+      },
+      {
+        "id": 7,
+        "title": "Cats Recognize Owner's Voice Even When Ignoring It",
+        "category": "Cats",
+        "date": "2025-03-15",
+        "content": "A study confirms that cats do recognize their owner’s voice but often choose not to respond, reinforcing the idea that cats are independent creatures.",
+        "imageUrl": "https://www.barkandwhiskers.com/content/images/2024/03/can-cats-recognize-their-owners-voice.webp"
+      },
+      {
+        "id": 8,
+        "title": "Dogs Help Kids with Autism Improve Communication Skills",
+        "category": "Dogs",
+        "date": "2025-03-14",
+        "content": "Therapy programs involving dogs have helped children on the autism spectrum engage more socially and improve verbal skills, according to a new clinical trial.",
+        "imageUrl": "https://www.fosteringpeople.co.uk/media/1xrn5jzx/dogs-for-autism.jpg?width=500&height=457.54499307798795"
+      },
+      {
+        "id": 9,
+        "title": "Cats Sleep More Than Any Other Domestic Pet, Study Finds",
+        "category": "Cats",
+        "date": "2025-03-12",
+        "content": "A behavioral study reveals cats spend an average of 12-16 hours per day sleeping, often adjusting their routines to match their owners’ lifestyles.",
+        "imageUrl": "https://s30385.pcdn.co/wp-content/uploads/2020/02/p19m8bje6i1f2cimb12of1ecc1ika6.jpg.optimal.jpg"
+      },
+      {
+        "id": 10,
+        "title": "Dog Owners Get More Daily Exercise, Research Confirms",
+        "category": "Dogs",
+        "date": "2025-03-10",
+        "content": "A UK study found that dog owners are more physically active than non-owners, primarily due to regular walks and playtime.",
+        "imageUrl": "https://d3544la1u8djza.cloudfront.net/APHI/Blog/2021/05-06/happy+dog+being+walked+on+a+trail+by+a+woman+in+a+purple+top+-min.jpg"
+      },
+      {
+        "id": 11,
+        "title": "Cat Cafés Reduce Stress in Urban Populations",
+        "category": "Cats",
+        "date": "2025-03-09",
+        "content": "Visiting a cat café can significantly lower stress and anxiety levels, especially in high-stress urban environments, a wellness study reports.",
+        "imageUrl": "https://ichef.bbci.co.uk/images/ic/480xn/p0357cyc.jpg.webp"
+      },
+      {
+        "id": 12,
+        "title": "Dogs Can Distinguish Between Happy and Angry Faces",
+        "category": "Dogs",
+        "date": "2025-03-08",
+        "content": "Dogs have shown the ability to differentiate human facial expressions, reacting more positively to smiling faces according to a new experiment.",
+        "imageUrl": "https://cdn.outsideonline.com/wp-content/uploads/2023/03/Funny_Dog_S.jpg"
+      },
+      {
+        "id": 13,
+        "title": "Cats Use Over 16 Types of Meows to Communicate with Humans",
+        "category": "Cats",
+        "date": "2025-03-07",
+        "content": "Linguists and veterinarians have cataloged at least 16 distinct vocalizations that cats use to interact with humans, depending on context and emotion.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeDa-cpkxgwRG_w99uVTvIxvcM8XOvNYRvkA&s"
+      },
+      {
+        "id": 14,
+        "title": "Dogs Sense Human Stress and Mirror Emotions",
+        "category": "Dogs",
+        "date": "2025-03-06",
+        "content": "Studies reveal that dogs can pick up on their owner’s stress levels and often mirror emotional states, strengthening the human-animal bond.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRY0kT30M4IO3F_M8hWW3rnJbte_77xgXfbQ&s"
+      },
+      {
+        "id": 15,
+        "title": "Cats Form Strong Bonds With Humans, Contrary to Popular Belief",
+        "category": "Cats",
+        "date": "2025-03-04",
+        "content": "New research indicates cats form secure attachments to their owners, similar to the bonds seen between children and caregivers.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLyPthCnvVdy6B_HH2GvrU2VZ9uVEE-Edhfg&s"
+      },
+      {
+        "id": 16,
+        "title": "Dogs Can Hear Human Heartbeats from Across the Room",
+        "category": "Dogs",
+        "date": "2025-03-02",
+        "content": "In a surprising study, dogs demonstrated the ability to detect heartbeats from several feet away, raising new questions about canine senses.",
+        "imageUrl": "https://ultrascopes.com/cdn/shop/articles/Depositphotos_9412666_s-2019_1600x.jpg?v=1625161767"
+      },
+      {
+        "id": 17,
+        "title": "Music Calms Cats During Veterinary Visits",
+        "category": "Cats",
+        "date": "2025-03-01",
+        "content": "Playing classical music in exam rooms has been shown to reduce stress in cats during vet visits, improving cooperation and comfort.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPdMfR1vcP1l6nHefwn03AezYZH-01yTHe8w&s"
+      },
+      {
+        "id": 18,
+        "title": "Dogs Improve Mental Health in College Students",
+        "category": "Dogs",
+        "date": "2025-02-28",
+        "content": "Campus wellness programs featuring therapy dogs have significantly boosted mood and reduced anxiety in college students during exam weeks.",
+        "imageUrl": "https://www.waltham.com/s3media/2020-05/therapy-dogs-can-help-boost-college-students-attention-memory-and-help-them-tackle-stress_v2.jpg"
+      },
+      {
+        "id": 19,
+        "title": "Cats Prefer Human Interaction Over Food, Study Finds",
+        "category": "Cats",
+        "date": "2025-02-26",
+        "content": "Surprisingly, when given a choice, many cats preferred human attention over food in a controlled experiment involving domestic felines.",
+        "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwjEBualwFwCF6OOR0fcg8Xm4gjDbAEFpJpw&s"
+      },
+      {
+        "id": 20,
+        "title": "Dogs Can Understand Up to 165 Words, Research Shows",
+        "category": "Dogs",
+        "date": "2025-02-24",
+        "content": "Cognitive tests reveal that average dogs can understand over 160 words and commands, with some breeds performing even better.",
+        "imageUrl": "https://hungarytoday.hu/wp-content/uploads/2024/03/290196096_5375659392472033_5832583501059660066_n-e1711442415886.jpg"
+      }
+    ]
+  }
+  
