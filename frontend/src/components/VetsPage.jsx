@@ -34,10 +34,11 @@ export default function VetsPage() {
   return (
     <>
       <NavBar />
-      <div className="vets-container">
-        <h1 className="vets-header">Available Veterinarians</h1>
-        {/* Pass the fetched `vets` to VetCardSlider */}
-        <VetCardSlider vets={vets} />
+      <div className="vets-page-wrapper"> {/* ✅ Add this wrapper */}
+        <div className="vets-container">
+          <h1 className="vets-header">Available Veterinarians</h1>
+          <VetCardSlider vets={vets} />
+        </div>
       </div>
       <Footer />
     </>

@@ -40,11 +40,11 @@ export default function VetCardSlider({ vets }) {
         onSwiper={setSwiperInstance}
         spaceBetween={10}
         slidesPerView={3}
-        slidesPerGroup={3}
+        slidesPerGroup={1}
         loop={true}
-        centeredSlides={true}
+        // centeredSlides={true}
         autoplay={{
-          delay: 5000, // 5 seconds
+          delay: 2000, // 2.5 sec
           disableOnInteraction: false, // keeps autoplay even after user interaction
         }}
         modules={[Autoplay]}
