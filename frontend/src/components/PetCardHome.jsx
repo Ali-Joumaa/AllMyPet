@@ -88,19 +88,19 @@ export default function PetCard(props) {
               <p>
                 <span>Sex:</span>{" "}
                 <span className="pet-card-tag">
-                  {props.petSex || "Unknown"}
+                  {props.petSex }
                 </span>
               </p>
               <p>
                 <span>Breed:</span>{" "}
                 <span className="pet-card-tag">
-                  {props.petBreed || "Unknown"}
+                  {props.petBreed}
                 </span>
               </p>
               <p>
                 <span>Age:</span>{" "}
                 <span className="pet-card-tag">
-                  {props.petAge || "Unknown"}
+                  {props.petAge }
                 </span>
               </p>
               <p>

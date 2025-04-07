@@ -77,10 +77,10 @@ export default function OurPetsSection({ header }) {
                 petName={card.name}
                 petBreed={card.breed}
                 petAge={card.age}
-                petGender={card.sex}
+                petSex={card.sex}
                 petLocation={card.location}
                 petImage={card.petPhoto}
-                petSize={card.species}
+                petSpecies={card.species}
                 petDescription={card.description}
                 isFavorite={false}
               />
