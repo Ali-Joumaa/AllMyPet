@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useNavigate } from 'react-router-dom';
 import "./petCare.css";
 import petCareImage from "../images/PetCare.svg";
 
@@ -15,6 +16,7 @@ export default function PetCare() {
           with to make sure your pet is always healthy.
         </p>
         <button className="find-vet">Find a Vet</button>
+        <Link to="/addvet" className="add-a-vet-link">Add a Vet!</Link>
       </div>
       <div className="pet-care-image">
         <img src={petCareImage} alt="Vet cares about pets" />

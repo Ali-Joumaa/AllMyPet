@@ -1,58 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import SideBar from "./SideBar";
 import ChatWindow from "./ChatWindow";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-
-const API_BASE = "http://localhost:5555";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 const ChatApp = () => {
-  const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("You are not logged in.");
-      return;
-    }
-    axios.get(`${API_BASE}/users/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then(res => setCurrentUser(res.data.username))
-    .catch(err => {
-      console.error("Failed to load profile:", err);
-      alert("Failed to load profile. Please login again.");
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!currentUser) return;
-    const token = localStorage.getItem("token");
-    axios.get(`${API_BASE}/users`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then(res => {
-      setUsers(res.data.filter(u => u.username !== currentUser));
-    })
-    .catch(err => {
-      console.error("Failed to load users:", err);
-    });
-  }, [currentUser]);
-
-  const filteredUsers = users.filter(u =>
-    u.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    `${u.firstname} ${u.lastname}`.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const [selectedUser, setSelectedUser] = useState("aj123");
+  const currentUser = "benkhalifay";
 
   return (
+    <div>
+      <NavBar/>
     <div className="container-fluid vh-100">
       <div className="row h-100">
-        <SideBar users={filteredUsers} onSelectUser={setSelectedUser} onSearch={setSearchTerm} />
+        <SideBar onSelectUser={setSelectedUser} />
         {selectedUser && <ChatWindow user={selectedUser} currentUser={currentUser} />}
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };

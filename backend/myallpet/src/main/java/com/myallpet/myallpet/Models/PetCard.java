@@ -22,7 +22,7 @@ public class PetCard {
   
       private Long petId;
 
-      @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+      @ManyToOne(fetch = FetchType.LAZY)
       @JoinColumn(name = "userId", nullable = false)
       private User user;
 
@@ -33,7 +33,6 @@ public class PetCard {
 
 
       @NotBlank(message = "Species is required")
-      @Size(min = 3, max = 30, message = "Species must be between 3 and 30 characters")
       @Column(nullable = false)
       private String species;
 
@@ -50,6 +49,11 @@ public class PetCard {
       private String sex;
 
       private String petPhoto;
+
+      @OneToMany(mappedBy = "petCard", cascade = CascadeType.ALL, orphanRemoval = true)
+@JsonIgnore // prevent infinite recursion during JSON serialization
+private java.util.List<AdoptionPost> adoptionPosts;
+
 
       @Size(max = 2000, message = "Description cannot be longer than 2000 characters")
       private String description;

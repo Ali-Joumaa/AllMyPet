@@ -1,38 +1,40 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-
-const API_BASE = "http://localhost:5555";
+import React, { useEffect, useState, useRef } from "react";
 
 const ChatWindow = ({ user, currentUser }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const textareaRef = useRef(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) return;
-    axios.get(`${API_BASE}/api/messages/${user}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-    .then(res => setMessages(res.data))
-    .catch(err => {
-      console.error("Failed to load messages:", err);
-    });
+    setMessages([]); // Reset messages on new chat
   }, [user]);
 
   const sendMessage = () => {
     if (input.trim()) {
-      const token = localStorage.getItem("token");
-      axios.post(`${API_BASE}/api/messages`, {
-        receiver: user,
+      const newMessage = {
         text: input,
-      }, {
-        headers: { Authorization: `Bearer ${token}` },
-      }).then(res => {
-        setMessages([...messages, res.data]);
-        setInput("");
-      }).catch(err => {
-        console.error("Failed to send message:", err);
-      });
+        sender: { username: currentUser }
+      };
+      setMessages([...messages, newMessage]);
+      setInput("");
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+      }
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = textareaRef.current.scrollHeight + "px";
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
     }
   };
 
@@ -54,14 +56,16 @@ const ChatWindow = ({ user, currentUser }) => {
         ))}
       </div>
 
-      <div className="p-3 border-top d-flex">
-        <input
-          type="text"
+      <div className="p-3 border-top d-flex align-items-end">
+        <textarea
+          ref={textareaRef}
+          rows={1}
           className="form-control me-2"
           placeholder="Message..."
           value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && sendMessage()}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
+          style={{ resize: "none", overflow: "hidden" }}
         />
         <button className="btn btn-primary" onClick={sendMessage}>Send</button>
       </div>

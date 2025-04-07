@@ -31,12 +31,12 @@ public class Veterinarian {
     @NotBlank(message = "First Name is required")
     @Size(min = 2, max = 30, message = "First Name must be between 2 and 50 characters")
     @Column(nullable = false)
-    private String FirstName;
-
+    private String firstName;
+    
     @NotBlank(message = "Last Name is required")
     @Size(min = 2, max = 30, message = "Last Name must be between 2 and 50 characters")
     @Column(nullable = false)
-    private String LastName;
+    private String lastName;
 
     @Email
     @Column(nullable = false, unique = true)
@@ -58,5 +58,5 @@ public class Veterinarian {
 
     // @Pattern(regexp = "\\d{10}", message = "Phone number must be a 10-digit number")
     @Column(nullable = false)
-    private String PhoneNumber;
+    private String phoneNumber;
 }

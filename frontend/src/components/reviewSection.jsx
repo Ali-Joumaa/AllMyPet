@@ -1,4 +1,8 @@
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import "./reviewSection.css";
 import ReviewCard from "./reviewCard";
 import leftArrow from "../icons/VectorToLeft.svg";
@@ -9,23 +13,23 @@ export default function ReviewSection() {
   const reviews = [
     { 
       reviewerName: "Angela Shamblin", 
-      reviewerText: "I adopted my 3 month old chihuahua mix from them (and they were transported to CT). I was very skeptical at first because I couldn't find too much detail about them when I googled the group and I wasn't sure about the validity of Adopt-a-Pet.",
+      reviewerText: "I adopted my 3 month old chihuahua mix from them...",
       reviewerImage: defaultReviewPic
     },
     { 
       reviewerName: "Zaire Botosh", 
-      reviewerText: "We adopted our dog from here, and he had been very loved and taken care of by the staff. I would highly recommend.",
+      reviewerText: "We adopted our dog from here, and he had been very loved...",
       reviewerImage: defaultReviewPic
     },
     { 
       reviewerName: "Monika Stanton", 
-      reviewerText: "We adopted our Cowboy in October and he was an instant match for my family. We lost our last dog to cancer 6 months before and my husband wasn’t sure he was ready for a new dog yet, but as soon as we got him home we knew we made the right choice.",
+      reviewerText: "We adopted our Cowboy in October and he was an instant match...",
       reviewerImage: defaultReviewPic
     },
     { 
       reviewerName: "James Rhiel Madsen", 
-      reviewerText: "",
-      reviewerImage: "" 
+      reviewerText: "No review available.",
+      reviewerImage: defaultReviewPic 
     },
   ];
 
@@ -35,17 +39,41 @@ export default function ReviewSection() {
         What People say <span className="highlight-text">about us</span>
       </h2>
 
-      <div className="reviews-container">
-        <img src={leftArrow} alt="Left" className="slider-arrow left-arrow" />
-        {reviews.map((review, index) => (
-          <ReviewCard 
-            key={index} 
-            reviewerName={review.reviewerName ? review.reviewerName : "Anonymous"}
-            reviewerText={review.reviewerText ? review.reviewerText : "No review available."}
-            reviewerImage={review.reviewerImage ? review.reviewerImage : defaultReviewPic}
-          />
-        ))}
-        <img src={rightArrow} alt="Right" className="slider-arrow right-arrow" />
+      <div className="swiper-container">
+        <div className="custom-arrow left-arrow">
+          <img src={leftArrow} alt="Previous" />
+        </div>
+
+        <Swiper
+          modules={[Navigation]}
+          spaceBetween={20}
+          slidesPerView={1}
+          loop={true} 
+          navigation={{
+            nextEl: ".custom-arrow.right-arrow",
+            prevEl: ".custom-arrow.left-arrow",
+          }}
+          breakpoints={{
+            480: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="reviews-container"
+        >
+          {reviews.map((review, index) => (
+            <SwiperSlide key={index}>
+              <ReviewCard 
+                reviewerName={review.reviewerName}
+                reviewerText={review.reviewerText}
+                reviewerImage={review.reviewerImage}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        
+        <div className="custom-arrow right-arrow">
+          <img src={rightArrow} alt="Next" />
+        </div>
       </div>
 
       <button className="write-review-btn">Write a Review</button>

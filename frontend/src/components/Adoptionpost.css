@@ -1,19 +1,27 @@
 .adoption-card {
   background-color: #ffffff;
   color: black;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
   width: 90%;
-  max-width: 900px;
-  margin: 40px auto; /* Centers the card */
+  max-width: 950px;
+  margin: 40px auto;
+  transition: all 0.3s ease;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.adoption-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(147, 115, 219, 0.15);
 }
 
 .adoption-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px; 
+  margin-bottom: 18px;
 }
 
 .adoption-profile {
@@ -22,106 +30,208 @@
 }
 
 .adoption-profile-pic {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 12px;
   object-fit: cover;
-}
-.adoption-pet-pic {
-  width: 30px;
-  height: 30px;
-  border-radius: 50% ;
-  border-color: #9373db;
-  margin-right: 10px;
+  border: 2px solid #9373db2f;
 }
 
 .adoption-user-info h2 {
   font-size: 18px;
   margin: 0;
   font-weight: bold;
+  word-break: break-word;
 }
 
 .adoption-date {
   font-size: 12px;
-  color: #666;
+  color: #888;
 }
 
 .adoption-available-btn {
   background-color: #9373db;
   color: white;
-  padding: 6px 12px;
-  border-radius: 15px;
+  padding: 6px 16px;
+  border-radius: 20px;
   font-size: 14px;
   border: none;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
 }
+
+.adoption-available-btn:hover {
+  background-color: #7d5fd3;
+}
+
+.adoption-available-btn.not-available {
+  background-color: #ff4d4f !important; /* 🔴 red */
+}
+
 
 .adoption-title-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 10px;
+  flex-wrap: wrap; /* ✅ Prevent overflow on small screens */
+  margin-bottom: 16px;
+  gap: 12px;
 }
 
 .adoption-title {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .adoption-toggle-container {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  flex-shrink: 0;
 }
 
-.adoption-toggle {
-  position: relative;
-  display: inline-block;
-  width: 40px;
-  height: 30px;
+.adoption-pet-pic {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #9373db;
 }
 
-.toggle-label{
+.toggle-label {
   font-size: 20px;
-  color:#9373db;
-  margin-top: 10px;
+  color: #9373db;
   font-weight: bold;
-}
-
-.adoption-toggle input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.adoption-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  border-radius: 20px;
-  transition: 0.4s;
-  border: 1px solid #9373db;
-}
-
-.adoption-toggle input:checked + .adoption-slider {
-  background-color: #9373db;
+  margin-top: 4px;
+  word-break: break-word;
 }
 
 .adoption-description {
-  font-size: 14px;
-  color: #333;
-  line-height: 1.5;
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  /* Optional clamp */
+  /* display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden; */
 }
 
 .adoption-type {
   color: #9373db;
   font-size: 14px;
-  margin-top: 10px;
-  text-align: left;
   font-weight: bold;
+  word-break: break-word;
+}
+
+.adoption-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.adoption-edit-btn,
+.adoption-delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: color 0.2s ease;
+}
+
+.adoption-edit-btn:hover,
+.adoption-delete-btn:hover {
+  color: #9373db;
+}
+
+.username-with-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-icon {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #555;
+  transition: color 0.2s;
+}
+
+.message-icon:hover {
+  color: #9990DA;
+}
+
+.pet-badge {
+  display: flex;
+  align-items: center;
+  border: 2px solid #7a5ce4;
+  border-radius: 9999px;
+  padding: 6px 12px;
+  gap: 10px;
+  width: fit-content;
+}
+
+.pet-badge-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pet-badge-name {
+  font-weight: 500;
+  color: #7a5ce4;
+  font-size: 1rem;
+}
+
+
+.adoption-actions-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 12px;
+}
+
+.actions-menu {
+  position: relative;
+}
+
+.actions-toggle-icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: #555;
+}
+
+.actions-dropdown {
+  display: flex;
+  gap: 8px;
+  position: absolute;
+  top: -10px;
+  left: -90px;
+  padding: 4px 8px;
+  z-index: 10;
+}
+
+.adoption-available-btn {
+  transition: transform 0.3s ease;
+}
+
+.adoption-available-btn.not-available {
+  background-color: #f44336; /* red */
+  color: white;
+}
+
+.adoption-available-btn.pushed-left {
+  transform: translateX(-80px);
 }
