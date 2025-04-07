@@ -11,4 +11,6 @@ public class RatingDTO {
     private String description;
     private Integer numberOfStars;
     private Long userId;
+    private String username;
+    private String userProfilePicture;
 }

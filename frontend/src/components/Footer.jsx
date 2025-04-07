@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   FaFacebook,
   FaPinterest,
@@ -12,6 +13,16 @@ import {
 import "./Footer.css"; // Import the CSS file
 
 function Footer() {
+  const navigate = useNavigate();
+  const handleAdoptClick = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    } else {
+      navigate("/adopt");
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -20,10 +31,10 @@ function Footer() {
           <h3>How Can We Help?</h3>
           <ul>
             <li>
-              <a href="/#">Adopt a pet</a>
+              <a href="" onClick={handleAdoptClick}>Adopt a pet</a>
             </li>
             <li>
-              <a href="/#">Rehome a pet</a>
+              <a href="" onClick={handleAdoptClick}>Rehome a pet</a>
             </li>
             <li>
               <a href="/#">Adopt FAQ's</a>
@@ -59,7 +70,7 @@ function Footer() {
               <FaEnvelope className="email-icon" />
               <input type="email" placeholder="E-mail Address" />
             </div>
-            <button>Subscribe</button>
+            <button type="submit">Subscribe</button>
           </div>
         </div>
       </div>

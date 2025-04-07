@@ -45,10 +45,18 @@ public class PetCardService {
         return petCardRepository.save(petCard);
     }
 
-    // ✅ **Get All Pet Cards**
-    public List<PetCard> getAllPetCards() {
-        return petCardRepository.findAll();
+    // // ✅ **Get All Pet Cards**
+    // public List<PetCard> getAllPetCards() {
+    //     return petCardRepository.findAll();
+    // }
+
+    public List<PetCardDTO> getAllPetCardDTOs() {
+        List<PetCard> pets = petCardRepository.findAll();
+        return pets.stream()
+                   .map(this::convertToDTO)
+                   .collect(Collectors.toList());
     }
+    
 
     // ✅ **Get Pet Card by ID**
     public Optional<PetCard> getPetCardById(Long petId) {

@@ -56,12 +56,19 @@ return ResponseEntity.ok(responseDTO); // ✅ safe to return
 
     }
 
-    // ✅ **Get All Pet Cards**
+    // // ✅ **Get All Pet Cards**
+    // @GetMapping("/all")
+    // public ResponseEntity<List<PetCard>> getAllPetCards() {
+    //     List<PetCard> petCards = petCardService.getAllPetCards();
+    //     return ResponseEntity.ok(petCards);
+    // }
+
     @GetMapping("/all")
-    public ResponseEntity<List<PetCard>> getAllPetCards() {
-        List<PetCard> petCards = petCardService.getAllPetCards();
-        return ResponseEntity.ok(petCards);
-    }
+public ResponseEntity<List<PetCardDTO>> getAllPetCards() {
+    List<PetCardDTO> petCards = petCardService.getAllPetCardDTOs();
+    return ResponseEntity.ok(petCards);
+}
+
 
     // ✅ **Get Pet Card by ID**
     @GetMapping("/{petId}")
