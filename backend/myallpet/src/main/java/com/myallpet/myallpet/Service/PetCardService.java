@@ -5,6 +5,7 @@ import com.myallpet.myallpet.Models.AdoptionPost;
 import com.myallpet.myallpet.Models.PetCard;
 import com.myallpet.myallpet.Models.User;
 import com.myallpet.myallpet.Repository.AdoptionPostRepository;
+import com.myallpet.myallpet.Repository.FavoritesRepository;
 import com.myallpet.myallpet.Repository.PetCardRepository;
 import com.myallpet.myallpet.Repository.UserRepository;
 import com.myallpet.myallpet.exception.OurException;
@@ -21,7 +22,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class PetCardService {
-
+    @Autowired
+    private FavoritesRepository favoritesRepository;
     @Autowired
     private PetCardRepository petCardRepository;
 
@@ -90,7 +92,7 @@ public class PetCardService {
         if (!pet.getUser().getUsername().equals(username)) {
             throw new RuntimeException("Unauthorized to delete this pet.");
         }
-    
+        favoritesRepository.deleteByPetCard_PetId(petId);
         petCardRepository.delete(pet); // No need to manually delete adoption posts
     }
 
