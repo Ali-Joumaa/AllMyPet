@@ -67,7 +67,7 @@ function NavBar() {
                     <Link to="/home">Home</Link> 
                     <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/adopt");}}>Adopt</Link>
                     
-                    <a href="./form">Community</a>
+                    <a href="./chat">Community</a>
 
 
                     <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/raisePets");}}>Raise A Pet</Link>

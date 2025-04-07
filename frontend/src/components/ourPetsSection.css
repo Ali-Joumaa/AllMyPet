@@ -1,71 +1,79 @@
 .container {
     width: 100%;
-    min-height: 100px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    overflow: hidden;
-}
-
-.carousel-wrapper {
-    width: 100%;
-    overflow: hidden;
+  }
+  
+  .carousel-container {
     position: relative;
-}
-
-.carousel-track {
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
     display: flex;
-    transition: transform 0.6s ease-in-out;
-}
-
-/* Slide from left */
-.slide-left .carousel-track {
-    animation: slideFromLeft 0.6s ease-in-out;
-}
-
-@keyframes slideFromLeft {
-    0% {
-        transform: translateX(100%);
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-row {
+    display: flex;
+    gap: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .card-wrapper {
+    flex: 1 1 25%;
+    max-width: 25%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .fade-transition {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  
+  /* Arrows */
+  .arrow-btn {
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s ease;
+  }
+  
+  .arrow-btn:hover {
+    transform: scale(1.2);
+  }
+  
+  .left {
+    position: absolute;
+    left: -40px;
+  }
+  
+  .right {
+    position: absolute;
+    right: -40px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 992px) {
+    .card-wrapper {
+      max-width: 50%;
+      flex: 1 1 50%;
     }
-    100% {
-        transform: translateX(0);
+  }
+  
+  @media (max-width: 576px) {
+    .card-wrapper {
+      max-width: 100%;
+      flex: 1 1 100%;
     }
-}
-
-/* Slide from right */
-.slide-right .carousel-track {
-    animation: slideFromRight 0.6s ease-in-out;
-}
-
-@keyframes slideFromRight {
-    0% {
-        transform: translateX(-100%);
+  
+    .left, .right {
+      display: none;
     }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-/* Responsive padding tweaks */
-@media (max-width: 992px) {
-    .container {
-        padding: 16px;
-    }
-}
-@media (max-width: 768px) {
-    .container {
-        padding: 12px;
-    }
-}
-@media (max-width: 576px) {
-    .container {
-        padding: 10px;
-    }
-}
-@media (max-width: 400px) {
-    .container {
-        padding: 8px;
-    }
-}
+  }
+  
