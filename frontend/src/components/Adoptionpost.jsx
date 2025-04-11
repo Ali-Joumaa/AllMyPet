@@ -35,7 +35,7 @@ const AdoptionPost = ({ data, currentUsername, onDelete, onUpdate }) => {
       alert("Post deleted successfully!");
       if (onDelete) onDelete(data.id);
     } catch (err) {
-      console.error("❌ Delete error:", err);
+      console.error("Delete error:", err);
       alert("Something went wrong while deleting.");
     }
   };
