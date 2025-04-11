@@ -56,9 +56,9 @@ function AdoptionPostEditForm({ postData, onPostUpdated, onCancel }) {
   
       const updatedPost = await response.json();
       onPostUpdated(updatedPost);
-      onCancel(); // ✅ Close the edit form automatically
+      onCancel(); //  Close the edit form automatically
     } catch (error) {
-      console.error("❌ Error updating post:", error);
+      console.error(" Error updating post:", error);
       alert("Update failed: " + error.message);
     }
   };

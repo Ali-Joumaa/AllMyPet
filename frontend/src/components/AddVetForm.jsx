@@ -24,7 +24,7 @@ export default function AddVetForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // ✅ Log the data to the console before sending
+    // Log the data to the console before sending
     console.log("Submitting vet data:", vetData);
 
     fetch('http://localhost:5555/vets/add', {
@@ -36,7 +36,7 @@ export default function AddVetForm() {
         console.log("Response status:", res.status);
         if (res.ok) {
           alert('✅ Veterinarian added successfully!');
-          // ✅ Refresh the page to reload data
+          // Refresh the page to reload data
           window.location.reload();
         } else {
           alert('❌ Error adding vet. Check console and backend logs.');

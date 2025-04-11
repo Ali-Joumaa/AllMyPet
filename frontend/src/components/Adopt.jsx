@@ -5,13 +5,13 @@ import AdoptionPost from "./Adoptionpost";
 import AdoptionPostForm from "./AdoptionPostForm";
 import "./Adopt.css";
 
-// ✅ Decode JWT to extract username
+// Decode JWT to extract username
 function getUsernameFromToken(token) {
   try {
     const payload = JSON.parse(atob(token.split(".")[1]));
     return payload.sub || payload.username || null;
   } catch (e) {
-    console.error("❌ Failed to decode token:", e);
+    console.error("Failed to decode token:", e);
     return null;
   }
 }
@@ -25,7 +25,7 @@ function Adopt() {
   const token = localStorage.getItem("token");
   const currentUsername = getUsernameFromToken(token);
 
-  // ✅ Fetch all posts
+  // Fetch all posts
   const fetchPosts = useCallback(async () => {
     if (!token) return;
 
@@ -53,24 +53,24 @@ function Adopt() {
     return () => clearTimeout(timeout);
   }, [fetchPosts]);
 
-  // ✅ Handle Add Post
+  // Handle Add Post
   const handleAddPost = () => {
     setIsFormOpen(false);
     fetchPosts(); // Refresh after adding
   };
 
-  // ✅ Handle Delete Post
+  // Handle Delete Post
   const handleDelete = (id) => {
     setPosts((prev) => prev.filter((p) => p.id !== id));
     fetchPosts();
   };
 
-  // ✅ Handle Update Post
+  // Handle Update Post
   const handleUpdate = () => {
     fetchPosts(); // Re-fetch from backend
   };
 
-  // ✅ Filter by breed
+  // Filter by breed
   const filteredPosts = posts.filter((post) =>
     post.petBreed?.toLowerCase().includes(searchBreed.toLowerCase())
   );
@@ -80,7 +80,7 @@ function Adopt() {
       <NavBar />
 
       <main className="main-content">
-        {/* ✅ Search Bar */}
+        {/*  Search Bar */}
         <div className="search-add-container">
   <input
     type="text"
