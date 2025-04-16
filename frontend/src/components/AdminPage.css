@@ -1,0 +1,42 @@
+/* === AdminPage.css === */
+
+.admin-root {
+    display: flex;
+  }
+  
+  .admin-drawer {
+    width: 240px;
+    flex-shrink: 0;
+  }
+  
+  .admin-drawer-paper {
+    width: 240px;
+    box-sizing: border-box;
+    background-color: #f4f6f8;
+  }
+  
+  .admin-main {
+    flex-grow: 1;
+    background-color: #f9fafb;
+    padding: 24px;
+  }
+  
+  .admin-appbar {
+    width: calc(100% - 240px);
+    margin-left: 240px;
+    background-color: #9990DA !important;
+  }
+  
+  .delete-btn {
+    background-color: #e53935;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #c62828;
+  }
+  
