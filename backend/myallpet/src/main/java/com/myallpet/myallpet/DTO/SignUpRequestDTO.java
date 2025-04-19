@@ -1,5 +1,7 @@
 package com.myallpet.myallpet.DTO;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.Getter;
@@ -17,9 +19,13 @@ public class SignUpRequestDTO {
     private String username;
     @NotBlank(message = "Password is required")
     private String password;
-    @NotBlank(message = "FirstName is required")
+    
+    @JsonAlias({"firstName", "firstname"})
+    @NotBlank(message = "First Name is required")
     private String firstname;
-    @NotBlank(message = "LastName is required")
+
+    @JsonAlias({"lastName", "lastname"})
+    @NotBlank(message = "Last Name is required")
     private String lastname;
 
     public String getFirstName() {  // ✅ Ensure getter exists
