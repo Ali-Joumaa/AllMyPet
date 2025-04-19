@@ -2,6 +2,7 @@ package com.myallpet.myallpet.Repository;
 
 import com.myallpet.myallpet.Models.User;
 
+import java.util.List;
 import java.util.Optional;
 // import org.springframework.stereotype.Repository;
 
@@ -12,6 +13,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
   Optional<User> findByEmail(String email);
   boolean existsByUsername(String username);
   Optional<User> findByUsername(String username);
+  List<User> findAllByRoleNot(String role);
+
  
 
 } 

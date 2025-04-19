@@ -79,8 +79,8 @@ public class User implements UserDetails {
     // @Column(nullable = false)
     private String sex;
 
-    @Column(columnDefinition = "VARCHAR DEFAULT 'user' ") 
-    @Pattern(regexp = "admin|user", message = "Role must be admin or user")
+    @Column(columnDefinition = "VARCHAR DEFAULT 'user' " , nullable = false) 
+    @Pattern(regexp = "ADMIN|USER", message = "Role must be admin or user")
     private String role;
 
     @Size(max=100, message ="Address cannot be longer than 100 characters")
@@ -98,22 +98,24 @@ public class User implements UserDetails {
     private List<Notifications>  notifications;
     
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Rating>  ratings;
+    @com.fasterxml.jackson.annotation.JsonManagedReference
+    private List<Rating> ratings;
+    
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (role == null || role.isEmpty()) {
-            role = "user";  // ✅ Default role if null or empty
+            role = "USER";  // ensure it's uppercase and default
         }
-        return List.of(new SimpleGrantedAuthority(role));    
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
     }
+    
     public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
     }
-    public Object getProfileImageUrl() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProfileImageUrl'");
+    public String getProfileImageUrl() {
+        return this.userProfilePicture;
     }
 }
