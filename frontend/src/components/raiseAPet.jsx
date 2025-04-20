@@ -12,15 +12,14 @@ const RaiseAPet = () => {
   const [countryData, setCountryData] = useState({});
   const [catBreeds, setCatBreeds] = useState([]);
   const [dogBreeds, setDogBreeds] = useState([]);
+  const [animalType, setAnimalType] = useState("both");
 
   useEffect(() => {
-    // Load country-pet mapping
     fetch("/all_countries_pets_by_climate.json")
       .then((response) => response.json())
       .then((data) => setCountryData(data))
       .catch((err) => console.error("Error loading pet data:", err));
 
-    // Load cat breeds
     fetch("https://api.thecatapi.com/v1/breeds", {
       headers: { "x-api-key": process.env.REACT_APP_CAT_API_KEY },
     })
@@ -28,7 +27,6 @@ const RaiseAPet = () => {
       .then((data) => setCatBreeds(data))
       .catch((err) => console.error("Error loading cat breeds:", err));
 
-    // Load dog breeds
     fetch("https://api.thedogapi.com/v1/breeds", {
       headers: { "x-api-key": process.env.REACT_APP_DOG_API_KEY },
     })
@@ -37,33 +35,41 @@ const RaiseAPet = () => {
       .catch((err) => console.error("Error loading dog breeds:", err));
   }, []);
 
-  const fetchImage = async (type, breedId) => {
-    const apiUrl =
-      type === "cat"
-        ? `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`
-        : `https://api.thedogapi.com/v1/images/search?breed_ids=${breedId}`;
+  const fetchImage = async (type, breedId, breedName = "") => {
+    if (type === "dog") {
+      const formatted = breedName.toLowerCase().replace(/\s+/g, "/");
+      const url = `https://dog.ceo/api/breed/${formatted}/images/random`;
 
-    const apiKey =
-      type === "cat"
-        ? process.env.REACT_APP_CAT_API_KEY
-        : process.env.REACT_APP_DOG_API_KEY;
-
-    try {
-      const response = await fetch(apiUrl, {
-        headers: { "x-api-key": apiKey },
-      });
-      if (!response.ok) throw new Error("Failed to fetch image.");
-      const data = await response.json();
-      return data.length > 0 ? data[0].url || "default_image_url.jpg" : "default_image_url.jpg";
-    } catch {
-      return "default_image_url.jpg";
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data?.status === "success" && data?.message) {
+          return data.message;
+        } else {
+          const fallbackRes = await fetch("https://dog.ceo/api/breeds/image/random");
+          const fallbackData = await fallbackRes.json();
+          return fallbackData?.message || "default_dog.jpg";
+        }
+      } catch {
+        return "default_dog.jpg";
+      }
+    } else {
+      try {
+        const response = await fetch(`https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`, {
+          headers: { "x-api-key": process.env.REACT_APP_CAT_API_KEY },
+        });
+        const data = await response.json();
+        return data.length > 0 ? data[0].url : "default_cat.jpg";
+      } catch {
+        return "default_cat.jpg";
+      }
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!location.trim()) {
+    if (animalType !== "dog" && !location.trim()) {
       alert("Please select a location.");
       return;
     }
@@ -73,6 +79,25 @@ const RaiseAPet = () => {
     setPets([]);
 
     try {
+      if (animalType === "dog") {
+        const res = await fetch("/random_pet_dogs_filtered.json");
+        const dogList = await res.json();
+
+        const dogData = await Promise.all(
+          dogList.map(async (dog) => {
+            const imageUrl = await fetchImage("dog", null, dog.name);
+            return {
+              name: dog.name,
+              imageUrl,
+              description: `${dog.name} is a loyal and playful breed.`,
+            };
+          })
+        );
+
+        setPets(dogData);
+        return;
+      }
+
       let countryName = location.trim();
       countryName = countryName.charAt(0).toUpperCase() + countryName.slice(1);
 
@@ -80,9 +105,13 @@ const RaiseAPet = () => {
         setError("No data found for this country.");
       } else {
         const breedList = countryData[countryName].suitable_breeds;
+        const filteredList = animalType === "cat"
+          ? breedList.filter((b) => b.type === "cat")
+          : breedList;
+
         const breedData = await Promise.all(
-          breedList.map(async (breed) => {
-            const imageUrl = await fetchImage(breed.type, breed.id);
+          filteredList.map(async (breed) => {
+            const imageUrl = await fetchImage(breed.type, breed.id, breed.name);
             const breedInfo =
               breed.type === "cat"
                 ? catBreeds.find((b) => b.id === breed.id)
@@ -136,7 +165,7 @@ const RaiseAPet = () => {
                             placeholder="Start typing a country name..."
                             value={location}
                             onChange={(e) => setLocation(e.target.value)}
-                            required
+                            required={animalType !== "dog"}
                           />
                           <datalist id="countries">
                             {Object.keys(countryData).map((country, index) => (
@@ -147,6 +176,20 @@ const RaiseAPet = () => {
                       ) : (
                         <p>Loading countries...</p>
                       )}
+                    </div>
+
+                    <div className="mb-3">
+                      <label htmlFor="animalType" className="form-label">Filter by Animal</label>
+                      <select
+                        id="animalType"
+                        className="form-select"
+                        value={animalType}
+                        onChange={(e) => setAnimalType(e.target.value)}
+                      >
+                        <option value="both">Both</option>
+                        <option value="cat">Cats Only</option>
+                        <option value="dog">Dogs Only</option>
+                      </select>
                     </div>
 
                     <button type="submit" className="btn btn-primary w-100" disabled={loading}>
