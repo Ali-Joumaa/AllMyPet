@@ -9,7 +9,7 @@ export default function VetsPage() {
   const [vets, setVets] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5555/vets")
+    fetch("http://localhost:5555/vets/approved")
       .then(res => res.json())
       .then(data => {
         console.log("Fetched vets:", data);

@@ -8,7 +8,7 @@
   
   .carousel-container {
     position: relative;
-    width: 100%;
+    width: 96%;
     max-width: 1200px;
     overflow: hidden;
     display: flex;
@@ -23,8 +23,8 @@
   }
   
   .card-wrapper {
-    flex: 1 1 25%;
-    max-width: 25%;
+    flex: 1 1 23%;
+    max-width: 23%;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
   

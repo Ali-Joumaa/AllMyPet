@@ -24,6 +24,10 @@ public class VeterinarianService {
         return veterinarianRepository.save(veterinarian);
     }
 
+    public List<Veterinarian> getApprovedVeterinarians() {
+        return veterinarianRepository.findByApprovedTrue();
+    }
+
     /**
      * Create and save a Veterinarian from a VeterinarianDTO
      */
@@ -38,6 +42,7 @@ public class VeterinarianService {
         veterinarian.setLocation(dto.getLocation());
         veterinarian.setProfilePicture(dto.getProfilePicture());
         veterinarian.setPhoneNumber(dto.getPhoneNumber());
+        veterinarian.setApproved(false);
 
         // Persist the new veterinarian
         return veterinarianRepository.save(veterinarian);

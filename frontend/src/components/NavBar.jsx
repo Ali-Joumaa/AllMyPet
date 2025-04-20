@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaBell, FaUser } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios"; // ✅ To fetch user data
+import axios from "axios"; 
 import "./NavBar.css";
 
 function NavBar() {

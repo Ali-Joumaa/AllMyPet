@@ -1,0 +1,37 @@
+[
+  {
+    "id": 130,
+    "name": "Havanese",
+    "imageUrl": "https://cdn2.thedogapi.com/images/rkXiGl9V7.jpg"
+  },
+  {
+    "id": 86,
+    "name": "Cocker Spaniel",
+    "imageUrl": "https://cdn2.thedogapi.com/images/1lFmrzECl.jpg"
+  },
+  {
+    "id": 51,
+    "name": "Border Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
+  },
+  {
+    "id": 214,
+    "name": "Samoyed",
+    "imageUrl": "https://cdn2.thedogapi.com/images/S1T8Ee9Nm.jpg"
+  },
+  {
+    "id": 264,
+    "name": "Yorkshire Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/B12BnxcVQ.jpg"
+  },
+  {
+    "id": 221,
+    "name": "Shetland Sheepdog",
+    "imageUrl": "https://cdn2.thedogapi.com/images/rJa29l9E7.jpg"
+  },
+  {
+    "id": 210,
+    "name": "Rottweiler",
+    "imageUrl": "https://cdn2.thedogapi.com/images/r1xXEgcNX.jpg"
+  }
+]

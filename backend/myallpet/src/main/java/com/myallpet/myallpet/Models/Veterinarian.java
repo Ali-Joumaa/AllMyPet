@@ -59,4 +59,8 @@ public class Veterinarian {
     // @Pattern(regexp = "\\d{10}", message = "Phone number must be a 10-digit number")
     @Column(nullable = false)
     private String phoneNumber;
+
+    @Column(nullable = false)
+    private boolean approved = false;
+
 }

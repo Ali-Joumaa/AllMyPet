@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -8,7 +8,8 @@ import leftArrow from "../icons/VectorToLeft.svg";
 import rightArrow from "../icons/VectorToRight.svg";
 
 export default function VetCardSlider({ vets }) {
-  // Create a dummy vet object for padding if needed
+  const swiperRef = useRef(null);
+
   const dummyVet = {
     name: 'Unknown Vet',
     expYears: 0,
@@ -17,35 +18,30 @@ export default function VetCardSlider({ vets }) {
     image: ''
   };
 
-  // If fewer than 3 items, pad the array with dummy objects
   const sliderVets =
     vets.length < 3
       ? [...vets, ...Array.from({ length: 3 - vets.length }, () => dummyVet)]
       : vets;
 
-  // Store the swiper instance to control navigation via our custom buttons
-  const [swiperInstance, setSwiperInstance] = useState(null);
-
   return (
     <div className="vet-slider-container">
       {/* Left Navigation Arrow */}
       <div
-        className="slider-arrow left"
-        onClick={() => swiperInstance && swiperInstance.slidePrev()}
+        className="custom-arrow left-arrow"
+        onClick={() => swiperRef.current?.slidePrev()}
       >
         <img src={leftArrow} alt="Left Arrow" />
       </div>
 
       <Swiper
-        onSwiper={setSwiperInstance}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
         spaceBetween={10}
         slidesPerView={3}
         slidesPerGroup={1}
         loop={true}
-        // centeredSlides={true}
         autoplay={{
-          delay: 5000, // 2.5 sec
-          disableOnInteraction: false, // keeps autoplay even after user interaction
+          delay: 2500,
+          disableOnInteraction: false,
         }}
         modules={[Autoplay]}
         breakpoints={{
@@ -64,8 +60,8 @@ export default function VetCardSlider({ vets }) {
 
       {/* Right Navigation Arrow */}
       <div
-        className="slider-arrow right"
-        onClick={() => swiperInstance && swiperInstance.slideNext()}
+        className="custom-arrow right-arrow"
+        onClick={() => swiperRef.current?.slideNext()}
       >
         <img src={rightArrow} alt="Right Arrow" />
       </div>

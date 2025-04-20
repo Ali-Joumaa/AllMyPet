@@ -1,0 +1,102 @@
+[
+  {
+    "id": 105,
+    "name": "English Toy Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/SJ6eMxqEQ.jpg"
+  },
+  {
+    "id": 189,
+    "name": "Plott",
+    "imageUrl": "https://cdn2.thedogapi.com/images/B1i67l5VQ.jpg"
+  },
+  {
+    "id": 130,
+    "name": "Havanese",
+    "imageUrl": "https://cdn2.thedogapi.com/images/rkXiGl9V7.jpg"
+  },
+  {
+    "id": 86,
+    "name": "Cocker Spaniel",
+    "imageUrl": "https://cdn2.thedogapi.com/images/1lFmrzECl.jpg"
+  },
+  {
+    "id": 95,
+    "name": "Dogo Argentino",
+    "imageUrl": "https://cdn2.thedogapi.com/images/S1nhWx94Q.jpg"
+  },
+  {
+    "id": 51,
+    "name": "Border Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/HJOpge9Em.jpg"
+  },
+  {
+    "id": 239,
+    "name": "Standard Schnauzer",
+    "imageUrl": "https://cdn2.thedogapi.com/images/tmzeu6ID_.jpg"
+  },
+  {
+    "id": 214,
+    "name": "Samoyed",
+    "imageUrl": "https://cdn2.thedogapi.com/images/S1T8Ee9Nm.jpg"
+  },
+  {
+    "id": 259,
+    "name": "Wire Fox Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/SJ6f2g9EQ.jpg"
+  },
+  {
+    "id": 243,
+    "name": "Thai Ridgeback",
+    "imageUrl": "https://cdn2.thedogapi.com/images/zv89hR-O8.jpg"
+  },
+  {
+    "id": 264,
+    "name": "Yorkshire Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/B12BnxcVQ.jpg"
+  },
+  {
+    "id": 221,
+    "name": "Shetland Sheepdog",
+    "imageUrl": "https://cdn2.thedogapi.com/images/rJa29l9E7.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Australian Shepherd",
+    "imageUrl": "https://cdn2.thedogapi.com/images/B1-llgq4m.jpg"
+  },
+  {
+    "id": 53,
+    "name": "Boston Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/rkZRggqVX.jpg"
+  },
+  {
+    "id": 210,
+    "name": "Rottweiler",
+    "imageUrl": "https://cdn2.thedogapi.com/images/r1xXEgcNX.jpg"
+  },
+  {
+    "id": 84,
+    "name": "Clumber Spaniel",
+    "imageUrl": "https://cdn2.thedogapi.com/images/rkeqWgq4Q.jpg"
+  },
+  {
+    "id": 67,
+    "name": "Cane Corso",
+    "imageUrl": "https://cdn2.thedogapi.com/images/r15m-lc4m.jpg"
+  },
+  {
+    "id": 120,
+    "name": "Glen of Imaal Terrier",
+    "imageUrl": "https://cdn2.thedogapi.com/images/H1oLMe94m.jpg"
+  },
+  {
+    "id": 223,
+    "name": "Shih Tzu",
+    "imageUrl": "https://cdn2.thedogapi.com/images/BkrJjgcV7.jpg"
+  },
+  {
+    "id": 260,
+    "name": "Wirehaired Pointing Griffon",
+    "imageUrl": "https://cdn2.thedogapi.com/images/Bkam2l9Vm.jpg"
+  }
+]

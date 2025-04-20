@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import "./reviewSection.css";
 import ReviewCard from "./reviewCard";
 import leftArrow from "../icons/VectorToLeft.svg";
@@ -7,7 +11,7 @@ import defaultReviewPic from "../images/ReviewPic.png";
 import { useNavigate } from "react-router-dom";
 
 export default function ReviewSection() {
-  const scrollRef = useRef(null);
+  const swiperRef = useRef(null);
   const username = localStorage.getItem("username");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
@@ -25,18 +29,16 @@ export default function ReviewSection() {
   }, [token]);
 
   const fetchReviews = () => {
-    const headers = {
-      "Content-Type": "application/json",
-    };
+    const headers = { "Content-Type": "application/json" };
     if (token) headers["Authorization"] = `Bearer ${token}`;
 
     fetch("http://localhost:5555/api/ratings/recent", { headers })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
-      .then(data => {
-        const mapped = data.map(r => ({
+      .then((data) => {
+        const mapped = data.map((r) => ({
           reviewerName: r.username || "Anonymous",
           reviewerText: r.description,
           reviewerImage: r.userProfilePicture || defaultReviewPic,
@@ -44,7 +46,7 @@ export default function ReviewSection() {
         }));
         setReviews(mapped);
       })
-      .catch(err => console.error("Error fetching reviews:", err));
+      .catch((err) => console.error("Error fetching reviews:", err));
   };
 
   const handleSubmit = (e) => {
@@ -54,7 +56,7 @@ export default function ReviewSection() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         username,
@@ -62,41 +64,21 @@ export default function ReviewSection() {
         numberOfStars: newReview.numberOfStars,
       }),
     })
-      .then(res => {
+      .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
       })
-      .then(() => {
-        // Re-fetch updated reviews to get accurate profile picture
-        return fetch("http://localhost:5555/api/ratings/recent", {
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`,
-          },
-        });
-      })
-      .then(res => res.json())
-      .then(data => {
-        const mapped = data.map(r => ({
-          reviewerName: r.username || "Anonymous",
-          reviewerText: r.description,
-          reviewerImage: r.userProfilePicture || defaultReviewPic,
-          numberOfStars: r.numberOfStars || 5,
-        }));
-        setReviews(mapped);
-        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      })
-      .catch(err => console.error("Error submitting review:", err))
+      .then(() => fetchReviews())
       .finally(() => {
         setShowModal(false);
         setNewReview({ reviewerText: "", numberOfStars: 5 });
         setHoverRating(0);
-      });
+        swiperRef.current?.slideToLoop(0, 0); // reset swiper to first slide
+      })
+      .catch((err) => console.error("Error submitting review:", err));
   };
 
-  const handleStarClick = (rating) => {
-    setNewReview({ ...newReview, numberOfStars: rating });
-  };
+  const handleStarClick = (rating) => setNewReview({ ...newReview, numberOfStars: rating });
 
   const handlewriteReviewClick = () => {
     if (!token) {
@@ -106,14 +88,6 @@ export default function ReviewSection() {
     setShowModal(true);
   };
 
-  const scrollLeft = () => {
-    scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
-  };
-
-  const scrollRight = () => {
-    scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
-  };
-
   return (
     <div className={`review-section ${showModal ? "blurred" : ""}`}>
       <h2 className="review-title">
@@ -121,19 +95,44 @@ export default function ReviewSection() {
       </h2>
 
       <div className="arrow-wrapper">
-        <img src={leftArrow} alt="Left" className="slider-arrow left-arrow" onClick={scrollLeft} />
-        <div className="reviews-container scrollable" ref={scrollRef}>
+        {/* Left Arrow */}
+        <img
+          src={leftArrow}
+          alt="Left"
+          className="slider-arrow left-arrow"
+          onClick={() => swiperRef.current?.slidePrev()}
+        />
+
+        {/* Swiper Slider */}
+        <Swiper
+          modules={[Navigation, Autoplay]}
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          spaceBetween={100}
+          slidesPerView={3}
+          slidesPerGroup={1}
+          loop
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          breakpoints={{
+            480: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+          className="reviews-container"
+        >
           {reviews.map((review, index) => (
-            <ReviewCard
-              key={index}
-              reviewerName={review.reviewerName}
-              reviewerText={review.reviewerText}
-              reviewerImage={review.reviewerImage}
-              numberOfStars={review.numberOfStars}
-            />
+            <SwiperSlide key={index}>
+              <ReviewCard {...review} />
+            </SwiperSlide>
           ))}
-        </div>
-        <img src={rightArrow} alt="Right" className="slider-arrow right-arrow" onClick={scrollRight} />
+        </Swiper>
+
+        {/* Right Arrow */}
+        <img
+          src={rightArrow}
+          alt="Right"
+          className="slider-arrow right-arrow"
+          onClick={() => swiperRef.current?.slideNext()}
+        />
       </div>
 
       <button className="write-review-btn" onClick={handlewriteReviewClick}>
@@ -143,17 +142,19 @@ export default function ReviewSection() {
       {showModal && (
         <div className="news-modal-overlay local">
           <form className="review-form scale-in" onSubmit={handleSubmit}>
-            <div className="news-modal-close" onClick={() => setShowModal(false)}>✕</div>
+            <div className="news-modal-close" onClick={() => setShowModal(false)}>
+              ✕
+            </div>
             <h3>Write a Review</h3>
 
             <textarea
               placeholder="Your review"
               required
               value={newReview.reviewerText}
-              onChange={e => setNewReview({ ...newReview, reviewerText: e.target.value })}
+              onChange={(e) => setNewReview({ ...newReview, reviewerText: e.target.value })}
             />
             <div className="star-rating">
-              {[1, 2, 3, 4, 5].map(n => (
+              {[1, 2, 3, 4, 5].map((n) => (
                 <svg
                   key={n}
                   onClick={() => handleStarClick(n)}
@@ -171,7 +172,9 @@ export default function ReviewSection() {
               ))}
             </div>
             <button type="submit">Submit</button>
-            <button type="button" onClick={() => setShowModal(false)}>Cancel</button>
+            <button type="button" onClick={() => setShowModal(false)}>
+              Cancel
+            </button>
           </form>
         </div>
       )}

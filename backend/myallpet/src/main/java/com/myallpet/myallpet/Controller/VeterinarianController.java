@@ -66,4 +66,26 @@ public class VeterinarianController {
 
         return ResponseEntity.ok(savedDto);
     }
+
+    @GetMapping("/approved")
+    public ResponseEntity<List<VeterinarianDTO>> getApprovedVeterinarians() {
+        List<Veterinarian> approvedVets = veterinarianService.getApprovedVeterinarians();
+
+        List<VeterinarianDTO> dtos = approvedVets.stream().map(vet -> {
+            VeterinarianDTO dto = new VeterinarianDTO();
+            dto.setVetId(vet.getVetId());
+            dto.setFirstName(vet.getFirstName());
+            dto.setLastName(vet.getLastName());
+            dto.setEmail(vet.getEmail());
+            dto.setExpYears(vet.getExp_years());
+            dto.setSex(vet.getSex());
+            dto.setLocation(vet.getLocation());
+            dto.setProfilePicture(vet.getProfilePicture());
+            dto.setPhoneNumber(vet.getPhoneNumber());
+            return dto;
+        }).collect(Collectors.toList());
+
+        return ResponseEntity.ok(dtos);
+    }
+
 }

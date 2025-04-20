@@ -5,7 +5,7 @@ import com.myallpet.myallpet.DTO.SignUpRequestDTO;
 import com.myallpet.myallpet.Models.User;
 import com.myallpet.myallpet.Service.UserService;
 import com.myallpet.myallpet.utils.JwtUtils;
-import com.myallpet.myallpet.utils.JwtResponse; // Ensure you have this response class defined to handle JWT responses
+import com.myallpet.myallpet.utils.JwtResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,21 +39,21 @@ public class AuthController {
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-    
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String jwt = jwtUtils.generateToken(userDetails.getUsername());  // Assuming a method that generates the token
-        JwtResponse jwtResponse = new JwtResponse(jwt, userDetails.getUsername());  // Include additional data as necessary
+        String jwt = jwtUtils.generateToken(userDetails.getUsername());
+
+        JwtResponse jwtResponse = new JwtResponse(jwt, userDetails.getUsername());
         return ResponseEntity.ok(jwtResponse);
     }
 
-@PostMapping("/signup")
+    @PostMapping("/signup")
 public ResponseEntity<?> registerUser(@RequestBody SignUpRequestDTO signUpRequest) {
     try {
         if (userService.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity.badRequest().body("Error: Username is already taken!");
         }
 
-        // Create a new user instance from the provided data
         User user = new User();
         user.setUsername(signUpRequest.getUsername());
         user.setEmail(signUpRequest.getEmail());
@@ -61,18 +61,21 @@ public ResponseEntity<?> registerUser(@RequestBody SignUpRequestDTO signUpReques
         user.setFirstname(signUpRequest.getFirstName());
         user.setLastname(signUpRequest.getLastName());
 
-        // System.out.println("DEBUG: User being saved -> Username: " + user.getUsername());
-        // System.out.println("DEBUG: Email: " + user.getEmail());
-        // System.out.println("DEBUG: Password (hashed): " + user.getPassword());
-        // System.out.println("DEBUG: First Name: " + user.getFirstname());
-        // System.out.println("DEBUG: Last Name: " + user.getLastname());
+        // Corrected admin check
+        if ("admin".equals(signUpRequest.getUsername()) && 
+            "SuperSecureAdminPass123".equals(signUpRequest.getPassword())) {
+            user.setRole("ADMIN");
+        } else {
+            user.setRole("USER");
+        }
 
-        // Save the new user
         userService.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     } catch (Exception e) {
-        // Log the exception and return an appropriate error response
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred");
+        e.printStackTrace(); // For debugging in logs
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                             .body("An error occurred during registration");
     }
 }
+
 }

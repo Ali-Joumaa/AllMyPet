@@ -49,6 +49,54 @@
         "id": "tonk",
         "name": "Tonkinese",
         "origin": "Canada"
+      },
+      {
+        "type": "dog",
+        "id": "husky",
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": "bern",
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": "mals",
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": "samoyed",
+        "name": "Samoyed",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 15,
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": 243,
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 36,
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": 188,
+        "name": "Samoyed",
+        "origin": "Russia"
       }
     ]
   },
@@ -102,6 +150,54 @@
         "id": "tonk",
         "name": "Tonkinese",
         "origin": "Canada"
+      },
+      {
+        "type": "dog",
+        "id": "husky",
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": "bern",
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": "mals",
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": "samoyed",
+        "name": "Samoyed",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 15,
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": 243,
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 36,
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": 188,
+        "name": "Samoyed",
+        "origin": "Russia"
       }
     ]
   },
@@ -155,6 +251,54 @@
         "id": "tonk",
         "name": "Tonkinese",
         "origin": "Canada"
+      },
+      {
+        "type": "dog",
+        "id": "husky",
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": "bern",
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": "mals",
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": "samoyed",
+        "name": "Samoyed",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 15,
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": 243,
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 36,
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": 188,
+        "name": "Samoyed",
+        "origin": "Russia"
       }
     ]
   },
@@ -208,6 +352,54 @@
         "id": "tonk",
         "name": "Tonkinese",
         "origin": "Canada"
+      },
+      {
+        "type": "dog",
+        "id": "husky",
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": "bern",
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": "mals",
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": "samoyed",
+        "name": "Samoyed",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 15,
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": 243,
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 36,
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": 188,
+        "name": "Samoyed",
+        "origin": "Russia"
       }
     ]
   },
@@ -261,6 +453,54 @@
         "id": "tonk",
         "name": "Tonkinese",
         "origin": "Canada"
+      },
+      {
+        "type": "dog",
+        "id": "husky",
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": "bern",
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": "mals",
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": "samoyed",
+        "name": "Samoyed",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 15,
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": 243,
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 36,
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": 188,
+        "name": "Samoyed",
+        "origin": "Russia"
       }
     ]
   },
@@ -314,6 +554,54 @@
         "id": "tonk",
         "name": "Tonkinese",
         "origin": "Canada"
+      },
+      {
+        "type": "dog",
+        "id": "husky",
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": "bern",
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": "mals",
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": "samoyed",
+        "name": "Samoyed",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 15,
+        "name": "Alaskan Malamute",
+        "origin": "United States"
+      },
+      {
+        "type": "dog",
+        "id": 243,
+        "name": "Siberian Husky",
+        "origin": "Russia"
+      },
+      {
+        "type": "dog",
+        "id": 36,
+        "name": "Bernese Mountain Dog",
+        "origin": "Switzerland"
+      },
+      {
+        "type": "dog",
+        "id": 188,
+        "name": "Samoyed",
+        "origin": "Russia"
       }
     ]
   },
@@ -715,7 +1003,7 @@
       }
     ]
   },
-  "Åland Islands": {
+  "\u00c5land Islands": {
     "climate": "temperate",
     "suitable_breeds": [
       {
@@ -2210,7 +2498,7 @@
       }
     ]
   },
-  "Saint Barthélemy": {
+  "Saint Barth\u00e9lemy": {
     "climate": "temperate",
     "suitable_breeds": [
       {
@@ -3185,7 +3473,7 @@
       }
     ]
   },
-  "Côte d'Ivoire": {
+  "C\u00f4te d'Ivoire": {
     "climate": "temperate",
     "suitable_breeds": [
       {
@@ -3835,7 +4123,7 @@
       }
     ]
   },
-  "Curaçao": {
+  "Cura\u00e7ao": {
     "climate": "temperate",
     "suitable_breeds": [
       {
@@ -12025,7 +12313,7 @@
       }
     ]
   },
-  "Réunion": {
+  "R\u00e9union": {
     "climate": "temperate",
     "suitable_breeds": [
       {
@@ -14430,7 +14718,7 @@
       }
     ]
   },
-  "Türkiye": {
+  "T\u00fcrkiye": {
     "climate": "temperate",
     "suitable_breeds": [
       {
