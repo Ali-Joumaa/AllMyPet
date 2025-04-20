@@ -11,6 +11,9 @@ import jakarta.annotation.security.RolesAllowed;
 import com.myallpet.myallpet.Repository.PetCardRepository;
 import com.myallpet.myallpet.Repository.AdoptionPostRepository;
 
+import com.myallpet.myallpet.Models.Veterinarian;
+import com.myallpet.myallpet.Repository.VeterinarianRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -31,6 +34,9 @@ public class AdminController {
     @Autowired
     private AdoptionPostRepository adoptionPostRepository;
 
+    @Autowired
+    private VeterinarianRepository veterinarianRepository;
+
     // Get all users
     @GetMapping("/users")
     @RolesAllowed("ADMIN")
@@ -38,7 +44,7 @@ public class AdminController {
     List<User> users = userRepository.findAllByRoleNot("ADMIN");
     List<UserDTO> userDTOs = users.stream().map(UserDTO::new).toList();
     return ResponseEntity.ok(userDTOs);
-}
+    }
 
     // Get pet cards for a specific user
     @RolesAllowed("ADMIN")
@@ -105,5 +111,15 @@ public class AdminController {
         adoptionPostRepository.save(updatedAdoption);
         return ResponseEntity.ok("Adoption post updated successfully.");
     }
-    
+
+    @RolesAllowed("ADMIN")
+    @PutMapping("/approve-vet/{vetId}")
+    public ResponseEntity<?> approveVet(@PathVariable Long vetId) {
+        return veterinarianRepository.findById(vetId).map(vet -> {
+            vet.setApproved(true);
+            veterinarianRepository.save(vet);
+            return ResponseEntity.ok("Veterinarian approved successfully.");
+        }).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 }
