@@ -57,6 +57,21 @@ body {
   color: #444;
   margin-bottom: 10px;
 }
+.cat-card {
+  background-color: #f6f0ff;
+  border-left: 5px solid #9d4edd;
+}
+
+.dog-card {
+  background-color: #e6f7ff;
+  border-left: 5px solid #4da6ff;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
 
 .pet-list {
   display: flex;
