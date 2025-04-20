@@ -1,0 +1,29 @@
+.admin-root {
+  display: flex;
+}
+
+.admin-drawer {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.admin-drawer-paper {
+  width: 240px;
+  box-sizing: border-box;
+}
+
+
+.admin-appbar {
+  z-index: 1400;
+  background-color: #1976d2;
+  width: calc(100% - 240px); /* match drawer width */
+  margin-left: 240px;         /* push content to the right */
+}
+
+
+.admin-main {
+  flex-grow: 1;
+  padding: 24px;
+  background-color: #f9fafb;
+  min-height: 100vh;
+}

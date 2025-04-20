@@ -13,6 +13,7 @@ import ViewProfile from "./components/ViewProfile";
 import AddVetPage from "./components/AddVetPage";
 import PetCardForm from "./components/PetCardForm";
 import ChatApp from "./components/ChatApp";
+import AdminPage from "./components/AdminPage";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path="/PetCardForm/:petId" element={<PetCardForm />} />
         <Route path="/form" element={<PetCardForm />} />
         <Route path="/chat" element={<ChatApp />} />
-
+        <Route path="/adminPage" element={<AdminPage/>}/>
         <Route path="/raisePets" element={<RaisePet />} />  {/* Raise a pet Page */}
         <Route path="/vets" element={<VetsPage />} />  {/* Vets Page */}
         <Route path="/adopt" element={<Adopt />} />
