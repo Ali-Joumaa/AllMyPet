@@ -1,0 +1,22 @@
+/* src/components/UnifiedEditModal.css */
+
+.MuiDialog-paper {
+    border-radius: 20px !important;
+    padding: 1rem;
+  }
+  
+  .MuiDialogTitle-root {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+  }
+  
+  .MuiDialogContent-root {
+    padding-top: 1rem !important;
+  }
+  
+  .MuiDialogActions-root {
+    padding: 1rem 2rem;
+    justify-content: center;
+  }
+  

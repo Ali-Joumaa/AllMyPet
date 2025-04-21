@@ -3,6 +3,7 @@ package com.myallpet.myallpet.Controller;
 import com.myallpet.myallpet.DTO.LoginRequestDTO;
 import com.myallpet.myallpet.DTO.SignUpRequestDTO;
 import com.myallpet.myallpet.Models.User;
+import com.myallpet.myallpet.Repository.UserRepository;
 import com.myallpet.myallpet.Service.UserService;
 import com.myallpet.myallpet.utils.JwtUtils;
 import com.myallpet.myallpet.utils.JwtResponse;
@@ -15,6 +16,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,9 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
     private JwtUtils jwtUtils;
@@ -42,8 +47,12 @@ public class AuthController {
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String jwt = jwtUtils.generateToken(userDetails.getUsername());
+        
+        // Fetch user entity to get role
+        User user = userRepository.findByUsername(userDetails.getUsername())
+            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-        JwtResponse jwtResponse = new JwtResponse(jwt, userDetails.getUsername());
+        JwtResponse jwtResponse = new JwtResponse(jwt, user.getUsername(), user.getRole());
         return ResponseEntity.ok(jwtResponse);
     }
 

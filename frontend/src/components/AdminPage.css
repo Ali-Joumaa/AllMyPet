@@ -1,29 +1,55 @@
-.admin-root {
+.admin-dashboard {
+  padding-top: 30px;
+}
+
+.top-buttons {
   display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
-.admin-drawer {
-  width: 240px;
-  flex-shrink: 0;
+.dashboard-cards {
+  margin-bottom: 30px;
 }
 
-.admin-drawer-paper {
-  width: 240px;
-  box-sizing: border-box;
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 150px;
+  border-radius: 16px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-
-.admin-appbar {
-  z-index: 1400;
-  background-color: #1976d2;
-  width: calc(100% - 240px); /* match drawer width */
-  margin-left: 240px;         /* push content to the right */
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+.users-card { background-color: #7b61ff; }
+.pets-card { background-color: #2196f3; }
+.posts-card { background-color: #ff9800; }
 
-.admin-main {
-  flex-grow: 1;
-  padding: 24px;
-  background-color: #f9fafb;
-  min-height: 100vh;
+.view-area {
+  margin-top: 30px;
+}
+.admin-dashboard {
+  padding-top: 30px;
+}
+
+.top-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.view-area {
+  margin-top: 30px;
 }

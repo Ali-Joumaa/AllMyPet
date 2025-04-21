@@ -1,6 +1,7 @@
 package com.myallpet.myallpet.Repository;
 
 import com.myallpet.myallpet.Models.Favorites;
+import com.myallpet.myallpet.Models.PetCard;
 
 import java.util.List;
 
@@ -19,5 +20,7 @@ public interface FavoritesRepository extends JpaRepository<Favorites, Long> {
     // // Remove a favorite entry
     // void deleteByUserIdAndAdoptionPostId(Long userId, Long adoptionPostId);
     void deleteByPetCard_PetId(Long petId);
+
+    void deleteByPetCard(PetCard pet);
 }
 

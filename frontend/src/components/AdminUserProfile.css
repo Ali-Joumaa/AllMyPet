@@ -1,0 +1,57 @@
+/* src/components/UserProfile.css */
+
+.user-profile {
+    margin-top: 2rem;
+  }
+  
+  .profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 16px;
+    background-color: #f5f7fa;
+  }
+  
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .profile-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: flex-start;
+  }
+  
+  .stat-card {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 16px;
+    background-color: #e0f2f1;
+  }
+  
+  .entity-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .entity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  .view-area {
+    margin-top: 2rem;
+  }
+  

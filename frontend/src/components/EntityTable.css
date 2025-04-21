@@ -1,62 +1,64 @@
 .entity-table-container {
-    padding: 1.5rem;
-    border-radius: 12px;
-  }
-  
-  .entity-table-title {
-    font-weight: bold;
-    color: #333;
-  }
-  
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.entity-table-title {
+  font-weight: bold;
+  color: #333;
+}
+
+.entity-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 16px;
+  width: 100%; /* ✅ Force full width */
+  min-width: 100%; /* ✅ Also for small screens */
+  box-sizing: border-box;
+}
+
+
+.entity-info {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.entity-avatar {
+  background-color: #1976d2 !important;
+}
+
+.entity-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.entity-text {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.entity-action {
+  border-radius: 50% !important;
+  min-width: 50px !important;
+  width: 50px !important;
+  height: 50px !important;
+  padding: 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
   .entity-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f9f9f9;
-    padding: 1rem;
-    border-radius: 12px;
-    flex-wrap: wrap;
-  }
-  
-  .entity-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .entity-avatar {
-    background-color: #1976d2 !important;
-  }
-  
-  .entity-card-content {
-    display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    align-items: flex-start;
   }
-  
-  .entity-text {
-    font-weight: bold;
-    font-size: 14px;
+
+  .entity-action {
+    align-self: flex-end;
+    margin-top: 0.5rem;
   }
-  
-  .entity-delete {
-    border-radius: 50% !important;
-    min-width: 40px !important;
-    width: 40px !important;
-    height: 40px !important;
-    padding: 0 !important;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 600px) {
-    .entity-card {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .entity-delete {
-      align-self: flex-end;
-      margin-top: 0.5rem;
-    }
-  }
-  
+}

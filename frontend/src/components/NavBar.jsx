@@ -69,7 +69,13 @@ function NavBar() {
                     
                     <a href="./chat">Community</a>
 
-                    <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/adminPage");}}>Admin Page</Link>
+                    {/* <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/adminPage");}}>Admin Page</Link> */}
+                    {user?.role === 'ADMIN' && (
+  <Link to="/#" onClick={(e) => { e.preventDefault(); handleProtectedNavigation("/adminPage"); }}>
+    Admin Page
+  </Link>
+)}
+
 
                     <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/raisePets");}}>Raise A Pet</Link>
                     <Link to="/#" onClick={(e) => {e.preventDefault(); handleProtectedNavigation("/vets");}}>Veterinarians</Link>

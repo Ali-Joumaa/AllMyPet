@@ -7,10 +7,11 @@ import com.myallpet.myallpet.Models.AdoptionPost;
 import com.myallpet.myallpet.Repository.UserRepository;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.transaction.Transactional;
 
 import com.myallpet.myallpet.Repository.PetCardRepository;
 import com.myallpet.myallpet.Repository.AdoptionPostRepository;
-
+import com.myallpet.myallpet.Repository.FavoritesRepository;
 import com.myallpet.myallpet.Models.Veterinarian;
 import com.myallpet.myallpet.Repository.VeterinarianRepository;
 
@@ -30,6 +31,9 @@ public class AdminController {
 
     @Autowired
     private PetCardRepository petCardRepository;
+
+    @Autowired
+    private FavoritesRepository  favoritesRepository;
 
     @Autowired
     private AdoptionPostRepository adoptionPostRepository;
@@ -62,21 +66,46 @@ public class AdminController {
         return adoptionPostRepository.findByUser(user);
     }
 
-    // Delete a user (optional: cascade delete)
-    @RolesAllowed("ADMIN")
     @DeleteMapping("/users/{userId}")
+    @RolesAllowed("ADMIN")
+    @Transactional
     public ResponseEntity<?> deleteUser(@PathVariable Long userId) {
-        userRepository.deleteById(userId);
-        return ResponseEntity.ok("User deleted successfully.");
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
+        // 🛑 Step 1: Get all the PetCards owned by this user
+        List<PetCard> userPets = petCardRepository.findByUser(user);
+
+        // 🛑 Step 2: For each pet, delete related favorites
+        for (PetCard pet : userPets) {
+            favoritesRepository.deleteByPetCard(pet);
+        }
+
+        // 🛑 Step 3: Delete the user's pets
+        petCardRepository.deleteAll(userPets);
+
+        // 🛑 Step 4: Delete the user
+        userRepository.delete(user);
+
+        return ResponseEntity.ok("User and related data deleted successfully.");
     }
 
-    // Delete pet card
-    @RolesAllowed("ADMIN")
-    @DeleteMapping("/pets/{petId}")
-    public ResponseEntity<?> deletePet(@PathVariable Long petId) {
-        petCardRepository.deleteById(petId);
-        return ResponseEntity.ok("Pet deleted successfully.");
-    }
+
+
+    // AdminController.java
+
+@RolesAllowed("ADMIN")
+@DeleteMapping("/pets/{petId}")
+@Transactional // ✅ Important to make sure multiple operations happen together
+public ResponseEntity<?> deletePet(@PathVariable Long petId) {
+    // Step 1: Delete any favorites referring to this pet first
+    favoritesRepository.deleteByPetCard_PetId(petId);
+
+    // Step 2: Now safe to delete the pet card itself
+    petCardRepository.deleteById(petId);
+
+    return ResponseEntity.ok("Pet deleted successfully.");
+}
+
 
     // Delete adoption post
     @RolesAllowed("ADMIN")
@@ -121,5 +150,39 @@ public class AdminController {
             return ResponseEntity.ok("Veterinarian approved successfully.");
         }).orElseGet(() -> ResponseEntity.notFound().build());
     }
+
+
+    // Get all veterinarian requests (those not yet approved)
+    @RolesAllowed("ADMIN")
+    @GetMapping("/vets/requests")
+    public ResponseEntity<List<Veterinarian>> getPendingVetRequests() {
+        List<Veterinarian> pendingVets = veterinarianRepository.findByApprovedFalse();
+        return ResponseEntity.ok(pendingVets);
+    }
+    // Get single user info
+    @RolesAllowed("ADMIN")
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable Long userId) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        return ResponseEntity.ok(new UserDTO(user));
+    }
+
+    @RolesAllowed("ADMIN")
+@PutMapping("/users/{userId}")
+public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+    User existingUser = userRepository.findById(userId).orElseThrow();
+
+    existingUser.setFirstname(updatedUser.getFirstname());
+    existingUser.setLastname(updatedUser.getLastname());
+    existingUser.setBio(updatedUser.getBio());
+    existingUser.setYearsPetting(updatedUser.getYearsPetting());
+    existingUser.setAddress(updatedUser.getAddress());
+    existingUser.setUserProfilePicture(updatedUser.getUserProfilePicture());
+
+    userRepository.save(existingUser);
+
+    return ResponseEntity.ok("User updated successfully.");
+}
+
 
 }

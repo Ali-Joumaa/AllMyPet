@@ -14,6 +14,7 @@ import AddVetPage from "./components/AddVetPage";
 import PetCardForm from "./components/PetCardForm";
 import ChatApp from "./components/ChatApp";
 import AdminPage from "./components/AdminPage";
+import AdminUserProfile from './components/AdminUserProfile';
 
 function App() {
   return (
@@ -35,6 +36,9 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/adminPage" element={<AdminPage/>}/>
+        <Route path="/admin/users/:userId" element={<AdminUserProfile />} />
+
       </Routes>
     </Router>
   );
