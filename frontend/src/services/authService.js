@@ -47,7 +47,11 @@ export const login = async (formData) => {
      localStorage.setItem("token", response.data.token);
      localStorage.setItem("username", response.data.username);
  
-     return "Login successful! Redirecting...";  // ✅ Returning a string for React to render
+     return {
+      message: "Login successful! Redirecting...",
+      data: response.data
+    };
+    
 
 
   } catch (error) {

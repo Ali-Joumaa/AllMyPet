@@ -1,64 +1,124 @@
-// File: src/components/AdminPage.jsx
-
-import React, { useState } from 'react';
-import './AdminPage.css';
+import React, { useState, useEffect } from 'react';
 import {
-  Box, Drawer, List, ListItem, ListItemText,
-  AppBar, Toolbar, Typography, Container,
-  Paper, Grid, Button
+  Box, Container, Typography, Paper, Grid, Button, CircularProgress, AppBar, Toolbar
 } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 import PeopleIcon from '@mui/icons-material/People';
 import PetsIcon from '@mui/icons-material/Pets';
 import ArticleIcon from '@mui/icons-material/Article';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import HomeIcon from '@mui/icons-material/Home';
 import { LineChart, Line, ResponsiveContainer } from 'recharts';
 import EntityTable from './EntityTable';
+import './AdminPage.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const dummyChartData = [
   { value: 10 }, { value: 30 }, { value: 20 }, { value: 50 }, { value: 40 }, { value: 60 }, { value: 30 }, { value: 70 }
 ];
 
-const cards = [
-  { title: 'Users', value: '1.2K', icon: <PeopleIcon fontSize="large" />, color: '#7b61ff' },
-  { title: 'Pets', value: '230', icon: <PetsIcon fontSize="large" />, color: '#2196f3' },
-  { title: 'Posts', value: '3.4K', icon: <ArticleIcon fontSize="large" />, color: '#ff9800' }
-];
+export default function AdminDashboard() {
+  const navigate = useNavigate();
+  const [view, setView] = useState('Users');
+  const [users, setUsers] = useState([]);
+  const [pets, setPets] = useState([]);
+  const [posts, setPosts] = useState([]);
+  const [vetRequests, setVetRequests] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-const sidebarItems = [
-  { label: 'Dashboard', icon: <DashboardIcon /> },
-  { label: 'Users', icon: <PeopleIcon /> },
-  { label: 'Pets', icon: <PetsIcon /> },
-  { label: 'Posts', icon: <ArticleIcon /> },
-];
+  useEffect(() => {
+    fetchUsers();
+    fetchVetRequests();
+  }, []);
 
-export default function AdminPage() {
-  const [selectedView, setSelectedView] = useState('Dashboard');
+  const fetchUsers = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('http://localhost:5555/api/admin/users', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      });
 
-  const users = [
-    { id: 1, name: 'Alice Smith' },
-    { id: 2, name: 'Bob Johnson' },
-    { id: 2, name: 'Bob Johnson' },
-    { id: 2, name: 'Bob Johnson' },
-  ];
+      const usersData = await res.json();
+      setUsers(usersData);
 
-  const pets = [
-    { id: 1, name: 'Milo', breed: 'Golden Retriever' },
-    { id: 2, name: 'Luna', breed: 'Siamese Cat' },
-    { id: 2, name: 'Luna', breed: 'Siamese Cat' },
-    { id: 2, name: 'Luna', breed: 'Siamese Cat' },
-  ];
+      const petsPromises = usersData.map(user =>
+        fetch(`http://localhost:5555/api/admin/users/${user.userId}/pets`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        }).then(res => res.json())
+      );
 
-  const posts = [
-    { id: 1, content: 'Adopt Milo!', author: 'Alice Smith' },
-    { id: 2, content: 'Lost dog near AUB gate', author: 'Bob Johnson' },
-  ];
+      const postsPromises = usersData.map(user =>
+        fetch(`http://localhost:5555/api/admin/users/${user.userId}/adoptions`, {
+          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        }).then(res => res.json())
+      );
 
-  const vetRequests = [
-    { id: 1, doctor: 'Dr. Sarah Connor', pet: 'Luna' },
-    { id: 2, doctor: 'Dr. John Doe', pet: 'Max' },
-    { id: 3, doctor: 'Dr. Jane Smith', pet: 'Bella' }
-  ];
+      const allPetsArrays = await Promise.all(petsPromises);
+      const allPostsArrays = await Promise.all(postsPromises);
+
+      setPets(allPetsArrays.flat());
+      setPosts(allPostsArrays.flat());
+    } catch (error) {
+      console.error('Error fetching users or pets/posts:', error);
+      toast.error('Error fetching users.');
+    }
+    setLoading(false);
+  };
+
+  const fetchVetRequests = async () => {
+    try {
+      const res = await fetch('http://localhost:5555/api/admin/vets/requests', {
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      });
+      const data = await res.json();
+      setVetRequests(data);
+    } catch (error) {
+      console.error('Error fetching vet requests:', error);
+      toast.error('Error fetching vet requests.');
+    }
+  };
+
+  const deleteUser = async (user) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete user "${user.username}"?`);
+    if (!confirmDelete) return;
+
+    try {
+      const res = await fetch(`http://localhost:5555/api/admin/users/${user.userId}`, {
+        method: 'DELETE',
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      });
+
+      if (res.ok) {
+        toast.success('User deleted successfully!');
+        setUsers(prev => prev.filter(u => u.userId !== user.userId));
+      } else {
+        toast.error('Failed to delete user.');
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+      toast.error('Error deleting user.');
+    }
+  };
+
+  const approveVet = async (vet) => {
+    try {
+      const res = await fetch(`http://localhost:5555/api/admin/approve-vet/${vet.vetId}`, {
+        method: 'PUT',
+        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+      });
+
+      if (res.ok) {
+        toast.success(`Vet ${vet.firstName} approved successfully!`);
+        setVetRequests(prev => prev.filter(v => v.vetId !== vet.vetId));
+      } else {
+        toast.error('Failed to approve vet.');
+      }
+    } catch (error) {
+      console.error('Error approving vet:', error);
+      toast.error('Error approving vet.');
+    }
+  };
 
   const renderCard = (title, value, icon, color) => (
     <Paper
@@ -70,7 +130,7 @@ export default function AdminPage() {
         color: '#fff',
         borderRadius: '16px',
         width: '100%',
-        minWidth: '600px'
+        minWidth: '350px'
       }}
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -80,7 +140,7 @@ export default function AdminPage() {
         </Box>
         <Box>{icon}</Box>
       </Box>
-      <Box sx={{ mt: 2, height: 60 }}>
+      <Box sx={{ mt: 2, height: 80 }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={dummyChartData} margin={{ left: -40, right: -40 }}>
             <Line type="monotone" dataKey="value" stroke="#ffffffaa" strokeWidth={2} dot={false} />
@@ -90,126 +150,76 @@ export default function AdminPage() {
     </Paper>
   );
 
-  const renderDashboard = () => (
-    <Box sx={{ p: 3 }}>
-      <Grid container spacing={3} direction="column">
-        {cards.map((card, index) => (
-          <Grid item xs={12} key={index}>
-            {renderCard(card.title, card.value, card.icon, card.color)}
-          </Grid>
-        ))}
-      </Grid>
-
-      <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
-        <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
-          Veterinarian Requests
-        </Typography>
-        <Grid container spacing={2}>
-          {vetRequests.map((req) => (
-            <Grid item xs={12} md={6} key={req.id}>
-              <Paper elevation={1} sx={{ p: 2, borderRadius: 2, border: '1px solid #ccc' }}>
-                <Typography>
-                  Request from {req.doctor} for pet "{req.pet}".
-                </Typography>
-                <Button variant="contained" color="primary" sx={{ mt: 1 }}>
-                  Approve Request
-                </Button>
-              </Paper>
-            </Grid>
-          ))}
-        </Grid>
-      </Paper>
-    </Box>
-  );
-
-  const renderContent = () => {
-    switch (selectedView) {
-      case 'Users':
-        return (
-          <Box>
-            {renderCard('Users', '1.2K', <PeopleIcon fontSize="large" />, '#7b61ff')}
-            <EntityTable
-              title="Users"
-              columns={[{ label: 'Username', key: 'name' }]}
-              rows={users}
-              onDelete={(user) => console.log('Delete User:', user)}
-            />
-          </Box>
-        );
-      case 'Pets':
-        return (
-          <Box>
-            {renderCard('Pets', '230', <PetsIcon fontSize="large" />, '#2196f3')}
-            <EntityTable
-              title="Pets"
-              columns={[{ label: 'Name', key: 'name' }, { label: 'Breed', key: 'breed' }]}
-              rows={pets}
-              onDelete={(pet) => console.log('Delete Pet:', pet)}
-            />
-          </Box>
-        );
-      case 'Posts':
-        return (
-          <Box>
-            {renderCard('Posts', '3.4K', <ArticleIcon fontSize="large" />, '#ff9800')}
-            <EntityTable
-              title="Posts"
-              columns={[{ label: 'Content', key: 'content' }, { label: 'Author', key: 'author' }]}
-              rows={posts}
-              onDelete={(post) => console.log('Delete Post:', post)}
-            />
-          </Box>
-        );
-      default:
-        return null;
-    }
-  };
-
   return (
-    <Box className="admin-root">
-      <Drawer
-        variant="permanent"
-        className="admin-drawer"
-        classes={{ paper: 'admin-drawer-paper' }}
-      >
-        <Toolbar />
-        <Box sx={{ overflow: 'auto' }}>
-          <List>
-            {sidebarItems.map(({ label, icon }) => (
-              <ListItem
-                button
-                key={label}
-                onClick={() => setSelectedView(label)}
-                selected={selectedView === label}
-              >
-                <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-                  {icon}
-                  <ListItemText primary={label} />
-                </Box>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Drawer>
+    <Container className="admin-dashboard">
+      {/* 🏡 Top AppBar with Home Button */}
+      <AppBar position="sticky" color="primary" sx={{ mb: 3 }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Button color="inherit" startIcon={<HomeIcon />} onClick={() => navigate('/home')}>
+            Home
+          </Button>
+          <Typography variant="h6" fontWeight="bold">
+            Admin Panel
+          </Typography>
+          <Box width="80px" /> {/* Just to balance the Home button width */}
+        </Toolbar>
+      </AppBar>
 
-      <Box component="main" className="admin-main">
-        <AppBar position="fixed" className="admin-appbar">
-          <Toolbar sx={{ justifyContent: 'center' }}>
-            <Typography variant="h6" noWrap>
-              Admin Panel – {selectedView}
-            </Typography>
-          </Toolbar>
-        </AppBar>
+      <ToastContainer />
 
-        <Toolbar />
-        <Container maxWidth="lg">
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              {selectedView === 'Dashboard' ? renderDashboard() : renderContent()}
-            </Grid>
-          </Grid>
-        </Container>
+      {/* Dashboard Cards */}
+      <Box sx={{ p: 3 }}>
+        <Grid container spacing={3} direction="row">
+          <Grid item xs={12}>{renderCard('Users', users.length.toString(), <PeopleIcon fontSize="large" />, '#7b61ff')}</Grid>
+          <Grid item xs={12}>{renderCard('Pets', pets.length.toString(), <PetsIcon fontSize="large" />, '#2196f3')}</Grid>
+          <Grid item xs={12}>{renderCard('Posts', posts.length.toString(), <ArticleIcon fontSize="large" />, '#ff9800')}</Grid>
+        </Grid>
       </Box>
-    </Box>
+
+      {/* Switch Buttons */}
+      <Box className="top-buttons">
+        <Button variant={view === 'Users' ? 'contained' : 'outlined'} onClick={() => setView('Users')}>
+          Users
+        </Button>
+        <Button variant={view === 'Requests' ? 'contained' : 'outlined'} onClick={() => setView('Requests')}>
+          Vet Requests
+        </Button>
+      </Box>
+
+      {/* View Area */}
+      <Box className="view-area">
+        {loading ? (
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', mt: 2 }}>
+            <CircularProgress />
+          </Box>
+        ) : view === 'Users' ? (
+          <EntityTable
+            title="Users"
+            type="Users"
+            rows={users}
+            columns={[{ label: 'Username', key: 'username' }, { label: 'Email', key: 'email' }]}
+            onRowClick={(user) => navigate(`/admin/users/${user.userId}`)}
+            onDelete={deleteUser}
+          />
+        ) : (
+          <EntityTable
+            title="Vet Requests"
+            type="Vets"
+            rows={vetRequests}
+            columns={[
+              { label: 'First Name', key: 'firstName' },
+              { label: 'Last Name', key: 'lastName' },
+              { label: 'Email', key: 'email' },
+              { label: 'Phone Number', key: 'phoneNumber' },
+              { label: 'Sex', key: 'sex' },
+              { label: 'Location', key: 'location' },
+              { label: 'Experience Years', key: 'exp_years' },
+              { label: 'Profile Picture', key: 'profilePicture' }
+            ]}
+            onApprove={approveVet}
+          />
+        )}
+      </Box>
+    </Container>
   );
 }

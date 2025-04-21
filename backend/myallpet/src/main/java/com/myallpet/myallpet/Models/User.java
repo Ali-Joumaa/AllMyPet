@@ -118,4 +118,5 @@ public class User implements UserDetails {
     public String getProfileImageUrl() {
         return this.userProfilePicture;
     }
+
 }

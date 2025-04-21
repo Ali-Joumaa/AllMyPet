@@ -28,9 +28,15 @@ export default function Login() {
       setSuccess("");
   
       try {
+        console.log();
         const responseMessage = await login(formData);
-        setSuccess(responseMessage);
-        setTimeout(() => navigate("/home"), 2000); // Redirect to login after 2s
+        setSuccess(responseMessage.message);
+        if(responseMessage.data.role === "ADMIN") {
+          setTimeout(() => navigate("/adminPage"), 1000); // Redirect to login after 2s
+        } else if(responseMessage.data.role === "USER") {
+          setTimeout(() => navigate("/home"), 1000); // Redirect to login after 2s
+        }
+        // setTimeout(() => navigate("/home"), 1000); // Redirect to login after 2s
       } catch (errorMessage) {
         setError(errorMessage);
       }

@@ -4,11 +4,13 @@ public class JwtResponse {
   private String token;
   private String type = "Bearer";  // This is often used to indicate the type of the token.
   private String username;         // Optional: Include username or other user details as needed.
+  private String role;
 
   // Constructor to initialize the JWT response.
-  public JwtResponse(String token, String username) {
+  public JwtResponse(String token, String username, String role) {
       this.token = token;
       this.username = username;
+      this.role = role;
   }
 
   // Getters and setters
@@ -34,6 +36,14 @@ public class JwtResponse {
 
   public void setUsername(String username) {
       this.username = username;
+  }
+
+  public String getRole() {
+      return role;
+  }
+
+  public void setRole(String role) {
+      this.role = role;
   }
 }
 
