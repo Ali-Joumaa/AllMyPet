@@ -91,7 +91,7 @@ function Adopt() {
   />
 
   <button className="adopt-add-btn-inline" onClick={() => setIsFormOpen(true)}>
-    +
+    Add Post
   </button>
 </div>
 

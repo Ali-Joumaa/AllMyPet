@@ -1,11 +1,12 @@
 .adopt-add-btn-inline {
-  width: 42px;
+  width: 100px;
   height: 42px;
   border-radius: 8px;
   background-color: #9373db;
   color: white;
   font-size: 22px;
   border: none;
+  font-size: 1em;
   cursor: pointer;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   transition: background-color 0.2s ease, transform 0.2s ease;

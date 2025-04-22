@@ -116,14 +116,27 @@ public ResponseEntity<?> deletePet(@PathVariable Long petId) {
     }
 
     // Update pet card (standard PUT update)
-    @RolesAllowed("ADMIN")
-    @PutMapping("/pets/{petId}")
+    @PreAuthorize("hasRole('ADMIN')")
+        @PutMapping("/pets/{petId}")
     public ResponseEntity<?> updatePet(@PathVariable Long petId, @RequestBody PetCard updatedPet) {
         PetCard pet = petCardRepository.findById(petId).orElseThrow();
-        updatedPet.setPetId(pet.getPetId());
-        petCardRepository.save(updatedPet);
+    
+        if (updatedPet.getName() != null) pet.setName(updatedPet.getName());
+        if (updatedPet.getSpecies() != null) pet.setSpecies(updatedPet.getSpecies());
+        if (updatedPet.getBreed() != null) pet.setBreed(updatedPet.getBreed());
+        if (updatedPet.getAge() != null) pet.setAge(updatedPet.getAge());
+        if (updatedPet.getSex() != null) pet.setSex(updatedPet.getSex());
+        if (updatedPet.getPetPhoto() != null) pet.setPetPhoto(updatedPet.getPetPhoto());
+        if (updatedPet.getDescription() != null) pet.setDescription(updatedPet.getDescription());
+        if (updatedPet.getLocation() != null) pet.setLocation(updatedPet.getLocation());
+        if (updatedPet.getStatus() != null) pet.setStatus(updatedPet.getStatus());
+        if (updatedPet.getVaccines() != null) pet.setVaccines(updatedPet.getVaccines());
+        if (updatedPet.getHealthInfo() != null) pet.setHealthInfo(updatedPet.getHealthInfo());
+    
+        petCardRepository.save(pet);
         return ResponseEntity.ok("Pet updated successfully.");
     }
+    
 
     // Update adoption post
     @RolesAllowed("ADMIN")
@@ -168,21 +181,36 @@ public ResponseEntity<?> deletePet(@PathVariable Long petId) {
     }
 
     @RolesAllowed("ADMIN")
-@PutMapping("/users/{userId}")
-public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
-    User existingUser = userRepository.findById(userId).orElseThrow();
-
-    existingUser.setFirstname(updatedUser.getFirstname());
-    existingUser.setLastname(updatedUser.getLastname());
-    existingUser.setBio(updatedUser.getBio());
-    existingUser.setYearsPetting(updatedUser.getYearsPetting());
-    existingUser.setAddress(updatedUser.getAddress());
-    existingUser.setUserProfilePicture(updatedUser.getUserProfilePicture());
-
-    userRepository.save(existingUser);
-
-    return ResponseEntity.ok("User updated successfully.");
-}
+    @PutMapping("/users/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        User existingUser = userRepository.findById(userId).orElseThrow();
+    
+        if (updatedUser.getFirstname() != null) {
+            existingUser.setFirstname(updatedUser.getFirstname());
+        }
+        if (updatedUser.getLastname() != null) {
+            existingUser.setLastname(updatedUser.getLastname());
+        }
+        if (updatedUser.getBio() != null) {
+            existingUser.setBio(updatedUser.getBio());
+        }
+        if (updatedUser.getYearsPetting() != null) {
+            existingUser.setYearsPetting(updatedUser.getYearsPetting());
+        }
+        if (updatedUser.getAddress() != null) {
+            existingUser.setAddress(updatedUser.getAddress());
+        }
+        if (updatedUser.getUserProfilePicture() != null) {
+            System.out.println("🔍 New profile picture: " + updatedUser.getUserProfilePicture());
+            existingUser.setUserProfilePicture(updatedUser.getUserProfilePicture());
+        }
+        
+    
+        userRepository.save(existingUser);
+    
+        return ResponseEntity.ok("User updated successfully.");
+    }
+    
 
 
 }

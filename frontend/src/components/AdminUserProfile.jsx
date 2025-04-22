@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 import UnifiedEditModal from './UnifiedEditModal';
 import './AdminUserProfile.css';
 
-export default function UserProfile() {
+export default function AdminUserProfile() {
   const { userId } = useParams();
   const navigate = useNavigate();
 
@@ -65,12 +65,11 @@ export default function UserProfile() {
         { label: 'First Name', name: 'firstname' },
         { label: 'Last Name', name: 'lastname' },
         { label: 'Username', name: 'username' },
-        { label: 'Phone Number', name: 'phoneNumber' },
         { label: 'Email', name: 'email' },
         { label: 'Address', name: 'address' },
         { label: 'Bio', name: 'bio', multiline: true, rows: 3 },
         { label: 'Years Petting', name: 'yearsPetting' },
-        { label: 'Profile Picture URL', name: 'profilePictureURL' },
+        { label: 'Profile Picture URL', name: 'userProfilePicture' },
       ]);
     } else if (type === "Pet") {
       setEditModalFields([
@@ -90,8 +89,8 @@ export default function UserProfile() {
       setEditModalFields([
         { label: 'Title', name: 'title' },
         { label: 'Description', name: 'description', multiline: true, rows: 3 },
-        { label: 'Status', name: 'status' },
-        { label: 'Adoption Type', name: 'adoptionType' },
+        { label: 'Status', name: 'status', select: true, options: ['Available', 'Adopted'] },
+        { label: 'Adoption Type', name: 'adoptionType', select: true, options: ['Permanent', 'Temporary'] },
         { label: 'Vaccines', name: 'vaccines' },
         { label: 'Health Info', name: 'healthInfo', multiline: true, rows: 3 },
       ]);
@@ -105,13 +104,16 @@ export default function UserProfile() {
       const token = localStorage.getItem('token');
       let url = '';
       let method = 'PUT';
+      console.log("📦 Sending token:", token);
 
       if (editModalType === 'User') {
         url = `http://localhost:5555/api/admin/users/${userId}`;
       } else if (editModalType === 'Pet') {
         url = `http://localhost:5555/api/admin/pets/${editModalData.petId}`;
+        delete updatedData.user;
       } else if (editModalType === 'Post') {
         url = `http://localhost:5555/api/admin/adoptions/${editModalData.postId}`;
+        delete updatedData.user;
       }
 
       await fetch(url, {
@@ -122,7 +124,7 @@ export default function UserProfile() {
         },
         body: JSON.stringify(updatedData)
       });
-
+      console.log("✅ Updated pet payload:", updatedData)
       setEditModalOpen(false);
       fetchData();
     } catch (error) {
@@ -187,14 +189,12 @@ export default function UserProfile() {
 
   return (
     <Container className="user-profile">
-      {/* Profile Header */}
       <Paper elevation={3} className="profile-header">
         <Avatar src={userInfo.profilePictureURL} sx={{ width: 100, height: 100 }} />
         <Box className="profile-info">
           <Typography variant="h5">{userInfo.firstname} {userInfo.lastname}</Typography>
           <Typography>Username: {userInfo.username}</Typography>
           <Typography>Email: {userInfo.email}</Typography>
-          <Typography>Phone: {userInfo.phoneNumber}</Typography>
           <Typography>Location: {userInfo.address}</Typography>
           <Typography>Years of Petting: {userInfo.yearsPetting}</Typography>
           <Typography>Bio: {userInfo.bio}</Typography>
@@ -209,20 +209,21 @@ export default function UserProfile() {
         </Box>
       </Paper>
 
-      {/* Stats */}
       <Box className="profile-stats">
         <Paper className="stat-card"><Typography><PetsIcon /> Pets: {pets.length}</Typography></Paper>
         <Paper className="stat-card"><Typography><ArticleIcon /> Posts: {posts.length}</Typography></Paper>
       </Box>
 
-      {/* Pets */}
       <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>Pet Cards</Typography>
       <Grid container spacing={2}>
         {pets.map(pet => (
           <Grid item xs={12} sm={6} md={4} key={pet.petId}>
             <motion.div whileHover={{ scale: 1.05 }}>
               <Paper className="entity-card">
-                <Typography><strong>Name:</strong> {pet.name}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <Avatar src={pet.petPhoto} alt={pet.name} sx={{ width: 40, height: 40 }} />
+                  <Typography variant="subtitle1"><strong>Name:</strong> {pet.name}</Typography>
+                </Box>
                 <Typography><strong>Breed:</strong> {pet.breed}</Typography>
                 <Typography><strong>Age:</strong> {pet.age}</Typography>
                 <Box sx={{ mt: 2, display: 'flex', gap: 1 }}>
@@ -235,7 +236,6 @@ export default function UserProfile() {
         ))}
       </Grid>
 
-      {/* Posts */}
       <Typography variant="h6" sx={{ mt: 4, mb: 2 }}>Adoption Posts</Typography>
       <Grid container spacing={2}>
         {posts.map(post => (
@@ -254,7 +254,6 @@ export default function UserProfile() {
         ))}
       </Grid>
 
-      {/* Edit Modal */}
       <UnifiedEditModal
         open={editModalOpen}
         onClose={() => setEditModalOpen(false)}
@@ -264,7 +263,6 @@ export default function UserProfile() {
         onSubmit={handleUpdate}
       />
 
-      {/* Confirm Delete Dialog */}
       <Dialog open={deleteConfirmOpen} onClose={() => setDeleteConfirmOpen(false)}>
         <DialogTitle>Confirm Deletion</DialogTitle>
         <DialogContent>
