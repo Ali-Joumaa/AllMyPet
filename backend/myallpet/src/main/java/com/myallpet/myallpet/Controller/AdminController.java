@@ -115,15 +115,27 @@ public ResponseEntity<?> deletePet(@PathVariable Long petId) {
         return ResponseEntity.ok("Adoption post deleted successfully.");
     }
 
-    // Update pet card (standard PUT update)
     @RolesAllowed("ADMIN")
     @PutMapping("/pets/{petId}")
     public ResponseEntity<?> updatePet(@PathVariable Long petId, @RequestBody PetCard updatedPet) {
         PetCard pet = petCardRepository.findById(petId).orElseThrow();
-        updatedPet.setPetId(pet.getPetId());
-        petCardRepository.save(updatedPet);
+    
+        pet.setName(updatedPet.getName());
+        pet.setSpecies(updatedPet.getSpecies());
+        pet.setBreed(updatedPet.getBreed());
+        pet.setAge(updatedPet.getAge());
+        pet.setSex(updatedPet.getSex());
+        pet.setPetPhoto(updatedPet.getPetPhoto());
+        pet.setDescription(updatedPet.getDescription());
+        pet.setLocation(updatedPet.getLocation());
+        pet.setStatus(updatedPet.getStatus());
+        pet.setVaccines(updatedPet.getVaccines());
+        pet.setHealthInfo(updatedPet.getHealthInfo());
+    
+        petCardRepository.save(pet);
         return ResponseEntity.ok("Pet updated successfully.");
     }
+    
 
     // Update adoption post
     @RolesAllowed("ADMIN")
@@ -168,21 +180,36 @@ public ResponseEntity<?> deletePet(@PathVariable Long petId) {
     }
 
     @RolesAllowed("ADMIN")
-@PutMapping("/users/{userId}")
-public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
-    User existingUser = userRepository.findById(userId).orElseThrow();
-
-    existingUser.setFirstname(updatedUser.getFirstname());
-    existingUser.setLastname(updatedUser.getLastname());
-    existingUser.setBio(updatedUser.getBio());
-    existingUser.setYearsPetting(updatedUser.getYearsPetting());
-    existingUser.setAddress(updatedUser.getAddress());
-    existingUser.setUserProfilePicture(updatedUser.getUserProfilePicture());
-
-    userRepository.save(existingUser);
-
-    return ResponseEntity.ok("User updated successfully.");
-}
+    @PutMapping("/users/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User updatedUser) {
+        User existingUser = userRepository.findById(userId).orElseThrow();
+    
+        if (updatedUser.getFirstname() != null) {
+            existingUser.setFirstname(updatedUser.getFirstname());
+        }
+        if (updatedUser.getLastname() != null) {
+            existingUser.setLastname(updatedUser.getLastname());
+        }
+        if (updatedUser.getBio() != null) {
+            existingUser.setBio(updatedUser.getBio());
+        }
+        if (updatedUser.getYearsPetting() != null) {
+            existingUser.setYearsPetting(updatedUser.getYearsPetting());
+        }
+        if (updatedUser.getAddress() != null) {
+            existingUser.setAddress(updatedUser.getAddress());
+        }
+        if (updatedUser.getUserProfilePicture() != null) {
+            System.out.println("🔍 New profile picture: " + updatedUser.getUserProfilePicture());
+            existingUser.setUserProfilePicture(updatedUser.getUserProfilePicture());
+        }
+        
+    
+        userRepository.save(existingUser);
+    
+        return ResponseEntity.ok("User updated successfully.");
+    }
+    
 
 
 }

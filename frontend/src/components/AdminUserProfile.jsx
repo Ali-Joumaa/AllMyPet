@@ -65,12 +65,11 @@ export default function UserProfile() {
         { label: 'First Name', name: 'firstname' },
         { label: 'Last Name', name: 'lastname' },
         { label: 'Username', name: 'username' },
-        { label: 'Phone Number', name: 'phoneNumber' },
         { label: 'Email', name: 'email' },
         { label: 'Address', name: 'address' },
         { label: 'Bio', name: 'bio', multiline: true, rows: 3 },
         { label: 'Years Petting', name: 'yearsPetting' },
-        { label: 'Profile Picture URL', name: 'profilePictureURL' },
+        { label: 'Profile Picture URL', name: 'userProfilePicture' },
       ]);
     } else if (type === "Pet") {
       setEditModalFields([
@@ -194,7 +193,6 @@ export default function UserProfile() {
           <Typography variant="h5">{userInfo.firstname} {userInfo.lastname}</Typography>
           <Typography>Username: {userInfo.username}</Typography>
           <Typography>Email: {userInfo.email}</Typography>
-          <Typography>Phone: {userInfo.phoneNumber}</Typography>
           <Typography>Location: {userInfo.address}</Typography>
           <Typography>Years of Petting: {userInfo.yearsPetting}</Typography>
           <Typography>Bio: {userInfo.bio}</Typography>

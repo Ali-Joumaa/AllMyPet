@@ -1,6 +1,6 @@
 // src/components/UnifiedEditModal.jsx
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Dialog, DialogTitle, DialogContent, DialogActions,
   TextField, Button, Grid
@@ -9,17 +9,26 @@ import { motion } from 'framer-motion';
 import './UnifiedEditModal.css';
 
 export default function UnifiedEditModal({ open, onClose, type, fields, initialData, onSubmit }) {
-  const [formData, setFormData] = useState(initialData || {});
+  const [formData, setFormData] = useState({});
+  console.log("🧠 Initial Data:", initialData);
+
+  // ✅ Update form data when initialData changes
+  useEffect(() => {
+    if (initialData) {
+      setFormData(initialData);
+    }
+  }, [initialData]);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [name]: value,
     }));
   };
 
   const handleSave = () => {
-    onSubmit(formData);
+    onSubmit(formData); // You can filter unchanged/null fields here if needed
   };
 
   return (
@@ -39,7 +48,7 @@ export default function UnifiedEditModal({ open, onClose, type, fields, initialD
                   label={field.label}
                   name={field.name}
                   value={formData[field.name] || ''}
-                  onChange={(e) => setFormData(prev => ({ ...prev, [field.name]: e.target.value }))}
+                  onChange={handleChange}
                   fullWidth
                   multiline={field.multiline || false}
                   rows={field.rows || 1}
