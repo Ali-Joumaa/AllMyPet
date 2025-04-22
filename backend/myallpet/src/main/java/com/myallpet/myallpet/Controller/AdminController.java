@@ -115,22 +115,23 @@ public ResponseEntity<?> deletePet(@PathVariable Long petId) {
         return ResponseEntity.ok("Adoption post deleted successfully.");
     }
 
-    @RolesAllowed("ADMIN")
-    @PutMapping("/pets/{petId}")
+    // Update pet card (standard PUT update)
+    @PreAuthorize("hasRole('ADMIN')")
+        @PutMapping("/pets/{petId}")
     public ResponseEntity<?> updatePet(@PathVariable Long petId, @RequestBody PetCard updatedPet) {
         PetCard pet = petCardRepository.findById(petId).orElseThrow();
     
-        pet.setName(updatedPet.getName());
-        pet.setSpecies(updatedPet.getSpecies());
-        pet.setBreed(updatedPet.getBreed());
-        pet.setAge(updatedPet.getAge());
-        pet.setSex(updatedPet.getSex());
-        pet.setPetPhoto(updatedPet.getPetPhoto());
-        pet.setDescription(updatedPet.getDescription());
-        pet.setLocation(updatedPet.getLocation());
-        pet.setStatus(updatedPet.getStatus());
-        pet.setVaccines(updatedPet.getVaccines());
-        pet.setHealthInfo(updatedPet.getHealthInfo());
+        if (updatedPet.getName() != null) pet.setName(updatedPet.getName());
+        if (updatedPet.getSpecies() != null) pet.setSpecies(updatedPet.getSpecies());
+        if (updatedPet.getBreed() != null) pet.setBreed(updatedPet.getBreed());
+        if (updatedPet.getAge() != null) pet.setAge(updatedPet.getAge());
+        if (updatedPet.getSex() != null) pet.setSex(updatedPet.getSex());
+        if (updatedPet.getPetPhoto() != null) pet.setPetPhoto(updatedPet.getPetPhoto());
+        if (updatedPet.getDescription() != null) pet.setDescription(updatedPet.getDescription());
+        if (updatedPet.getLocation() != null) pet.setLocation(updatedPet.getLocation());
+        if (updatedPet.getStatus() != null) pet.setStatus(updatedPet.getStatus());
+        if (updatedPet.getVaccines() != null) pet.setVaccines(updatedPet.getVaccines());
+        if (updatedPet.getHealthInfo() != null) pet.setHealthInfo(updatedPet.getHealthInfo());
     
         petCardRepository.save(pet);
         return ResponseEntity.ok("Pet updated successfully.");

@@ -1,5 +1,3 @@
-// src/components/UnifiedEditModal.jsx
-
 import React, { useState, useEffect } from 'react';
 import {
   Dialog, DialogTitle, DialogContent, DialogActions,
@@ -12,12 +10,11 @@ export default function UnifiedEditModal({ open, onClose, type, fields, initialD
   const [formData, setFormData] = useState({});
   console.log("🧠 Initial Data:", initialData);
 
-  // ✅ Update form data when initialData changes
   useEffect(() => {
-    if (initialData) {
-      setFormData(initialData);
+    if (open && Object.keys(formData).length === 0 && initialData) {
+      setFormData({ ...initialData });
     }
-  }, [initialData]);
+  }, [open, initialData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +25,17 @@ export default function UnifiedEditModal({ open, onClose, type, fields, initialD
   };
 
   const handleSave = () => {
-    onSubmit(formData); // You can filter unchanged/null fields here if needed
+    console.log("🚀 Submitting updated data for:", type);
+    console.table(formData);
+
+    if (type === 'Pet' && !formData.petId) {
+      console.warn("⚠️ Missing petId in payload!");
+    }
+    if (type === 'Post' && !formData.postId) {
+      console.warn("⚠️ Missing postId in payload!");
+    }
+
+    onSubmit(formData);
   };
 
   return (
@@ -44,15 +51,32 @@ export default function UnifiedEditModal({ open, onClose, type, fields, initialD
           <Grid container spacing={2}>
             {fields.map((field, idx) => (
               <Grid item xs={12} sm={field.fullWidth ? 12 : 6} key={idx}>
-                <TextField
-                  label={field.label}
-                  name={field.name}
-                  value={formData[field.name] || ''}
-                  onChange={handleChange}
-                  fullWidth
-                  multiline={field.multiline || false}
-                  rows={field.rows || 1}
-                />
+                {field.select ? (
+                  <TextField
+                    select
+                    label={field.label}
+                    name={field.name}
+                    value={formData[field.name] || ''}
+                    onChange={handleChange}
+                    fullWidth
+                    SelectProps={{ native: true }}
+                  >
+                    <option value="">Select</option>
+                    {field.options.map((option, i) => (
+                      <option key={i} value={option}>{option}</option>
+                    ))}
+                  </TextField>
+                ) : (
+                  <TextField
+                    label={field.label}
+                    name={field.name}
+                    value={formData[field.name] || ''}
+                    onChange={handleChange}
+                    fullWidth
+                    multiline={field.multiline || false}
+                    rows={field.rows || 1}
+                  />
+                )}
               </Grid>
             ))}
           </Grid>
