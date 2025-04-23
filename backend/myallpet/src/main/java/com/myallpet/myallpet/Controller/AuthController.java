@@ -72,7 +72,7 @@ public ResponseEntity<?> registerUser(@RequestBody SignUpRequestDTO signUpReques
 
         // Corrected admin check
         if ("admin".equals(signUpRequest.getUsername()) && 
-            "SuperSecureAdminPass123".equals(signUpRequest.getPassword())) {
+            "admin".equals(signUpRequest.getPassword())) {
             user.setRole("ADMIN");
         } else {
             user.setRole("USER");
