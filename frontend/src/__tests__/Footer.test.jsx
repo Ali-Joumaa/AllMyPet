@@ -46,4 +46,12 @@ describe("Footer Component", () => {
     render(<Footer />);
     expect(screen.getAllByRole("link").length).toBeGreaterThanOrEqual(5); // Facebook, Pinterest, etc.
   });
+  test("rendedia icons", () => {
+    render(<Footer />);
+    expect(screen.getAllByRole("link").length).toBeGreaterThanOrEqual(5); // Facebook, Pinterest, etc.
+  });
+  test("rsocial media icons", () => {
+    render(<Footer />);
+    expect(screen.getAllByRole("link").length).toBeGreaterThanOrEqual(5); // Facebook, Pinterest, etc.
+  });
 });

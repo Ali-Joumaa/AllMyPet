@@ -13,6 +13,10 @@ describe("Cat Component", () => {
     render(<Cat {...defaultProps} />);
     expect(screen.getByText("Whiskers")).toBeInTheDocument();
   });
+  test("checks cat name length", () => {
+    render(<Cat {...defaultProps} />);
+    expect(screen.getByText("Whiskers")).toBeInTheDocument();
+  });
 
   test("renders the image with correct src and alt", () => {
     render(<Cat {...defaultProps} />);

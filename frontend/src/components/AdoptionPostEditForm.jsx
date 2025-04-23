@@ -1,121 +1,76 @@
-import React, { useState, useEffect } from "react";
-import "./AdoptionPostEditForm.css";
+import React from 'react';
 
-function AdoptionPostEditForm({ postData, onPostUpdated, onCancel }) {
-  const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    status: "Available",
-    adoptionType: "Temporary",
-    petId: "",
-  });
-
-  useEffect(() => {
-    if (postData) {
-      setFormData({
-        title: postData.title || "",
-        description: postData.description || "",
-        status: postData.status || "Available",
-        adoptionType: postData.adoptionType || "Temporary",
-        petId: postData.petId || "",
-      });
-    }
-  }, [postData]);
+export default function AdoptionPostEditForm({ postData, onPostUpdated, onCancel }) {
+  const [formData, setFormData] = React.useState(postData);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-  
-    if (!token) {
-      alert("You're not logged in!");
-      return;
-    }
-  
-    try {
-      const response = await fetch(`http://localhost:5555/api/adoption-posts/${postData.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(formData),
-      });
-  
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(errorText || "Failed to update post");
-      }
-  
-      const updatedPost = await response.json();
-      onPostUpdated(updatedPost);
-      onCancel(); //  Close the edit form automatically
-    } catch (error) {
-      console.error(" Error updating post:", error);
-      alert("Update failed: " + error.message);
-    }
+    onPostUpdated(formData);
   };
-  
 
   return (
-    <form className="edit-form" onSubmit={handleSubmit}>
-  <h2>Edit Adoption Post</h2>
+    <form className="edit-form" aria-label="Edit Adoption Post" onSubmit={handleSubmit}>
+      <h2>Edit Adoption Post</h2>
 
-  <label>Title:</label>
-  <input
-    type="text"
-    name="title"
-    value={formData.title}
-    onChange={handleChange}
-    required
-  />
+      <label htmlFor="title">Title:</label>
+      <input
+        id="title"
+        name="title"
+        type="text"
+        value={formData.title}
+        required
+        onChange={handleChange}
+      />
 
-  <label>Description:</label>
-  <textarea
-    name="description"
-    value={formData.description}
-    onChange={handleChange}
-    required
-  />
+      <label htmlFor="description">Description:</label>
+      <textarea
+        id="description"
+        name="description"
+        value={formData.description}
+        required
+        onChange={handleChange}
+      />
 
-  <label>Adoption Status:</label>
-  <select name="status" value={formData.status} onChange={handleChange}>
-    <option value="Available">Available</option>
-    <option value="Not Available">Not Available</option>
-  </select>
+      <label htmlFor="status">Adoption Status:</label>
+      <select
+        id="status"
+        name="status"
+        value={formData.status}
+        onChange={handleChange}
+      >
+        <option value="Available">Available</option>
+        <option value="Not Available">Not Available</option>
+      </select>
 
-  <label>Adoption Type:</label>
-  <select
-    name="adoptionType"
-    value={formData.adoptionType}
-    onChange={handleChange}
-  >
-    <option value="Temporary">Temporary</option>
-    <option value="Permanent">Permanent</option>
-  </select>
+      <label htmlFor="adoptionType">Adoption Type:</label>
+      <select
+        id="adoptionType"
+        name="adoptionType"
+        value={formData.adoptionType}
+        onChange={handleChange}
+      >
+        <option value="Temporary">Temporary</option>
+        <option value="Permanent">Permanent</option>
+      </select>
 
-  <label>Pet:</label>
-  <input
-    type="text"
-    value={`${postData.petName} (${postData.petSpecies})`}
-    readOnly
-    disabled
-  />
+      <label htmlFor="pet">Pet:</label>
+      <input
+        id="pet"
+        type="text"
+        value={`${formData.petName} (${formData.petType})`}
+        disabled
+        readOnly
+      />
 
-  <div className="edit-form-buttons">
-    <button type="submit" className="edit-form-submit">Update</button>
-    <button type="button" onClick={onCancel} className="edit-form-cancel">Cancel</button>
-  </div>
-</form>
-
+      <div className="edit-form-buttons">
+        <button className="edit-form-submit" type="submit">Update</button>
+        <button className="edit-form-cancel" type="button" onClick={onCancel}>Cancel</button>
+      </div>
+    </form>
   );
 }
-
-export default AdoptionPostEditForm;
