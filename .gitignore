@@ -45,6 +45,8 @@ frontend/.vscode/
 target/
 *.log
 
+backend/application.properties
+
 # Maven wrapper
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
